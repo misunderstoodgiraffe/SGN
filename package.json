@@ -1,0 +1,23 @@
+{
+  "name": "sgn",
+  "version": "1.0.0",
+  "description": "hackreactor greenfield project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misunderstoodgiraffe/SGN.git"
+  },
+  "keywords": [
+    "misunderstood",
+    "giraffe"
+  ],
+  "author": "misunderstood giraffe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misunderstoodgiraffe/SGN/issues"
+  },
+  "homepage": "https://github.com/misunderstoodgiraffe/SGN#readme"
+}
