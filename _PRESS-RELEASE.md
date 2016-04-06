@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Live Run-sheet
+  > 
 
 ## Sub-Heading ##
-  > Your production team will never miss a cue again!
+  > 
 
 ## Summary ##
-  > Import your google spreadsheet to give your production team visual cues as the show unfolds. Use your team's existing google accounts and file permissions to keep everyone on the same page with ease.
+  > 
 
 ## Problem ##
-  > Comm's are unreliable at best, especially in noisy environments. During large, complicated productions it is easy to miss the most important cues. Standard comm-style communication can get confusing when you are having to listen to many conversations at once to listen for your cue. 
+  >  
 
 ## Solution ##
-  > By visually showing a scrolling run-sheet built from a google doc the whole team will always be in the same place in the show.
+  > 
 
 ## Quote from You ##
-  > "We've just seen too many angry sponsors asking us to fire our lead video engineer becaue the comm's failed when he was supposed to put up their logo."
+  > 
 
 ## How to Get Started ##
-  > Simply share a google spreadsheet with your team, then import it into the app. Then sign in with your google account and select your role on the team.
+  > 
 
 ## Customer Quote ##
-  > "It's easy and flexible. We'll never do a show without it!"
+  > 
 
 ## Closing and Call to Action ##
-  > For more question, or to sign up go to www.LiveRunSheet.com. Or e-mail us at Contact@liverunsheet.com.
+  > 
