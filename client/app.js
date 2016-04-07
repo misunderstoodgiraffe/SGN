@@ -1,7 +1,6 @@
 angular.module('SGN', [
   'SGN.landing',
-  'SGN.users',
-  'SGN.services',
+  'SGN.login',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
