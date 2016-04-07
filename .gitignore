@@ -1,4 +1,3 @@
 node_modules/
 gitSpy/*
-server/config/auth.js
-server/.env
+server/config/.env
