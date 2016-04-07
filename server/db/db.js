@@ -9,8 +9,56 @@ module.exports.dbConnection = mysql.createConnection({
   database: 'users'
 });
 
-module.exports.User = User = sql.define('user', {
+module.exports.Users = Users = sql.define('users', {
   username: SQL.STRING
 });
 
+module.exports.Friends = Friends = sql.define('friends', {
+  userIdlink1: SQL.INT,
+  userIdlink2: SQL.INT
+})
+
 User.sync();
+Frinends.sync();
+
+module.exports.users = {
+    getAll: function (callback) {
+      db.User.findAll().then(callback);
+    },
+    search: function (callback) {
+      db..findAll({include: [{
+        model: db.User,
+        where: {userId: db.SQL.col('Message.userId')}
+      }]}).then(function(result) {
+        var newResult = [];
+        for (var i in result) {
+          var username = result[i].dataValues.user.dataValues.username;
+          var newMessage = result[i].dataValues;
+          newMessage['username'] = username;
+          delete newMessage['user'];
+          newResult.push(newMessage);
+        }
+        
+        callback(newResult);
+      });
+    },
+    newUser: function (user, callback) {
+      var newUser = db.User.build(user);
+      newUser.save().success(callback);
+    }, // a function which produces all the messages
+    newFriend: function (user, callback) {
+      db.User.findAll({where: {username: message['username']}}).then( function(result) {
+        if (result.length === 0) {
+          var newUser = db.User.build({username: message['username']});
+          newUser.save().then(function(saveResults) {
+            postMessage(message, [{userId: saveResults.dataValues.id}], callback);
+          });
+        } else {
+          console.log(result);
+          postMessage(message, result, callback);
+        }
+      }); 
+    },
+    searchFriends: function(callback) {}
+  }
+};
