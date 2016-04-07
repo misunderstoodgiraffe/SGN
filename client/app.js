@@ -1,6 +1,7 @@
 angular.module('SGN', [
   'SGN.landing',
   'SGN.login',
+  'SGN.dashboard',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -10,8 +11,8 @@ angular.module('SGN', [
       controller: 'LandingController'
     })
     .when('/home', {
-      templateUrl: './client/home.html',
-      controller: 'HomeController'
+      templateUrl: './dashboard/dashboard.html',
+      controller: 'DashboardController'
     })
 });
 
