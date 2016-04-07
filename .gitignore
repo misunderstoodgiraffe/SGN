@@ -1,3 +1,5 @@
 node_modules/
 gitSpy/*
+server/config/auth.js
+Update password config
 
