@@ -1,6 +1,3 @@
-// Create a #connectButton in your landing page that calls connectButton on click
-// And a #signOut button that is initially hidden
-
 angular.module('SGN.landing', [])
 .controller('LandingController', function (facebookService, $scope, $location) {
   $scope.threads = {};
