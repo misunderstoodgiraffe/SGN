@@ -5,8 +5,8 @@
 // In your JavaScript, add this line to initialize OAuth.js
 
 // OAuth.initialize('your_app_public_key');
-
-SGN.factory('facebookService', function($q) {
+angular.module('SGN.login', [])
+.factory('facebookService', function($q) {
 
   //Authentication result returned by facebook. Inclues an auth token
   var authorizationResult = false;
