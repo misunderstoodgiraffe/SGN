@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/misunderstoodgiraffe/SGN#readme",
   "dependencies": {
+    "angular": "^1.5.3",
     "mysql": "^2.10.2",
     "sequelize": "^3.21.0"
   }
