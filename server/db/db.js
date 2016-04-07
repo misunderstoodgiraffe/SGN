@@ -8,43 +8,45 @@ var dbConnection = mysql.createConnection({
   password: 'm1sunderst00d',
   database: 'users'
 });
+dbConnection.connect();
 
-var Users = sql.define('users', {
+var User = sql.define('user', {
   username: SQL.STRING
 });
 
 var Friends = sql.define('friends', {
-  userIdlink1: SQL.INT,
-  userIdlink2: SQL.INT
+  userIdlink1: SQL.INTEGER,
+  userIdlink2: SQL.INTEGER
 })
 
-User.sync();
-Frinends.sync();
+User.hasMany(Friends);
+Friends.belongsTo(User);
 
 // Skeleton code must be refactored for our schema
 
-module.exports.users = {
-    getAll: function (callback) {
-      Users.findAll().then(callback);
-    },
-    search: function (query, callback) {
-      Users.findAll({include: [{
-        model: Users,
-        where: query // {userId: db.SQL.col('Message.userId')}
-      }]}).then(function(result) {        
-        callback(result);
-      });
-    },
-    newUser: function (user, callback) {
-      var newUser = Users.build(user);
-      newUser.save().success(callback);
-    }, // a function which produces all the messages
-    newFriend: function (user1, user2, callback) {
-      var newFriends = Friends.build({
-        userIdlink1: user1.id,
-        userIdlink2: user2.id
-      })
-      newFriends.save().success(callback);
-    },
-    searchFriends: function(callback) {}
-  }
+module.exports.users = users = {
+  getAll: function (callback) {
+    User.findAll().then(callback);
+  },
+  search: function (query, callback) {
+    User.findAll({include: [{
+      model: User,
+      where: query // {userId: db.SQL.col('Message.userId')}
+    }]}).then(function(result) {        
+      callback(result);
+    });
+  },
+  newUser: function (user, callback) {
+    var newUser = User.build(user);
+    console.log(newUser);
+    newUser.save().then(callback);
+  }, // a function which produces all the messages
+  newFriend: function (user1, user2, callback) {
+    var newFriends = Friends.build({
+      userIdlink1: user1.id,
+      userIdlink2: user2.id
+    })
+    newFriends.save().then(callback);
+  },
+  searchFriends: function(callback) {}
+}
