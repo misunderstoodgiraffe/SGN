@@ -22,6 +22,7 @@
   "homepage": "https://github.com/misunderstoodgiraffe/SGN#readme",
   "dependencies": {
     "angular": "^1.5.3",
+    "express": "^4.13.4",
     "mysql": "^2.10.2",
     "oauthio": "^0.3.3",
     "sequelize": "^3.21.0"

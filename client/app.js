@@ -1,4 +1,5 @@
 angular.module('SGN', [
+  'SGN.landing',
   'SGN.users',
   'SGN.services',
   'ngRoute'
@@ -13,7 +14,5 @@ angular.module('SGN', [
       templateUrl: './client/home.html',
       controller: 'HomeController'
     })
-  })
-  // .otherwise({redirectTo: '/'});
 });
 
