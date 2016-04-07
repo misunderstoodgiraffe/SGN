@@ -3,12 +3,11 @@ var mysql = require('mysql');
 var SQL = require('sequelize');
 var sql = new SQL('users', 'root', 'm1sunderst00d', {define: {timestamps: false}});
 
-var dbConnection = mysql.createConnection({
+module.exports.dbConnection = mysql.createConnection({
   user: 'root',
   password: 'm1sunderst00d',
   database: 'users'
 });
-dbConnection.connect();
 
 var User = sql.define('user', {
   username: SQL.STRING
