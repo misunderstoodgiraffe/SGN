@@ -3,6 +3,7 @@
 <!-- Load angular scripts -->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular-route.js"></script>
+<script src="./lib/oauth-js/dist/oauth.js"></script>
 <script src="./frontpage/landingController.js"></script>
 
 
@@ -10,7 +11,7 @@
 <script src="./app.js"></script>
 <script src="./services.js"></script>
 
-<div class='app' ng-app='SGN'>
+<div class='app' ng-app='SGN' ng-controller='LandingController'>
   <nav>    
     <ul>
       <li> <a href='#/signin'> Sign in! </a> </li>
