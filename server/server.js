@@ -8,8 +8,7 @@ app.get('/', function (req, res) {
   res.redirect('index.html');
 });
 
-require('db/db.js') (app, express);
-require('routes.js') (app,express);
+// require('./routes.js') (app,express);
 
 app.listen(3000);
 

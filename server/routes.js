@@ -8,6 +8,4 @@ module.exports = function (app, express) {
 
   app.post('/api/users/signin', userController.addFriend);
 
-
-
 };
