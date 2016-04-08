@@ -44,9 +44,9 @@ var UsersGames = sql.define('usersGames', {
 Users.hasMany(Friends);
 Users.hasMany(UsersGames);
 Games.hasMany(UsersGames);
-Steam.belongTo(Users);
-UsersGames.hasOne(Games);
-UsersGames.hasOne(Users);
+Steam.belongsTo(Users);
+// UsersGames.hasOne(Games);
+// UsersGames.hasOne(Users);
 Friends.belongsTo(Users);
 
 // Skeleton code must be refactored for our schema
@@ -82,10 +82,10 @@ dbConnection.connect();
 
 var done = 0;
 for (var i in fakeUsers) {
-  console.log(fakeUsers[i])
+  // console.log(fakeUsers[i])
   users.newUser(fakeUsers[i], function(stuff){
     done++;
-    // console.log(done, stuff);
+    // console.log(stuff);
     if (done === 4) {
       users.getAll(function(users) {
         console.log(users);
