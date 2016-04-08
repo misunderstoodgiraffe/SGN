@@ -1,10 +1,4 @@
-module.exports.users = [
-'dylan',
-'sofia',
-'wilson',
-'josh']
-
-module.exports.fakeUsers = {
+module.exports = {
   dylan: {
     FBid: 123456,
     username: "firstUser",

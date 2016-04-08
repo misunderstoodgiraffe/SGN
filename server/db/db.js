@@ -2,12 +2,12 @@ var mysql = require('mysql');
 var fakeUsers = require('./fakeuser.js');
 
 var SQL = require('sequelize');
-var sql = new SQL('SGN', 'root', 'm1sunderst00d', {define: {timestamps: false}});
+var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
 
 module.exports.dbConnection = dbConnection = mysql.createConnection({
   user: 'root',
-  password: 'm1sunderst00d',
-  database: 'users'
+  password: '1234',
+  database: 'SGN'
 });
 
 var Users = sql.define('users', {
@@ -65,7 +65,7 @@ module.exports.users = users = {
   },
   newUser: function (user, callback) {
     var newUser = Users.build(user);
-    console.log(newUser);
+    // console.log(newUser);
     newUser.save().then(callback);
   }, // a function which produces all the messages
   newFriend: function (user1, user2, callback) {
@@ -81,14 +81,14 @@ module.exports.users = users = {
 dbConnection.connect();
 
 var done = 0;
-for (var i in fakeUsers.fakeUsers) {
-  console.log(fakeUsers.fakeUsers[i])
-  users.newUser(fakeUsers.fakeUsers[i], function(stuff){
+for (var i in fakeUsers) {
+  console.log(fakeUsers[i])
+  users.newUser(fakeUsers[i], function(stuff){
     done++;
     // console.log(done, stuff);
     if (done === 4) {
       users.getAll(function(users) {
-        // console.log(users);
+        console.log(users);
       });
     }
   });
