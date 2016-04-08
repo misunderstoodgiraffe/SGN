@@ -1,13 +1,15 @@
-CREATE DATABASE users;
+DROP DATABASE IF EXISTS SGN;
 
-USE users;
+CREATE DATABASE SGN;
 
-CREATE TABLE user (
+USE SGN;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT,
   FBid INT PRIMARY KEY,
   username VARCHAR(20),
   givenName VARCHAR(30),
   avatar VARCHAR(80),
-  steamID INT,
   lastlogin INT
 );
 
@@ -20,7 +22,8 @@ CREATE TABLE friends (
 );
 
 CREATE TABLE games (
-  gameID INT AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT,
+  gameID INT PRIMARY KEY,
   name VARCHAR(20),
   image VARCHAR(80)
 );
@@ -30,13 +33,16 @@ CREATE TABLE usersGames (
   userID INT,
   gameID INT,
   FOREIGN KEY (userID) REFERENCES users (FBid),
-  FOREIGN KEY (gameID) REFERENCES users (gameID)
+  FOREIGN KEY (gameID) REFERENCES games (gameID)
 );
 
 CREATE TABLE steam (
-  Sid INT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userID INT,
+  Sid INT UNIQUE,
   username VARCHAR(20),
-  avatar VARCHAR(80)
+  avatar VARCHAR(80),
+  FOREIGN KEY (userID) REFERENCES users (FBid),
 );
 
 /*  Execute this file from the command line by typing:

@@ -1,23 +1,25 @@
 var mysql = require('mysql');
+var fakeUsers = require('./fakeuser.js');
 
 var SQL = require('sequelize');
-var sql = new SQL('users', 'root', 'm1sunderst00d', {define: {timestamps: false}});
+var sql = new SQL('SGN', 'root', 'm1sunderst00d', {define: {timestamps: false}});
 
-module.exports.dbConnection = mysql.createConnection({
+module.exports.dbConnection = dbConnection = mysql.createConnection({
   user: 'root',
   password: 'm1sunderst00d',
   database: 'users'
 });
 
-var User = sql.define('user', {
+var Users = sql.define('users', {
   FBid: SQL.INTEGER,
   username: SQL.STRING,
   givenName: SQL.STRING,
-  steamID: SQL.INTEGER,
+  avatar: SQL.STRING,
   lastlogin: SQL.INTEGER
 });
 
 var Steam = sql.define('steam', {
+  userID: SQL.INTEGER,
   Sid: SQL.INTEGER,
   username: SQL.STRING,
   avatar: SQL.STRING
@@ -39,30 +41,30 @@ var UsersGames = sql.define('usersGames', {
   gameID: SQL.INTEGER
 });
 
-User.hasMany(Friends);
-User.hasMany(UsersGames);
+Users.hasMany(Friends);
+Users.hasMany(UsersGames);
 Games.hasMany(UsersGames);
-User.hasOne(Steam);
+Steam.belongTo(Users);
 UsersGames.hasOne(Games);
-UsersGames.hasOne(User);
-Friends.belongsTo(User);
+UsersGames.hasOne(Users);
+Friends.belongsTo(Users);
 
 // Skeleton code must be refactored for our schema
 
 module.exports.users = users = {
   getAll: function (callback) {
-    User.findAll().then(callback);
+    Users.findAll().then(callback);
   },
   search: function (query, callback) {
-    User.findAll({include: [{
-      model: User,
+    Users.findAll({include: [{
+      model: Users,
       where: query // {userId: db.SQL.col('Message.userId')}
     }]}).then(function(result) {        
       callback(result);
     });
   },
   newUser: function (user, callback) {
-    var newUser = User.build(user);
+    var newUser = Users.build(user);
     console.log(newUser);
     newUser.save().then(callback);
   }, // a function which produces all the messages
@@ -74,4 +76,20 @@ module.exports.users = users = {
     newFriends.save().then(callback);
   },
   searchFriends: function(callback) {}
-}
+};
+
+dbConnection.connect();
+
+var done = 0;
+for (var i in fakeUsers.fakeUsers) {
+  console.log(fakeUsers.fakeUsers[i])
+  users.newUser(fakeUsers.fakeUsers[i], function(stuff){
+    done++;
+    // console.log(done, stuff);
+    if (done === 4) {
+      users.getAll(function(users) {
+        // console.log(users);
+      });
+    }
+  });
+};
