@@ -1,4 +1,5 @@
 var express = require('express');
+cors = require('cors');
 var session = require('express-session');
 var db = require('./db/db.js');
 var bodyParser = require('body-parser');
@@ -6,6 +7,7 @@ db.dbConnection.connect();
 
 var app = express();
 
+app.use(cors());
 app.use(session({
   secret: 'secret',
   resave: true,

@@ -6,6 +6,6 @@ module.exports = function (app, express) {
   app.get('/oauth/redirect', OAuth.redirect(function(result, req, res) {
     res.json({data: "some facebook data"});
   }));
-  app.get('/signin', OAuth.auth('facebook', 'http://your-app.com/oauth/redirect'));
+  app.get('/signin', OAuth.auth('facebook', 'http://localhost:3000/oauth/redirect'));
 
 };
