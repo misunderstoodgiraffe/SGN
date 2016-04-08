@@ -10,15 +10,41 @@ module.exports.dbConnection = mysql.createConnection({
 });
 
 var User = sql.define('user', {
-  username: SQL.STRING
+  FBid: SQL.INTEGER,
+  username: SQL.STRING,
+  givenName: SQL.STRING,
+  steamID: SQL.INTEGER,
+  lastlogin: SQL.INTEGER
+});
+
+var Steam = sql.define('steam', {
+  Sid: SQL.INTEGER,
+  username: SQL.STRING,
+  avatar: SQL.STRING
 });
 
 var Friends = sql.define('friends', {
   userIdlink1: SQL.INTEGER,
   userIdlink2: SQL.INTEGER
-})
+});
+
+var Games = sql.define('games', {
+  gameID: SQL.INTEGER,
+  name: SQL.STRING,
+  image: SQL.STRING
+});
+
+var UsersGames = sql.define('usersGames', {
+  userID: SQL.INTEGER,
+  gameID: SQL.INTEGER
+});
 
 User.hasMany(Friends);
+User.hasMany(UsersGames);
+Games.hasMany(UsersGames);
+User.hasOne(Steam);
+UsersGames.hasOne(Games);
+UsersGames.hasOne(User);
 Friends.belongsTo(User);
 
 // Skeleton code must be refactored for our schema
