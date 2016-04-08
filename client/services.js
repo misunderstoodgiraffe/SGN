@@ -16,15 +16,15 @@ angular.module('SGN.login', [])
     initialize: function() {
       // do we still need this?
     },
-    connectFacebook: function() {
-      var deferred = $q.defer();
-      $http.get('http://localhost:3000/signin')
-      .then(function(response) {
-        //todo
-        deferred.resolve(response);
-      });
-      return deferred.promise;
-    },
+    // connectFacebook: function() {
+    //   var deferred = $q.defer();
+    //   $http.get('http://localhost:3000/signin')
+    //   .then(function(response) {
+    //     //todo
+    //     deferred.resolve(response);
+    //   });
+    //   return deferred.promise;
+    // },
     getFriends: function () {
       // api call to GET /friends
       // return promise
