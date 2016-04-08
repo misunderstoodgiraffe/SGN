@@ -5,14 +5,12 @@ angular.module('SGN.landing', [])
   facebookService.initialize();
 
   //when the user clicks the connect twitter button, the popup authorization window opens
-  $scope.connectButton = function() {
-    console.log("You clicked the button!");
-    facebookService.connectFacebook().then(function() {
-        //if the authorization is successful, hide the connect button and display the tweets
-      $('#connectButton').fadeOut(function() {
-        $('#signOut').fadeIn();
-      });
-  
+  $scope.connectButton = function(event) {
+    event.preventDefault();
+    facebookService.connectFacebook().then(function(response) {
+      console.log('yay!');
+    }, function(error) {
+      console.log('error: ', error);
     });
   };
 
