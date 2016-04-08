@@ -24,7 +24,9 @@
     "angular": "^1.5.3",
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
+    "debug": "^2.2.0",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-watch": "^1.0.0",
@@ -32,7 +34,6 @@
     "grunt-nodemon": "^0.4.1",
     "grunt-shell": "^1.2.1",
     "mocha": "^2.4.5",
-    "express-session": "^1.13.0",
     "mysql": "^2.10.2",
     "oauthio": "^0.3.3",
     "sequelize": "^3.21.0"
