@@ -1,12 +1,10 @@
 var db = require('./db/db.js');
 
 module.exports = {
-  checkAuth: function(){},
-  signup: function(){},
-  signin: function(req, res, next) {
-    
-    return res.json({data: "Some data"});
+  getFacebookData: function(req, res, next) {
+    console.log(req);
   },
+  signup: function(){},
   addUser: function() {},
   getFriends: function(){}
 }
