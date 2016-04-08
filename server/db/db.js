@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var fakeUsers = require('./fakeuser.js');
+// var fakeUsers = require('./fakeuser.js');
 
 var SQL = require('sequelize');
 var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
@@ -78,18 +78,18 @@ module.exports.users = users = {
   searchFriends: function(callback) {}
 };
 
-dbConnection.connect();
+// // dbConnection.connect();
 
-var done = 0;
-for (var i in fakeUsers) {
-  // console.log(fakeUsers[i])
-  users.newUser(fakeUsers[i], function(stuff){
-    done++;
-    // console.log(stuff);
-    if (done === 4) {
-      users.getAll(function(users) {
-        console.log(users);
-      });
-    }
-  });
-};
+// var done = 0;
+// for (var i in fakeUsers) {
+//   // console.log(fakeUsers[i])
+//   users.newUser(fakeUsers[i], function(stuff){
+//     done++;
+//     // console.log(stuff);
+//     if (done === 4) {
+//       users.getAll(function(users) {
+//         console.log(users);
+//       });
+//     }
+//   });
+// };
