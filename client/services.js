@@ -6,7 +6,7 @@
 
 // OAuth.initialize('your_app_public_key');
 angular.module('SGN.login', [])
-.factory('facebookService', function($q) {
+.factory('facebookService', function($q, $http) {
 
   //Authentication result returned by facebook. Inclues an auth token
   var authorizationResult = false;
@@ -16,10 +16,15 @@ angular.module('SGN.login', [])
     initialize: function() {
       // do we still need this?
     },
-    connectFacebook: function() {
-      //api call to server: GET /signin
-      //return promise
-    },
+    // connectFacebook: function() {
+    //   var deferred = $q.defer();
+    //   $http.get('http://localhost:3000/signin')
+    //   .then(function(response) {
+    //     //todo
+    //     deferred.resolve(response);
+    //   });
+    //   return deferred.promise;
+    // },
     getFriends: function () {
       // api call to GET /friends
       // return promise
