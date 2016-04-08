@@ -27,3 +27,14 @@ angular.module('SGN.login', [])
   };
     
 });
+
+angular.module('SGN.requests', [])
+.factory('SGNRequests', function($q) {
+  return {
+    initialize: function() {
+    },
+    getFriends: function () {
+    }
+  };
+    
+});
