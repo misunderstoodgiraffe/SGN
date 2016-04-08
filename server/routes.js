@@ -1,9 +1,9 @@
 var userController = require('./controller.js');
 
 module.exports = function (app, express) {
+  app.get('/signin', function(req, res) {
+    console.log('respond to signin request');
+    res.send("Success");
+  });
 
-  app.post('/signup', userController.signup);
-  app.get('/signin', userController.checkAuth);
-  app.post('/addfriend', userController.addFriend);
-  app.get('/friends', userController.getFriends);
 };

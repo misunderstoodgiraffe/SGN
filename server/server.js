@@ -5,7 +5,7 @@ db.dbConnection.connect()
 
 var app = express();
 
-// require('./routes.js') (app,express);
+require('./routes.js') (app, express);
 app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

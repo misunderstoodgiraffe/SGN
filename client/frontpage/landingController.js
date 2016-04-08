@@ -8,7 +8,7 @@ angular.module('SGN.landing', [])
   $scope.connectButton = function(event) {
     event.preventDefault();
     facebookService.connectFacebook().then(function(response) {
-      console.log('yay!');
+      console.log(response.data);
     }, function(error) {
       console.log('error: ', error);
     });
