@@ -1,17 +1,48 @@
-CREATE DATABASE users;
+DROP DATABASE IF EXISTS SGN;
 
-USE users;
+CREATE DATABASE SGN;
+
+USE SGN;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(20)
+  FBid INT,
+  username VARCHAR(20),
+  givenName VARCHAR(30),
+  avatar VARCHAR(80),
+  lastlogin INT
 );
 
 CREATE TABLE friends (
+  id INT AUTO_INCREMENT PRIMARY KEY,
   userIdlink1 INT,
   userIdlink2 INT,
   FOREIGN KEY (userIdlink1) REFERENCES users (id),
   FOREIGN KEY (userIdlink2) REFERENCES users (id)
+);
+
+CREATE TABLE games (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  gameID INT,
+  name VARCHAR(20),
+  image VARCHAR(80)
+);
+
+CREATE TABLE usersGames (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userID INT,
+  gameID INT,
+  FOREIGN KEY (userID) REFERENCES users (id),
+  FOREIGN KEY (gameID) REFERENCES games (id)
+);
+
+CREATE TABLE steam (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userID INT,
+  Sid INT,
+  username VARCHAR(20),
+  avatar VARCHAR(80),
+  FOREIGN KEY (userID) REFERENCES users (id)
 );
 
 /*  Execute this file from the command line by typing:

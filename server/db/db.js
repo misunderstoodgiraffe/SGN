@@ -1,43 +1,71 @@
 var mysql = require('mysql');
+var fakeUsers = require('./fakeuser.js');
 
 var SQL = require('sequelize');
-var sql = new SQL('users', 'root', 'm1sunderst00d', {define: {timestamps: false}});
+var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
 
-module.exports.dbConnection = mysql.createConnection({
+module.exports.dbConnection = dbConnection = mysql.createConnection({
   user: 'root',
-  password: 'm1sunderst00d',
-  database: 'users'
+  password: '1234',
+  database: 'SGN'
 });
 
-var User = sql.define('user', {
-  username: SQL.STRING
+var Users = sql.define('users', {
+  FBid: SQL.INTEGER,
+  username: SQL.STRING,
+  givenName: SQL.STRING,
+  avatar: SQL.STRING,
+  lastlogin: SQL.INTEGER
+});
+
+var Steam = sql.define('steam', {
+  userID: SQL.INTEGER,
+  Sid: SQL.INTEGER,
+  username: SQL.STRING,
+  avatar: SQL.STRING
 });
 
 var Friends = sql.define('friends', {
   userIdlink1: SQL.INTEGER,
   userIdlink2: SQL.INTEGER
-})
+});
 
-User.hasMany(Friends);
-Friends.belongsTo(User);
+var Games = sql.define('games', {
+  gameID: SQL.INTEGER,
+  name: SQL.STRING,
+  image: SQL.STRING
+});
+
+var UsersGames = sql.define('usersGames', {
+  userID: SQL.INTEGER,
+  gameID: SQL.INTEGER
+});
+
+Users.hasMany(Friends);
+Users.hasMany(UsersGames);
+Games.hasMany(UsersGames);
+Steam.belongsTo(Users);
+// UsersGames.hasOne(Games);
+// UsersGames.hasOne(Users);
+Friends.belongsTo(Users);
 
 // Skeleton code must be refactored for our schema
 
 module.exports.users = users = {
   getAll: function (callback) {
-    User.findAll().then(callback);
+    Users.findAll().then(callback);
   },
   search: function (query, callback) {
-    User.findAll({include: [{
-      model: User,
+    Users.findAll({include: [{
+      model: Users,
       where: query // {userId: db.SQL.col('Message.userId')}
     }]}).then(function(result) {        
       callback(result);
     });
   },
   newUser: function (user, callback) {
-    var newUser = User.build(user);
-    console.log(newUser);
+    var newUser = Users.build(user);
+    // console.log(newUser);
     newUser.save().then(callback);
   }, // a function which produces all the messages
   newFriend: function (user1, user2, callback) {
@@ -48,4 +76,20 @@ module.exports.users = users = {
     newFriends.save().then(callback);
   },
   searchFriends: function(callback) {}
-}
+};
+
+dbConnection.connect();
+
+var done = 0;
+for (var i in fakeUsers) {
+  // console.log(fakeUsers[i])
+  users.newUser(fakeUsers[i], function(stuff){
+    done++;
+    // console.log(stuff);
+    if (done === 4) {
+      users.getAll(function(users) {
+        console.log(users);
+      });
+    }
+  });
+};
