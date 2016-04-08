@@ -29,11 +29,18 @@ angular.module('SGN.login', [])
 });
 
 angular.module('SGN.requests', [])
-.factory('SGNRequests', function($q) {
+.factory('SGNRequests', function($http) {
   return {
     initialize: function() {
     },
     getFriends: function () {
+      return $http({
+        method: 'GET',
+        url: '/getFriends', 
+        data: entry
+      }).then(function(resp) {
+        return resp;
+      });
     }
   };
     
