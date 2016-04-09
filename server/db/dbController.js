@@ -23,7 +23,8 @@ module.exports = {
     })
     newFriends.save().then(callback);
   },
-  searchFriends: function(user, query, callback) {
-
+  getFriends: function(user, callback) {
+    db.Fiends.findAll({where: {userIdlink1: user.id, userIdlink2: user.id}})
+    .then(callback);
   }
 };
