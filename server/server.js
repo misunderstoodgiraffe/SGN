@@ -13,7 +13,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
-require('./routes.js') (app, express);
+require('./config/routes.js') (app, express);
 app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
