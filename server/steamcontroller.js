@@ -24,7 +24,7 @@ var getPlayerData = function(steamID) {
     body += data;
   })
   .on('end', function (){
-    console.log(body);
+    standardizePlayerData(body);
   });
 };
 
@@ -65,7 +65,17 @@ var getAllGames = function(steamID) {
   });
 };
 
+var standardizePlayerData = function (data) {
+  var parsedData = JSON.parse(data);
+  var dataObj = {};
+  dataObj.sID = parsedData.response.players[0].steamid;
+  dataObj.username = parsedData.response.players[0].personaname;
+  dataObj.avatar = parsedData.response.players[0].avatar;
 
+
+  console.log(dataObj);
+  return dataObj;
+};
 
 // module.exports = {
 //   getFriendsList: function (req, res) {
@@ -77,6 +87,6 @@ var getAllGames = function(steamID) {
 
 // getRecentGames('76561198045493551');
 
-// getPlayerData('76561198045493551');
+getPlayerData('76561198045493551');
 
 // getAllGames('76561198045493551');
