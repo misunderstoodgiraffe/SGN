@@ -1,4 +1,4 @@
-var db = require('./db/db.js');
+var db = require('../db/db.js');
 
 module.exports = {
   getFacebookData: function(req, res) {

@@ -1,4 +1,4 @@
-var userController = require('./controller.js');
+var userController = require('../apis/fbController.js');
 var OAuth = require('oauthio');
 OAuth.initialize('BqQzmRHEA0gxZSaUVbqEaPmDyM8', 'hnjFc9WbVJuKigl8NmnVbjmD3jA');
 
