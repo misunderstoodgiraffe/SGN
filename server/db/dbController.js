@@ -14,7 +14,13 @@ module.exports = {
   },
   newUser: function (user, callback) {
     var newUser = db.Users.build(user);
-    newUser.save().then(callback);
+    newUser.save().then(function(data) {
+      callback(data.dataValues)
+    }).catch(function(error) {
+      if (error.errors[0].message === 'fbID must be unique') {
+        callback('user already exists');
+      }
+    });
   },
   newFriend: function (user1, user2, callback) {
     var newFriends = db.Friends.build({
