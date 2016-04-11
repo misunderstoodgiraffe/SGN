@@ -1,9 +1,31 @@
+<link href="./profile/profile.css" rel="stylesheet">
 <div ng-controller='ProfileController'>
 	<div class='container'>
-	  <h1> Plug In </h1>
 	</div>
 	<div>
-		<div class='online container'>
+		<div class='form-container'>
+		  <h2> Update Profile </h2>
+
+			<form ng-submit='updateProfile()'>
+			  <div class="form-group">
+			    <label for="username">Username</label>
+			    <input ng-model='username' type="text" class="form-control" id="username" placeholder="Username">
+			  </div>
+			  <div class="form-group">
+			    <label for="steamID">Steam ID</label>
+			    <input ng-model='steamID' type="text" class="form-control" id="steamID" placeholder="Steam ID">
+			  </div>
+			  <div class="form-group">
+			    <label for="blizzardID">Blizzard ID</label>
+			    <input ng-model='blizzardID' type="text" class="form-control" id="blizzardID" placeholder="Blizzard ID">
+			  </div>
+			  <div class="form-group">
+			    <label for="description">Brief Description</label>
+			    <input ng-model='description' type="text" class="form-control" id="description" placeholder="Keep it short.">
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+
 		</div>
 	</div>
 </div>

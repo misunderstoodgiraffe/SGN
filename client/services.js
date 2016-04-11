@@ -36,12 +36,19 @@ angular.module('SGN.login', [])
 angular.module('SGN.requests', [])
 .factory('SGNRequests', function($http) {
   return {
-    initialize: function() {
-    },
-    getFriends: function () {
+    getFriends: function (entry) {
       return $http({
         method: 'GET',
         url: '/getFriends', 
+        data: entry
+      }).then(function(resp) {
+        return resp;
+      });
+    },
+    updateProfile: function (entry) {
+      return $http({
+        method: 'POST',
+        url: '/updateProfile', 
         data: entry
       }).then(function(resp) {
         return resp;

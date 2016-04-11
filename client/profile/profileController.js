@@ -1,8 +1,15 @@
-angular.module('SGN.profile', [])
-.controller('ProfileController', function ($scope, $location) {
+angular.module('SGN.profile', ['SGN.requests'])
+.controller('ProfileController', function ($scope, $location, SGNRequests) {
   $scope.friends = {};
-  $scope.go = function () {
-    $location.path('/new');
+  $scope.updateProfile = function () {
+    var userInfo = {
+      username: $scope.username,
+      steamID: $scope.steamID,
+      blizzardID: $scope.blizzardID,
+      description: $scope.description,
+    };
+    SGNRequests(userInfo);
+    $location.path('/home');
   };
 });
 
