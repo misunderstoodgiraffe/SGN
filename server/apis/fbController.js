@@ -4,7 +4,4 @@ module.exports = {
   getFacebookData: function(req, res) {
     res.json({data: "this will be the user data"});
   },
-  signup: function(){},
-  addUser: function() {},
-  getFriends: function(){}
 }
