@@ -6,10 +6,10 @@ USE SGN;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  fbID VARCHAR(40) NOT NULL UNIQUE,
-  username VARCHAR(20),
-  givenName VARCHAR(30),
-  avatar VARCHAR(80),
+  fbID VARCHAR(255) NOT NULL UNIQUE,
+  username VARCHAR(255),
+  givenName VARCHAR(255),
+  avatar VARCHAR(255),
   lastlogin INT
 );
 
@@ -23,9 +23,9 @@ CREATE TABLE friends (
 
 CREATE TABLE games (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  gameID VARCHAR(40) NOT NULL UNIQUE,
-  name VARCHAR(20),
-  image VARCHAR(80)
+  gameID VARCHAR(255) NOT NULL UNIQUE,
+  name VARCHAR(255),
+  image VARCHAR(255)
 );
 
 CREATE TABLE usersGames (
@@ -39,9 +39,9 @@ CREATE TABLE usersGames (
 CREATE TABLE steam (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userID INT,
-  sID VARCHAR(40) NOT NULL UNIQUE,
-  username VARCHAR(20),
-  avatar VARCHAR(80),
+  sID VARCHAR(255) NOT NULL UNIQUE,
+  username VARCHAR(255),
+  avatar VARCHAR(255),
   FOREIGN KEY (userID) REFERENCES users (id)
 );
 
