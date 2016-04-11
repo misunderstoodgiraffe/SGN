@@ -2,7 +2,13 @@ var db = require('./db.js');
 
 module.exports = {
   getAllUsers: function (callback) {
-    db.Users.findAll().then(callback);
+    db.Users.findAll().then(function(data) {
+      var results = [];
+      for (var i in data) {
+        results.push(data[i].dataValues);
+      }
+      callback(results);
+    });
   },
   search: function (query, callback) {
     db.Users.findAll({include: [{
