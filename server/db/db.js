@@ -42,10 +42,10 @@ module.exports.UsersGames = UsersGames = sql.define('usersGames', {
   gameID: SQL.INTEGER
 });
 
-Users.hasMany(Friends);
-Users.hasMany(UsersGames);
-Games.hasMany(UsersGames);
-Users.hasOne(Steam);
+// Users.hasMany(Friends);
+// Users.hasMany(UsersGames);
+// Games.hasMany(UsersGames);
+// Users.hasOne(Steam);
 
 Users.sync();
 Games.sync();
