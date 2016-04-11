@@ -8,7 +8,7 @@ module.exports.dbConnection = mysql.createConnection({
   database: 'SGN'
 });
 
-module.exports.Users = sql.define('users', {
+module.exports.Users = Users = sql.define('users', {
   fbID: {type: SQL.STRING,
     unique: true},
   username: SQL.STRING,
@@ -17,7 +17,7 @@ module.exports.Users = sql.define('users', {
   lastlogin: SQL.INTEGER
 });
 
-module.exports.Steam = sql.define('steam', {
+module.exports.Steam = Steam = sql.define('steam', {
   userID: SQL.INTEGER,
   steamID: {type: SQL.STRING,
     unique: true},
@@ -25,19 +25,19 @@ module.exports.Steam = sql.define('steam', {
   avatar: SQL.STRING
 });
 
-module.exports.Friends = sql.define('friends', {
+module.exports.Friends = Friends = sql.define('friends', {
   userIdlink1: SQL.INTEGER,
   userIdlink2: SQL.INTEGER
 });
 
-module.exports.Games = sql.define('games', {
+module.exports.Games = Games = sql.define('games', {
   gameID: {type: SQL.STRING,
     unique: true},
   name: SQL.STRING,
   image: SQL.STRING
 });
 
-module.exports.UsersGames = sql.define('usersGames', {
+module.exports.UsersGames = UsersGames = sql.define('usersGames', {
   userID: SQL.INTEGER,
   gameID: SQL.INTEGER
 });
@@ -50,5 +50,5 @@ Users.hasOne(Steam);
 Users.sync();
 Games.sync();
 Steam.sync();
-Fiends.sync();
+Friends.sync();
 UsersGames.sync();

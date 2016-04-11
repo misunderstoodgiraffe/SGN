@@ -2,3 +2,4 @@ node_modules/
 gitSpy/*
 server/config/keys.js
 .DS_Store
+forTesting/

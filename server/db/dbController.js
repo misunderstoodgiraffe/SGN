@@ -1,7 +1,7 @@
 var db = require('./db.js');
 
 module.exports = {
-  getAll: function (callback) {
+  getAllUsers: function (callback) {
     db.Users.findAll().then(callback);
   },
   search: function (query, callback) {
