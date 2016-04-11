@@ -6,7 +6,7 @@ USE SGN;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  FBid INT,
+  fbID VARCHAR(40) NOT NULL UNIQUE,
   username VARCHAR(20),
   givenName VARCHAR(30),
   avatar VARCHAR(80),
@@ -23,7 +23,7 @@ CREATE TABLE friends (
 
 CREATE TABLE games (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  gameID INT,
+  gameID VARCHAR(40) NOT NULL UNIQUE,
   name VARCHAR(20),
   image VARCHAR(80)
 );
@@ -39,12 +39,13 @@ CREATE TABLE usersGames (
 CREATE TABLE steam (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userID INT,
-  Sid INT,
+  sID VARCHAR(40) NOT NULL UNIQUE,
   username VARCHAR(20),
   avatar VARCHAR(80),
   FOREIGN KEY (userID) REFERENCES users (id)
 );
 
 /*  Execute this file from the command line by typing:
- *    mysql -u root < server/db/schema.sql
- *  to create the database and the tables.*/
+ *    mysql -u root -p < server/db/schema.sql
+ *    password: 1234
+ *  to drop + create the database and the tables.*/
