@@ -8,12 +8,9 @@ module.exports = {
     if (result instanceof Error) {
       res.send(500, 'error: ' + result.message);
     }
-
     result.me().done(function(me) {
-      // create a new user with the given facebook id and name
-      db.newUser({fbID: me.id, givenName: me.name}, function(user) {
-        res.send(200, JSON.stringify(me));
-      });
+      // db.newUser({fbID: me.id, givenName: me.name}, function(user) {});
+      res.send(200, JSON.stringify(me));
     });
   },
 };
