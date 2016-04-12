@@ -23,7 +23,7 @@ module.exports = {
   newUser: function (user, callback) {
     var newUser = db.Users.build(user);
     newUser.save().then(function(data) {
-      callback(data.dataValues)
+      callback(null, data.dataValues);
     }).catch(function(error) {
       if (error.errors) {
         if (error.errors[0].message === 'fbID must be unique') {
