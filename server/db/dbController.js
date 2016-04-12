@@ -8,6 +8,8 @@ module.exports = {
         results.push(data[i].dataValues);
       }
       callback(results);
+    }).catch(function(error) {
+      callback(error);
     });
   },
   searchUsers: function (query, callback) {
@@ -18,6 +20,8 @@ module.exports = {
           results.push(result[i].dataValues);
         }
         callback(null, results);
+    }).catch(function(error) {
+      callback(error, null);
     });
   },
   newUser: function (user, callback) {
@@ -42,12 +46,15 @@ module.exports = {
       if (callback) {callback(response)}
     }).catch(function(error) {console.log});
   },
-  getFriends: function(user, callback) {
+  getAllFriends: function(user, callback) {
     db.Friends.findAll({where: {$or: [
       {userIdlink1: user.id},
       {userIdlink2: user.id}
       ]}})
     .then(function(fiends){
-      callback(friends)});
+      callback(null, friends)
+    }).catch(function(error) {
+      callback(error, null)
+    });
   }
 };
