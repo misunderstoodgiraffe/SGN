@@ -10,12 +10,14 @@ module.exports = {
       callback(results);
     });
   },
-  search: function (query, callback) {
-    db.Users.findAll({include: [{
-      model: db.Users,
-      where: query // {userId: db.SQL.col('Message.userId')}
-    }]}).then(function(result) {        
-      callback(result);
+  searchUsers: function (query, callback) {
+    db.Users.findAll({where: query})
+      .then(function(result) {
+        var results = [];
+        for (var i in result) {
+          results.push(result[i].dataValues);
+        }
+        callback(results);
     });
   },
   newUser: function (user, callback) {
@@ -23,20 +25,29 @@ module.exports = {
     newUser.save().then(function(data) {
       callback(data.dataValues)
     }).catch(function(error) {
-      if (error.errors[0].message === 'fbID must be unique') {
-        callback('user already exists');
-      }
+      if (error.errors) {
+        if (error.errors[0].message === 'fbID must be unique') {
+          callback(new Error('user already exists'));
+        } else {callback(error)}
+      } else {callback(error)}
     });
   },
   newFriend: function (user1, user2, callback) {
     var newFriends = db.Friends.build({
       userIdlink1: user1.id,
       userIdlink2: user2.id
-    })
-    newFriends.save().then(callback);
+    });
+    newFriends.save().then(function(response) {
+      console.log('beuller?');
+      if (callback) {callback(response)}
+    }).catch(function(error) {console.log});
   },
   getFriends: function(user, callback) {
-    db.Fiends.findAll({where: {userIdlink1: user.id, userIdlink2: user.id}})
-    .then(callback);
+    db.Friends.findAll({where: {$or: [
+      {userIdlink1: user.id},
+      {userIdlink2: user.id}
+      ]}})
+    .then(function(fiends){
+      callback(friends)});
   }
 };
