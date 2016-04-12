@@ -2,7 +2,7 @@ angular.module('SGN', [
   'SGN.landing',
   'SGN.login',
   'SGN.dashboard',
-  'SGN.profile',
+  'SGN.updateProfile',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -15,9 +15,9 @@ angular.module('SGN', [
       templateUrl: './dashboard/dashboard.html',
       controller: 'DashboardController'
     })
-    .when('/profile', {
-      templateUrl: './profile/profile.html',
-      controller: 'ProfileController'
+    .when('/updateProfile', {
+      templateUrl: './profile/updateProfile.html',
+      controller: 'UpdateProfileController'
     })
 });
 
