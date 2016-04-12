@@ -17,19 +17,19 @@ module.exports = {
         for (var i in result) {
           results.push(result[i].dataValues);
         }
-        callback(results);
+        callback(null, results);
     });
   },
   newUser: function (user, callback) {
     var newUser = db.Users.build(user);
     newUser.save().then(function(data) {
-      callback(data.dataValues)
+      callback(null, data.dataValues);
     }).catch(function(error) {
       if (error.errors) {
         if (error.errors[0].message === 'fbID must be unique') {
-          callback(new Error('user already exists'));
-        } else {callback(error)}
-      } else {callback(error)}
+          callback(new Error('user already exists'), null);
+        } else {callback(error, null)}
+      } else {callback(error, null)}
     });
   },
   newFriend: function (user1, user2, callback) {
