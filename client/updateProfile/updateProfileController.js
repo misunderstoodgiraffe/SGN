@@ -1,5 +1,5 @@
-angular.module('SGN.profile', ['SGN.requests'])
-.controller('ProfileController', function ($scope, $location, SGNRequests) {
+angular.module('SGN.updateProfile', ['SGN.requests'])
+.controller('UpdateProfileController', function ($scope, $location, SGNRequests) {
   $scope.friends = {};
   $scope.updateProfile = function () {
     var userInfo = {
