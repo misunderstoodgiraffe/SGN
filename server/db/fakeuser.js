@@ -6,7 +6,7 @@ module.exports = {
     lastlogin: 0
   },
   sofia: {
-    fbID: '1234567',
+    fbID: '10154065918644289',
     username: "secondUser",
     givenName: "I should be number one!",
     lastlogin: 0
@@ -24,3 +24,22 @@ module.exports = {
     lastlogin: 0
   }
 }
+
+// {
+// "id":"10154065918644289",
+// "avatar":"https://graph.facebook.com/v2.3/10154065918644289/picture",
+// "name":"Sofia May",
+// "firstname":"Sofia",
+// "lastname":"May",
+// "email":"sofiamberlin@gmail.com",
+// "gender":1,
+// "locale":"en_US",
+// "url":"https://www.facebook.com/10154065918644289",
+// "raw":{"name":"Sofia May",
+//   "first_name":"Sofia",
+//   "last_name":"May",
+//   "email":"sofiamberlin@gmail.com",
+//   "gender":"female",
+//   "locale":"en_US",
+//   "id":"10154065918644289"}
+// }

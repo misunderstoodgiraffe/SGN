@@ -18,7 +18,6 @@ module.exports.Users = Users = sql.define('users', {
 });
 
 module.exports.Steam = Steam = sql.define('steam', {
-  userID: SQL.INTEGER,
   steamID: {type: SQL.STRING,
     unique: true},
   username: SQL.STRING,
@@ -37,15 +36,13 @@ module.exports.Games = Games = sql.define('games', {
   image: SQL.STRING
 });
 
-module.exports.UsersGames = UsersGames = sql.define('usersGames', {
-  userID: SQL.INTEGER,
-  gameID: SQL.INTEGER
-});
+module.exports.UsersGames = UsersGames = sql.define('usersGames', {});
 
-// Users.hasMany(Friends);
-// Users.hasMany(UsersGames);
-// Games.hasMany(UsersGames);
-// Users.hasOne(Steam);
+Users.hasMany(Friends, {as: 'userIdlink1'});
+Users.hasMany(Friends, {as: 'userIdlink2'});
+Users.hasMany(UsersGames);
+Games.hasMany(UsersGames);
+Users.hasOne(Steam);
 
 Users.sync();
 Games.sync();
