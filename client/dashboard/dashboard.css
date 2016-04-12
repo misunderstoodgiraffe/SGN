@@ -1,0 +1,15 @@
+body {
+	background-color: #333;
+}
+.dash-container {
+	background-color: #ccc;
+  margin: 10px;
+  padding: 20px;
+	/*border: 2px solid;*/
+	border-radius: 5px;
+}
+
+.top {
+	width: 80%;
+	margin: 0 auto;
+}

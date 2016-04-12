@@ -16,7 +16,7 @@ angular.module('SGN', [
       controller: 'DashboardController'
     })
     .when('/updateProfile', {
-      templateUrl: './profile/updateProfile.html',
+      templateUrl: './updateProfile/updateProfile.html',
       controller: 'UpdateProfileController'
     })
 });
