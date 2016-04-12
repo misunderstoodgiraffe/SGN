@@ -1,30 +1,45 @@
 module.exports = {
   dylan: {
-    FBid: 123456,
+    fbID: '123456',
     username: "firstUser",
     givenName: "Im number One",
-    steamID: 123808383101,
     lastlogin: 0
   },
   sofia: {
-    FBid: 1234567,
+    fbID: '10154065918644289',
     username: "secondUser",
-    givenName: "Im number Two",
-    steamID: 123809383101,
+    givenName: "I should be number one!",
     lastlogin: 0
   },
   wilson: {
-    FBid: 3456,
+    fbID: '3456',
     username: "anotherUser",
     givenName: "Im not a number",
-    steamID: 123808381,
     lastlogin: 0
   },
   josh: {
-    FBid: 126,
+    fbID: '126',
     username: "JAAAAAAAAAAAAAAAASH",
     givenName: "I built this shit",
-    steamID: 123808,
     lastlogin: 0
   }
 }
+
+// {
+// "id":"10154065918644289",
+// "avatar":"https://graph.facebook.com/v2.3/10154065918644289/picture",
+// "name":"Sofia May",
+// "firstname":"Sofia",
+// "lastname":"May",
+// "email":"sofiamberlin@gmail.com",
+// "gender":1,
+// "locale":"en_US",
+// "url":"https://www.facebook.com/10154065918644289",
+// "raw":{"name":"Sofia May",
+//   "first_name":"Sofia",
+//   "last_name":"May",
+//   "email":"sofiamberlin@gmail.com",
+//   "gender":"female",
+//   "locale":"en_US",
+//   "id":"10154065918644289"}
+// }

@@ -5,6 +5,12 @@
 	min-height: 0;
 }
 
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
 /*
  * Header
  */
@@ -46,6 +52,6 @@
     float: left;
   }
   .masthead-nav {
-    float: right;
+    float: left;
   }
 }

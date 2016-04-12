@@ -1,5 +1,6 @@
-.gitignore
 node_modules/
 gitSpy/*
 server/config/auth.js
 server/config/KEYS.js
+.DS_Store
+forTesting/

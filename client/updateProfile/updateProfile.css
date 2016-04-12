@@ -1,0 +1,22 @@
+body {
+	background-color: #333;
+}
+.form-container  {
+	background-color: #ccc;
+  display: table;
+  width: 50%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  margin: 0 auto;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 30px;
+}
+/*.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}*/
