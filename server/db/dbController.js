@@ -7,9 +7,9 @@ module.exports = {
       for (var i in data) {
         results.push(data[i].dataValues);
       }
-      callback(results);
+      callback(null, results);
     }).catch(function(error) {
-      callback(error);
+      callback(error, null);
     });
   },
   searchUsers: function (query, callback) {
@@ -43,8 +43,10 @@ module.exports = {
     });
     newFriends.save().then(function(response) {
       console.log('beuller?');
-      if (callback) {callback(response)}
-    }).catch(function(error) {console.log});
+      if (callback) {callback(null, response)}
+    }).catch(function(error) {
+      callback(error, null);
+    });
   },
   getAllFriends: function(user, callback) {
     db.Friends.findAll({where: {$or: [
