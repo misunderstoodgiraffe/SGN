@@ -20,6 +20,7 @@ module.exports = {
               userdb.searchUsers({fbID: me.id}, function(error, users) {
                 var user = users[0];
                 var token = jwt.encode(user, 'secret');
+                req.session.userJwtToken = token;
                 res.redirect('http://localhost:3000/#/home');
               });
             } else {
@@ -35,7 +36,6 @@ module.exports = {
             res.redirect('http://localhost:3000/#/home');
           }
 
-          
         });
       });
     }
