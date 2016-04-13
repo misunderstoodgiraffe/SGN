@@ -39,7 +39,7 @@ angular.module('SGN.requests', [])
     getFriends: function (entry) {
       return $http({
         method: 'GET',
-        url: '/getFriends', 
+        url: '/getFriends',
         data: entry
       }).then(function(resp) {
         return resp;
@@ -48,8 +48,17 @@ angular.module('SGN.requests', [])
     updateProfile: function (entry) {
       return $http({
         method: 'POST',
-        url: '/updateProfile', 
+        url: '/updateProfile',
         data: entry
+      }).then(function(resp) {
+        return resp;
+      });
+    },
+    updateSteamProfile: function (steamID) {
+      return $http({
+        method: 'GET',
+        url: '/updateSteam',
+        data: steamID
       }).then(function(resp) {
         return resp;
       });

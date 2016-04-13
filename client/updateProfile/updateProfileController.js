@@ -4,12 +4,19 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   $scope.updateProfile = function () {
     var userInfo = {
       username: $scope.username,
-      steamID: $scope.steamID,
-      blizzardID: $scope.blizzardID,
+      email: $scope.email,
       description: $scope.description,
+      steamID: $scope.steamID
     };
-    SGNRequests(userInfo);
+    SGNRequests.updateProfile(userInfo);
     $location.path('/home');
+  };
+  $scope.steamFetch = function (steamID) {
+    $scope.confirmation = "Is this your information?";
+    $scope.steamData = SGNRequests.updateSteamProfile($scope.steamID);
+    $scope.sID = $scope.steamData.sID;
+    $scope.username = $scope.steamData.username;
+    $scope.avatar = $scope.steamData.avatar;
   };
 });
 
