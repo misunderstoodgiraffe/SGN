@@ -18,11 +18,6 @@ app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-
-app.get('/', function(reg, res, next) {
-  // res.redirect('index.html');
-});
-
 app.listen(3000);
 
 module.exports = app;
