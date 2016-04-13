@@ -3,4 +3,4 @@ gitSpy/*
 server/config/keys.js
 .DS_Store
 forTesting/
-client/img/*
+client/lib/*
