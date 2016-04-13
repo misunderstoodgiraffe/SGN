@@ -1,4 +1,4 @@
-var db = require('../db/dbController.js');
+var userdb = require('../db/UsersController.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -12,12 +12,12 @@ module.exports = {
       result.me().done(function(me) {
 
         //Add new user to database
-        db.newUser({fbID: me.id, givenName: me.name, avatar: me.avatar}, function(error, user) {
+        userdb.newUser({fbID: me.id, givenName: me.name, avatar: me.avatar}, function(error, user) {
 
           if (error) { 
             if (error.message === 'user already exists') { 
               // user is already in database
-              db.searchUsers({fbID: me.id}, function(error, users) {
+              userdb.searchUsers({fbID: me.id}, function(error, users) {
                 var user = users[0];
                 var token = jwt.encode(user, 'secret');
                 res.redirect('http://localhost:3000/#/home');
