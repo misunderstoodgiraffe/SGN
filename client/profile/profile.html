@@ -1,10 +1,24 @@
 <link href="./profile/profile.css" rel="stylesheet">
 <div ng-controller='ProfileController'>
 	<div class='container'>
-		<div>
-			<div class='form-container'>
-			  <h2> Update Profile </h2>
+		<div class='nest outer-container'>
+
+		  <h2> Username {{username}} </h2>
+		  <h4> Location {{location}} </h4>
+		  <h4> Brief Bio {{bio}} </h4>
+			<div class='nest friends-container'>
+				<h2> Friends </h2>
+				<div> 
+					Friends
+				</div>
 			</div>
+			<div class='nest game-container'>
+				<h2> Games </h2>
+				<div> 
+					Games
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>

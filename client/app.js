@@ -2,6 +2,7 @@ angular.module('SGN', [
   'SGN.landing',
   'SGN.login',
   'SGN.dashboard',
+  'SGN.profile',
   'SGN.updateProfile',
   'ngRoute'
 ])
