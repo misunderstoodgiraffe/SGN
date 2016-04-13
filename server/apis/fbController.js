@@ -32,7 +32,7 @@ module.exports = {
             var token = jwt.encode(user, 'secret');
             req.session.userJwtToken = token;
             // !! Redirect to create profile page not home !! //
-            res.redirect('http://localhost:3000/#/home');
+            res.redirect('http://localhost:3000/#/updateProfile');
           }
 
           
