@@ -1,0 +1,53 @@
+<!-- Not part of angular app -->
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Load Bootstrap  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="./styles/styles.css" rel="stylesheet">
+  </head>
+
+<body>
+  <div class='navigation'>
+    <title>SGN</title>
+    <nav class='navbar navbar-inverse navbar-fixed-top'>
+      <div class='container navbar-header'>
+        <ul class='nav masthead-nav'>
+          <a href='#/profile'><img class='profile-pic' src='test/profile.jpg'> </img></a>
+          <li> <a href='/signin'> Sign in </a> </li>
+          <li> <a href='#/'> FrontPage </a> </li>
+          <li> <a href='#/home'> Dashboard </a> </li>
+        </ul>
+      </div>
+    </nav>
+  <!-- Content -->
+    <div class='body'>
+    <div ng-controller='DashboardController'>
+      <!-- <div class='container'> -->
+        <div class="site-wrapper">
+
+          <div class="site-wrapper-inner">
+
+            <div class="cover-container">
+
+              <div class="inner cover">
+                <h1> Welcome to SGN </h1>
+                <p class="lead"> The gaming meta network </p>
+                <p class="lead">
+                  <a href="#" class="btn btn-lg btn-default">Learn more</a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+    </div>
+
+    <link href="./frontpage/landing.css" rel="stylesheet"> 
+    </div>
+  </div>
+</body>
+</html>

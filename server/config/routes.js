@@ -4,6 +4,9 @@ OAuth.initialize('BqQzmRHEA0gxZSaUVbqEaPmDyM8', 'hnjFc9WbVJuKigl8NmnVbjmD3jA');
 var userdb = require('../requestHandlers/users.js');
 
 module.exports = function (app, express) {
+  app.get('/', function(req, res) {
+    res.redirect('/welcome.html');
+  });
   app.get('/oauth/redirect', OAuth.redirect(function(result, req, res) {
     return userController.getFacebookData(result, req, res);
   }));
