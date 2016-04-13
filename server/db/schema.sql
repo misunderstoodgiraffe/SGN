@@ -9,6 +9,7 @@ CREATE TABLE users (
   fbID VARCHAR(255) NOT NULL UNIQUE,
   username VARCHAR(255),
   givenName VARCHAR(255),
+  email VARCHAR(255),
   avatar VARCHAR(255),
   lastlogin INT
 );
@@ -16,9 +17,9 @@ CREATE TABLE users (
 CREATE TABLE friends (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userIdlink1 INT,
-  userIdlink2 INT,
-  FOREIGN KEY (userIdlink1) REFERENCES users (id),
-  FOREIGN KEY (userIdlink2) REFERENCES users (id)
+  userIdlink2 INT
+  -- CONSTRAINT friends_ibfk_1 FOREIGN KEY (userIdlink1) REFERENCES users (id),
+  -- CONSTRAINT friends_ibfk_1 FOREIGN KEY (userIdlink2) REFERENCES users (id)
 );
 
 CREATE TABLE games (
@@ -31,9 +32,9 @@ CREATE TABLE games (
 CREATE TABLE usersGames (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userID INT,
-  gameID INT,
-  FOREIGN KEY (userID) REFERENCES users (id),
-  FOREIGN KEY (gameID) REFERENCES games (id)
+  gameID INT
+  -- FOREIGN KEY (userID) REFERENCES users (id),
+  -- FOREIGN KEY (gameID) REFERENCES games (id)
 );
 
 CREATE TABLE steam (
@@ -41,8 +42,8 @@ CREATE TABLE steam (
   userID INT,
   sID VARCHAR(255) NOT NULL UNIQUE,
   username VARCHAR(255),
-  avatar VARCHAR(255),
-  FOREIGN KEY (userID) REFERENCES users (id)
+  avatar VARCHAR(255)
+  -- FOREIGN KEY (userID) REFERENCES users (id)
 );
 
 /*  Execute this file from the command line by typing:

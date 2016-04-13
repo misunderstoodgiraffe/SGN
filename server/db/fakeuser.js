@@ -1,13 +1,13 @@
 module.exports = {
   dylan: {
     fbID: '123456',
-    username: "firstUser",
-    givenName: "Im number One",
+    username: "Dylanoioioi",
+    givenName: "Dylan Tran",
     lastlogin: 0
   },
   sofia: {
     fbID: '10154065918644289',
-    username: "secondUser",
+    username: "SOSOSOSOOfiai",
     givenName: "I should be number one!",
     lastlogin: 0
   },

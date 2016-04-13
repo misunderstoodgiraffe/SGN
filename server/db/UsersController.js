@@ -7,7 +7,9 @@ module.exports = {
       for (var i in data) {
         results.push(data[i].dataValues);
       }
-      callback(results);
+      callback(null, results);
+    }).catch(function(error) {
+      callback(error, null);
     });
   },
   searchUsers: function (query, callback) {
@@ -18,11 +20,13 @@ module.exports = {
           results.push(result[i].dataValues);
         }
         callback(null, results);
+    }).catch(function(error) {
+      callback(error, null);
     });
   },
   newUser: function (user, callback) {
-    var newUser = db.Users.build(user);
-    newUser.save().then(function(data) {
+    var newUser = db.Users.create(user)
+    .then(function(data) {
       callback(null, data.dataValues);
     }).catch(function(error) {
       if (error.errors) {
@@ -31,23 +35,5 @@ module.exports = {
         } else {callback(error, null)}
       } else {callback(error, null)}
     });
-  },
-  newFriend: function (user1, user2, callback) {
-    var newFriends = db.Friends.build({
-      userIdlink1: user1.id,
-      userIdlink2: user2.id
-    });
-    newFriends.save().then(function(response) {
-      console.log('beuller?');
-      if (callback) {callback(response)}
-    }).catch(function(error) {console.log});
-  },
-  getFriends: function(user, callback) {
-    db.Friends.findAll({where: {$or: [
-      {userIdlink1: user.id},
-      {userIdlink2: user.id}
-      ]}})
-    .then(function(fiends){
-      callback(friends)});
   }
 };
