@@ -12,12 +12,15 @@ module.exports.Users = Users = sql.define('users', {
   fbID: {type: SQL.STRING,
     unique: true},
   username: SQL.STRING,
+  email: SQL.STRING,
   givenName: SQL.STRING,
   avatar: SQL.STRING,
   lastlogin: SQL.INTEGER
 });
 
 module.exports.Steam = Steam = sql.define('steam', {
+  userID: {type: SQL.INTEGER,
+    unique: true},
   steamID: {type: SQL.STRING,
     unique: true},
   username: SQL.STRING,
