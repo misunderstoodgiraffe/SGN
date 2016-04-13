@@ -20,7 +20,9 @@ app.use(bodyParser.json());
 
 
 app.get('/', function(reg, res, next) {
-  // res.redirect('index.html');
+  // render welcome
+  console.log("render the welcome page");
+  res.sendFile(__dirname + '/../client/welcome.html');
 });
 
 app.listen(3000);
