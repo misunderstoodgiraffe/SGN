@@ -35,5 +35,17 @@ module.exports = {
         } else {callback(error, null)}
       } else {callback(error, null)}
     });
+  },
+  updateUser: function (attributes, callback) {
+    db.Users.findOne({where: {fbID: attributes.fbID}})
+    .then(function(user) {
+      user.update(attributes).then(function(result) {
+        callback(null, result.dataValues);
+      }).catch(function(error) {
+        callback(error, null);
+      });
+    }).catch(function(error) {
+      callback(error, null);
+    });
   }
 };
