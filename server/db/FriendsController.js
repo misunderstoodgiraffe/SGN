@@ -35,11 +35,24 @@ module.exports = {
       ]}})
     .then(function(friends){
       var results = [];
-      var i = friends.length;
+      var findUser;
       for (var i in friends) {
-        results.push(friends[i].dataValues);
+        if (friends[i].dataValues.userIdlink1 === user.id) {
+          findUser = {id: friends[i].dataValues.userIdlink2};
+        } else {
+          findUser = {id: friends[i].dataValues.userIdlink1};
+        }
+        Users.getOneUser(findUser, function(err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            results.push(result);
+          }
+          if (results.length === friends.length) {
+            callback(null, results);
+          }
+        })
       }
-      callback(null, results)
     }).catch(function(error) {
       callback(error, null)
     });
