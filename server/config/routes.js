@@ -9,7 +9,7 @@ module.exports = function (app, express) {
       res.redirect('/welcome.html');
       res.end();
     } else {
-      console.log("redirect to dashboard");
+      // redirect to next url e.g. /#/home
       next();
     }
   });
