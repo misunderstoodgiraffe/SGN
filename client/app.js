@@ -1,5 +1,6 @@
 angular.module('SGN', [
   'SGN.landing',
+  'SGN.auth',
   'SGN.login',
   'SGN.aboutus',
   'SGN.dashboard',
