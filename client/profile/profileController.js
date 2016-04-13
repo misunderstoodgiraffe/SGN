@@ -17,4 +17,5 @@ angular.module('SGN.profile', ['SGN.requests'])
     //list of friends
     //list of games they own.
   }
+  //getUserProfile()  //get info when the controller is initialized.
 });
