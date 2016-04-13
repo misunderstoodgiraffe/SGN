@@ -47,5 +47,13 @@ module.exports = {
     }).catch(function(error) {
       callback(error, null);
     });
+  },
+  getOneUser: function (user, callback) {
+    db.Users.findOne({where: user})
+    .then(function(foundUser) {
+      callback(null, foundUser.dataValues);
+    }).catch(function(err) {
+      callback(err, null);
+    });
   }
 };
