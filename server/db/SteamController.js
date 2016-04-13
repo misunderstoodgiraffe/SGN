@@ -12,5 +12,12 @@ module.exports = {
         } else {callback(error, null)}
       } else {callback(error, null)}
     });
+  },
+  getSteam: function(account, callback) {
+    sb.Steam.findOne({where: account}).then(function(item) {
+      callback(null, account.dataValues);
+    }).catch(function(err) {
+      callback(err, null);
+    })
   }
 };
