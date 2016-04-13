@@ -1,4 +1,4 @@
-angular.module('SGN.dashboard', [])
+angular.module('SGN.aboutus', [])
 .controller('AboutusController', function (facebookService, $scope, $location) {
 
 });
