@@ -25,8 +25,8 @@ module.exports = {
     });
   },
   newUser: function (user, callback) {
-    var newUser = db.Users.build(user);
-    newUser.save().then(function(data) {
+    var newUser = db.Users.create(user)
+    .then(function(data) {
       callback(null, data.dataValues);
     }).catch(function(error) {
       if (error.errors) {
@@ -37,24 +37,42 @@ module.exports = {
     });
   },
   newFriend: function (user1, user2, callback) {
-    var newFriends = db.Friends.build({
-      userIdlink1: user1.id,
-      userIdlink2: user2.id
-    });
-    newFriends.save().then(function(response) {
-      console.log('beuller?');
-      if (callback) {callback(null, response)}
-    }).catch(function(error) {
-      callback(error, null);
-    });
+    if (user1.id === user2.id) {
+      callback(new Error('cannot friend self'));
+    } else {
+      db.Friends.findAll({where: {$or: [
+        {userIdlink1: user1.id,
+        userIdlink2: user2.id},
+        {userIdlink1: user2.id,
+        userIdlink2: user1.id}]}}).then(function(isFriends) {
+          if (isFriends.length !== 0) {
+            callback(new Error('already friends'), null)
+          } else {
+            var newFriends = db.Friends.create({
+              userIdlink1: user1.id,
+              userIdlink2: user2.id
+            }).then(function(response) {
+              if (callback) {callback(null, response.dataValues)}
+            }).catch(function(error) {
+              callback(error, null);
+            });
+          }
+        }).catch(function(error) {
+          callback(error, null);
+        });
+      };
   },
   getAllFriends: function(user, callback) {
     db.Friends.findAll({where: {$or: [
       {userIdlink1: user.id},
       {userIdlink2: user.id}
       ]}})
-    .then(function(fiends){
-      callback(null, friends)
+    .then(function(friends){
+      var results = [];
+      for (var i in friends) {
+        results.push(friends[i].dataValues);
+      }
+      callback(null, results)
     }).catch(function(error) {
       callback(error, null)
     });

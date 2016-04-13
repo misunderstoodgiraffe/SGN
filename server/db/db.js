@@ -36,16 +36,18 @@ module.exports.Games = Games = sql.define('games', {
   image: SQL.STRING
 });
 
-module.exports.UsersGames = UsersGames = sql.define('usersGames', {});
+module.exports.UsersGames = UsersGames = sql.define('usersGames', {
 
-Users.hasMany(Friends, {as: 'userIdlink1'});
-Users.hasMany(Friends, {as: 'userIdlink2'});
-Users.hasMany(UsersGames);
-Games.hasMany(UsersGames);
-Users.hasOne(Steam);
+});
+
+// Friends.belongsTo(Users, {foreignKey: 'userIdlink1', foreignKeyConstraint: true});
+// Friends.belongsTo(Users, {foreignKey: 'userIdlink2', foreignKeyConstraint: true});
+// Users.hasMany(UsersGames);
+// Games.hasMany(UsersGames);
+// Users.hasOne(Steam);
 
 Users.sync();
 Games.sync();
-Steam.sync();
-Friends.sync();
-UsersGames.sync();
+Steam.sync(/*{force: true}*/);
+Friends.sync(/*{force: true}*/);
+UsersGames.sync(/*{force: true}*/);
