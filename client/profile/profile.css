@@ -13,5 +13,12 @@ body {
 .outer-container {
   width: 60%;
   margin: auto;
+}
 
+.tags {
+  display: flex;
+}
+
+.nav-tag {
+  margin: 10px;
 }
