@@ -24,5 +24,9 @@ angular.module('SGN', [
       templateUrl: './profile/profile.html',
       controller: 'ProfileController'
     })
+    .when('/aboutus',{
+      templateUrl: './aboutus/aboutus.html',
+      controller: 'AboutusController'
+    })
 });
 
