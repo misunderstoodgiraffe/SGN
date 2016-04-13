@@ -1,6 +1,14 @@
 angular.module('SGN.updateProfile', ['SGN.requests'])
-.controller('UpdateProfileController', function ($scope, $location, SGNRequests) {
+.controller('UpdateProfileController', function ($scope, $location, SGNRequests, $http) {
   $scope.friends = {};
+  $http({
+    method: "GET",
+    url: '/getUserInfo'
+  }).then(function mySucces(response) {
+    console.log(response);
+  }, function myError(response) {
+  });
+
   $scope.updateProfile = function () {
     var userInfo = {
       username: $scope.username,
