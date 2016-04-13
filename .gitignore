@@ -1,10 +1,5 @@
 node_modules/
 gitSpy/*
-<<<<<<< 92041df03981a34801e8d5d88aa4bed831f42889
 server/config/keys.js
 .DS_Store
 forTesting/
-=======
-server/config/auth.js
-server/config/KEYS.js
->>>>>>> git ignore fixed

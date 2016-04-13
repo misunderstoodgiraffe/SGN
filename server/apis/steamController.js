@@ -14,7 +14,7 @@ The data currently displayed through console.log is just stringified data.
 
 
 var request = require('request');
-var key = require('./keys.js');
+var key = require('../config/keys.js');
 
 var getPlayerData = function(steamID) {
   var body = '';
