@@ -1,4 +1,5 @@
 var db = require('./db.js');
+var Users = require('./UsersController.js')
 
 module.exports = {
   newFriend: function (user1, user2, callback) {
@@ -34,6 +35,7 @@ module.exports = {
       ]}})
     .then(function(friends){
       var results = [];
+      var i = friends.length;
       for (var i in friends) {
         results.push(friends[i].dataValues);
       }
