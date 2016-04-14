@@ -15,7 +15,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
 
     }, function myError(response) {
     });
-  }
+  };
 
   $scope.updateProfile = function () {
     var userInfo = {

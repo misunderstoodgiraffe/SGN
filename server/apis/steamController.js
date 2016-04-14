@@ -27,14 +27,13 @@ var key = require('../config/keys.js');
 // };
 
 var getPlayerData = function(req, res) {
-  var steamID = req.body;
-  var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + '76561198045493551';
+  var steamID = req.query.steamID;
+  var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + steamID;
   request.get(playerData, function(err, response) {
     if(err){
       res.status(500).send(err);
     } else {
-      console.log(response.body);
-      res.status(200).send(response);
+      res.status(200).send(response.body);
     }
   });
 

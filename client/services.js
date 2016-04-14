@@ -57,8 +57,7 @@ angular.module('SGN.requests', [])
     updateSteamProfile: function (steamID) {
       return $http({
         method: 'GET',
-        url: '/updateSteam',
-        data: steamID
+        url: '/updateSteam?steamID=' + steamID
       }).then(function(resp) {
         return resp;
       });
