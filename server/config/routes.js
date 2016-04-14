@@ -13,15 +13,11 @@ module.exports = function (app, express) {
       next();
     }
   });
-  app.get('/getUserInfo', function(req, res, next) {
-    console.log(req.session);
-    res.json({data: 'data'});
-  });
   app.get('/oauth/redirect', OAuth.redirect(function(result, req, res) {
     return fbController.getFacebookData(result, req, res);
   }));
   app.get('/signin', OAuth.auth('facebook', 'http://localhost:3000/oauth/redirect'));
   app.get('/users/profile', userdb.getProfile);
   app.get('/users/friends', userdb.getFriends);
-  app.put('./users/profile', userdb.updateProfile);
+  app.put('/users/profile', userdb.updateProfile);
 };
