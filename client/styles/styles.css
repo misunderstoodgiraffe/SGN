@@ -1,3 +1,6 @@
+body {
+  /*text-align: center;*/
+}
 .body {
 	padding-top: 100px;
 }
@@ -5,10 +8,19 @@
 	min-height: 0;
 }
 
+.navbar-header {
+  margin: 0 auto;
+}
+
+.masthead-nav {
+  text-align: center;
+}
+
 .profile-pic {
   width: 35px;
   height: 35px;
   margin-right: 10px;
+  margin-left: 20px;
   border-radius: 5px;
 }
 
@@ -48,11 +60,11 @@
   border-bottom-color: #fff;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .masthead-brand {
     float: left;
   }
   .masthead-nav {
     float: left;
   }
-}
+}*/
