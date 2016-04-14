@@ -1,6 +1,10 @@
 body {
 	background-color: #333;
 }
+
+.profile {
+  border-radius: 5px;
+}
 .form-container  {
 	background-color: #ccc;
   display: table;

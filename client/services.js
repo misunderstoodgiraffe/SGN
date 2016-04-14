@@ -47,8 +47,8 @@ angular.module('SGN.requests', [])
     },
     updateProfile: function (entry) {
       return $http({
-        method: 'POST',
-        url: '/updateProfile',
+        method: 'PUT',
+        url: '/users/profile',
         data: entry
       }).then(function(resp) {
         return resp;

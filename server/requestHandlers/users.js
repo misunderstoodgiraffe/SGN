@@ -25,8 +25,9 @@ module.exports = {
     });
   },
   updateProfile: function(req, res, next) {
-    var user = jwt.decode(req.session.userJwtToken, 'secret');
-    Users.updateProfile(user, function(err, response) {
+    // var user = jwt.decode(req.session.userJwtToken, 'secret');
+    console.log(req.body);
+    Users.updateProfile(req.body, function(err, response) {
       if (err) {
         res.status(500).send(err);
       } else {
