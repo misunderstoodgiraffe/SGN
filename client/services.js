@@ -54,12 +54,13 @@ angular.module('SGN.requests', [])
         return resp;
       });
     },
-    updateSteamProfile: function (steamID) {
+    updateSteamProfile: function (steamID, callback) {
       return $http({
         method: 'GET',
         url: '/updateSteam?steamID=' + steamID
       }).then(function(resp) {
-        return resp;
+        callback (resp);
+        // return resp;
       });
     }
   };
