@@ -11,21 +11,33 @@ The data currently displayed through console.log is just stringified data.
 */
 
 
-
-
 var request = require('request');
 var key = require('../config/keys.js');
 
-var getPlayerData = function(steamID) {
-  var body = '';
-  var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + steamID;
-  request.get(playerData)
-  .on('data', function(data) {
-    body += data;
-  })
-  .on('end', function (){
-    standardizePlayerData(body);
+// var getPlayerData = function(steamID) {
+//   var body = '';
+//   var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + steamID;
+//   request.get(playerData)
+//   .on('data', function(data) {
+//     body += data;
+//   })
+//   .on('end', function (){
+//     console.log(standardizePlayerData(body));
+//   });
+// };
+
+var getPlayerData = function(req, res) {
+  var steamID = req.body;
+  var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + '76561198045493551';
+  request.get(playerData, function(err, response) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      console.log(response.body);
+      res.status(200).send(response);
+    }
   });
+
 };
 
 var getAllFriends = function(steamID) {
@@ -72,21 +84,16 @@ var standardizePlayerData = function (data) {
   dataObj.username = parsedData.response.players[0].personaname;
   dataObj.avatar = parsedData.response.players[0].avatar;
 
-
-  console.log(dataObj);
   return dataObj;
 };
 
-// module.exports = {
-//   getFriendsList: function (req, res) {
-//     getFriendsList(steamID)
-//   }
-// };
+// getPlayerData('76561198045493551');
 
-// getAllFriends('76561198082162743');
+module.exports = {
+  getPlayerData: getPlayerData
+};
 
-// getRecentGames('76561198045493551');
 
-getPlayerData('76561198045493551');
 
-// getAllGames('76561198045493551');
+
+
