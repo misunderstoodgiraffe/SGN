@@ -36,7 +36,7 @@ module.exports = {
       } else {callback(error, null)}
     });
   },
-  updateUser: function (attributes, callback) {
+  updateProfile: function (attributes, callback) {
     db.Users.findOne({where: {fbID: attributes.fbID}})
     .then(function(user) {
       user.update(attributes).then(function(result) {
