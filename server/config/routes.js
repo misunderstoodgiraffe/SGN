@@ -2,6 +2,7 @@ var fbController = require('../apis/fbController.js');
 var OAuth = require('oauthio');
 OAuth.initialize('BqQzmRHEA0gxZSaUVbqEaPmDyM8', 'hnjFc9WbVJuKigl8NmnVbjmD3jA');
 var userdb = require('../requestHandlers/users.js');
+var steam = require('../apis/steamController.js');
 
 module.exports = function (app, express) {
   app.get('/', function(req, res, next) {
@@ -20,4 +21,7 @@ module.exports = function (app, express) {
   app.get('/users/profile', userdb.getProfile);
   app.get('/users/friends', userdb.getFriends);
   app.put('/users/profile', userdb.updateProfile);
+
+  app.get('/updateSteam', steam.getPlayerData);
+
 };
