@@ -43,6 +43,12 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       email: $scope.email,
       givenName: $scope.givenName
     };
+    // id INT AUTO_INCREMENT PRIMARY KEY,
+    // userID INT NOT NULL UNIQUE,
+    // steamID VARCHAR(255) NOT NULL UNIQUE,
+    // username VARCHAR(255),
+    // avatar VARCHAR(255)
+
     SGNRequests.updateProfile(userInfo);
     $location.path('/home');
   };
