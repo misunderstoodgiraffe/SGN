@@ -7,11 +7,9 @@ angular.module('SGN.auth', [])
 //need $window to set localstorage cookie
 //need $location to redirect
 //Auth is a factory function to handle authentication requests to the server.
-.controller('AuthController', function ($scope, $window, $location, Auth)) {
+.controller('AuthController', function ($scope, $window, $location, Auth) {
   
-}
-
-
+})
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};

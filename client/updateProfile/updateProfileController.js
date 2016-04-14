@@ -1,20 +1,26 @@
 angular.module('SGN.updateProfile', ['SGN.requests'])
 .controller('UpdateProfileController', function ($scope, $location, SGNRequests, $http) {
   $scope.friends = {};
-  $http({
-    method: "GET",
-    url: '/getUserInfo'
-  }).then(function mySucces(response) {
-    console.log(response);
-  }, function myError(response) {
-  });
+  $scope.getUserInfo = function () {
+    $http({
+      method: 'GET',
+      url: '/users/profile'
+    }).then(function mySucces(response) {
+      console.log(response);
+      $scope.username = response.data.username;
+      $scope.givenName = response.data.givenName;
+      $scope.avatar = response.data.avatar;
+      $scope.email = response.data.email;
+
+    }, function myError(response) {
+    });
+  }
 
   $scope.updateProfile = function () {
     var userInfo = {
       username: $scope.username,
       email: $scope.email,
-      description: $scope.description,
-      steamID: $scope.steamID
+      givenName: $scope.givenName
     };
     SGNRequests.updateProfile(userInfo);
     $location.path('/home');
@@ -26,6 +32,9 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     $scope.username = $scope.steamData.username;
     $scope.avatar = $scope.steamData.avatar;
   };
+
+  //auto populate fields;
+  $scope.getUserInfo();
 });
 
 
