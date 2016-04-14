@@ -26,7 +26,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     };
     console.log(userInfo);
     SGNRequests.updateProfile(userInfo);
-    // $location.path('/home');
+    $location.path('/home');
   };
   $scope.steamFetch = function (steamID) {
     $scope.confirmation = "Is this your information?";
