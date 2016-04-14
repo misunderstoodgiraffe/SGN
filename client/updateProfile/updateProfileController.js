@@ -11,6 +11,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       $scope.givenName = response.data.givenName;
       $scope.avatar = response.data.avatar;
       $scope.email = response.data.email;
+      $scope.fbID = response.data.fbID;
 
     }, function myError(response) {
     });
@@ -18,12 +19,14 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
 
   $scope.updateProfile = function () {
     var userInfo = {
+      fbID: $scope.fbID,
       username: $scope.username,
       email: $scope.email,
       givenName: $scope.givenName
     };
+    console.log(userInfo);
     SGNRequests.updateProfile(userInfo);
-    $location.path('/home');
+    // $location.path('/home');
   };
   $scope.steamFetch = function (steamID) {
     $scope.confirmation = "Is this your information?";

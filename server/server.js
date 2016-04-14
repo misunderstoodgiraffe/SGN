@@ -3,9 +3,12 @@ cors = require('cors');
 var session = require('express-session');
 var db = require('./db/db.js');
 var bodyParser = require('body-parser');
+var app = express();
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 db.dbConnection.connect();
 
-var app = express();
 
 app.use(cors());
 app.use(session({
@@ -15,8 +18,6 @@ app.use(session({
 }));
 require('./config/routes.js') (app, express);
 app.use(express.static(__dirname + '/../client'));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 
 app.listen(3000);
 
