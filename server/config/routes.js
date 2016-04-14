@@ -23,5 +23,6 @@ module.exports = function (app, express) {
   app.put('/users/profile', userdb.updateProfile);
 
   app.get('/updateSteam', steam.getPlayerData);
+  app.get('/updateSteamFriends', steam.getAllFriends);
 
 };

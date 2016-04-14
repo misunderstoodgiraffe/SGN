@@ -62,7 +62,16 @@ angular.module('SGN.requests', [])
         callback (resp);
         // return resp;
       });
+    },
+    updateSteamFriends: function(steamID, callback) {
+      return $http({
+        method: 'GET',
+        url: '/updateSteamFriends?steamID=' + steamID
+      }).then(function(resp) {
+        callback (resp);
+      });
     }
+
+
   };
-    
 });

@@ -14,18 +14,6 @@ The data currently displayed through console.log is just stringified data.
 var request = require('request');
 var key = require('../config/keys.js');
 
-// var getPlayerData = function(steamID) {
-//   var body = '';
-//   var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + steamID;
-//   request.get(playerData)
-//   .on('data', function(data) {
-//     body += data;
-//   })
-//   .on('end', function (){
-//     console.log(standardizePlayerData(body));
-//   });
-// };
-
 var getPlayerData = function(req, res) {
   var steamID = req.query.steamID;
   var playerData = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + key.STEAM + '&steamids=' + steamID;
@@ -33,8 +21,6 @@ var getPlayerData = function(req, res) {
     if(err){
       res.status(500).send(err);
     } else {
-      console.log('RESPONSE BODY!!!');
-      console.log(response.body);
       res.status(200).send(response.body);
     }
   });
@@ -45,13 +31,12 @@ var getAllFriends = function(req, res) {
   var steamID = req.query.steamID;
   var body = '';
   var getAllFriendsLink = 'http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
-  request.get(getAllFriendsLink)
-  .on('data', function(data) {
-    body+= data;
-  })
-  .on('end', function() {
-    console.log(body);
-    res.status(200).send(body);
+  request.get(getAllFriendsLink, function(err, response) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(response.body);
+    }
   });
 };
 
@@ -90,10 +75,12 @@ var standardizePlayerData = function (data) {
   return dataObj;
 };
 
-// getPlayerData('76561198045493551');
 
 module.exports = {
-  getPlayerData: getPlayerData
+  getPlayerData: getPlayerData,
+  getAllFriends: getAllFriends,
+  getRecentGames: getRecentGames,
+  getAllGames: getAllGames
 };
 
 
