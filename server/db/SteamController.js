@@ -14,7 +14,7 @@ module.exports = {
     });
   },
   getSteam: function(account, callback) {
-    sb.Steam.findOne({where: account}).then(function(item) {
+    db.Steam.findOne({where: account}).then(function(item) {
       callback(null, account.dataValues);
     }).catch(function(err) {
       callback(err, null);

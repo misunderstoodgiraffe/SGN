@@ -18,7 +18,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   };
   //fetch profile information from STEAMAPI
   $scope.steamFetch = function (steamID) {
-    $scope.confirmation = "Is this your information?";
+    $scope.confirmation = "Is this you?";
     $scope.steamData;
     SGNRequests.updateSteamProfile($scope.steamID, function (res) {
       console.log(res);

@@ -2,6 +2,10 @@ body {
 	background-color: #333;
 }
 
+.steam-avatar {
+  border-radius: 5px;
+}
+
 .profile {
   border-radius: 5px;
 }

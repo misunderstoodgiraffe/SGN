@@ -41,7 +41,8 @@ var getPlayerData = function(req, res) {
 
 };
 
-var getAllFriends = function(steamID) {
+var getAllFriends = function(req, res) {
+  var steamID = req.query.steamID;
   var body = '';
   var getAllFriendsLink = 'http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
   request.get(getAllFriendsLink)
@@ -50,6 +51,7 @@ var getAllFriends = function(steamID) {
   })
   .on('end', function() {
     console.log(body);
+    res.status(200).send(body);
   });
 };
 
