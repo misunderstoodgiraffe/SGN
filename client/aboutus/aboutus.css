@@ -1,0 +1,12 @@
+body { 
+ background-color: #333;
+}
+
+.about-container {
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  width: 40%;
+  background-color: #ccc;
+  border-radius: 5px;
+}
