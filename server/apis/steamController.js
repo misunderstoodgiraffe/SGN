@@ -33,6 +33,8 @@ var getPlayerData = function(req, res) {
     if(err){
       res.status(500).send(err);
     } else {
+      console.log('RESPONSE BODY!!!');
+      console.log(response.body);
       res.status(200).send(response.body);
     }
   });
