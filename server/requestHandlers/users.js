@@ -34,5 +34,10 @@ module.exports = {
         res.status(200).send();
       }
     });
+  },
+  signout: function(req, res, next) {
+    req.session.destroy();
+    res.redirect('/');
+    res.end();
   }
-}
+};
