@@ -40,7 +40,8 @@ module.exports.Games = Games = sql.define('games', {
 });
 
 module.exports.UsersGames = UsersGames = sql.define('usersGames', {
-
+  userID: SQL.INTEGER,
+  gameID: SQL.INTEGER
 });
 
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink1', foreignKeyConstraint: true});
