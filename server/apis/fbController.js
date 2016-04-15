@@ -1,5 +1,6 @@
 var userdb = require('../db/UsersController.js');
 var jwt = require('jwt-simple');
+var key = require('../config/keys.js');
 
 module.exports = {
 
@@ -21,7 +22,7 @@ module.exports = {
                 var user = users[0];
                 var token = jwt.encode(user, 'secret');
                 req.session.userJwtToken = token;
-                res.redirect('http://localhost:3000/#/home');
+                res.redirect(key.HOST + '/#/home');
               });
             } else {
               // unknown error
@@ -33,7 +34,7 @@ module.exports = {
             var token = jwt.encode(user, 'secret');
             req.session.userJwtToken = token;
             // !! Redirect to create profile page not home !! //
-            res.redirect('http://localhost:3000/#/updateProfile');
+            res.redirect(key.HOST + '/#/updateProfile');
           }
 
         });
