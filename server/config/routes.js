@@ -30,5 +30,6 @@ module.exports = function (app, express) {
   //STEAM API ENDPOINTS
   app.get('/updateSteam', steam.getPlayerData);
   app.get('/updateSteamFriends', steam.getAllFriends);
+  app.get('/getSteamGames', steam.getAllGames)
 
 };

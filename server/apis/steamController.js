@@ -53,7 +53,8 @@ var getRecentGames = function (steamID) {
   });
 };
 
-var getAllGames = function(steamID) {
+var getAllGames = function(req, res) {
+  var steamID = req.query.steamID;
   var body = '';
   var allGameData = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
   request.get(allGameData)
@@ -62,6 +63,7 @@ var getAllGames = function(steamID) {
   })
   .on('end', function (){
     console.log(body);
+    res.send(body);
   });
 };
 
