@@ -54,22 +54,42 @@ angular.module('SGN.requests', [])
         return resp;
       });
     },
-    updateSteamProfile: function (steamID, callback) {
+
+    //STEAM api calls
+    getSteamProfile: function (steamID, callback) {
       return $http({
         method: 'GET',
         url: '/updateSteam?steamID=' + steamID
       }).then(function(resp) {
         callback (resp);
-        // return resp;
       });
     },
-    updateSteamFriends: function(steamID, callback) {
+    getSteamFriends: function(steamID, callback) {
       return $http({
         method: 'GET',
         url: '/updateSteamFriends?steamID=' + steamID
       }).then(function(resp) {
         callback (resp);
       });
+    },
+
+    //our DB STEAM calls
+    getSteamDBProfile: function(steamID, callback) {
+      return $http({
+        method: 'GET',
+        url: '/users/steam?steamID=' + steamID,
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
+    updateSteamProfile: function (accountInfo) {
+     return $http({
+       method: 'POST',
+       url: '/users/steam',
+       data: accountInfo
+     }).then(function(resp) {
+       return resp;
+     }); 
     }
 
 

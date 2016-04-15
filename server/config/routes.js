@@ -22,7 +22,11 @@ module.exports = function (app, express) {
   app.get('/users/profile', userdb.getProfile);
   app.get('/users/friends', userdb.getFriends);
   app.put('/users/profile', userdb.updateProfile);
+  app.post('/users/steam', userdb.updateSteamProfile);
+  app.get('/users/steam', userdb.getSteamProfile);
 
+
+  //STEAM API ENDPOINTS
   app.get('/updateSteam', steam.getPlayerData);
   app.get('/updateSteamFriends', steam.getAllFriends);
 
