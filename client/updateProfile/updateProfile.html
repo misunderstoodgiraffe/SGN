@@ -34,17 +34,18 @@
 
 
 				<!-- FOR TESTING PURPOSES ONLY -->
-
-				
 				<button ng-click="steamFetchFriends(steamID)" class="btn btn-default">Fetch Friends List!~</button>
 				<pre> {{friendsList | json}} </pre>
+				
+				<button ng-click="steamFetchGames()" class="btn btn-default">Fetch Games List!</button>
+				<pre> {{gamesList | json}} </pre>
 
 
 				<!-- END TESTING STUFF -->
 
 			  <button ng-click="updateProfile()" type="submit" class="btn btn-default">Save</button>
 			</form>
-			<button ng-click="getUserInfo()"> </button>
+			<button ng-click="steamFetchGames()"> </button>
 		</div>
 	</div>
 </div>

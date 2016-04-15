@@ -14,7 +14,6 @@ module.exports = {
     });
   },
   getSteam: function(account, callback) {
-    console.log('ACCOUNT IS!!!: ', account);
     db.Steam.findOne({where: account}).then(function(item) {
       callback(null, item.dataValues);
       // callback(null, account.dataValues);

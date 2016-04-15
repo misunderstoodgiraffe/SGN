@@ -45,6 +45,14 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       };
     });
   };
+  $scope.steamFetchGames = function () {
+    var steamID = $scope.steamID;
+    SGNRequests.getSteamGames(steamID, function (res) {
+      console.log(res);
+      $scope.gamesList = res.data.response.games ||
+      null;
+    });
+  };
 
 
   //UPDATE the database with newly entered information.

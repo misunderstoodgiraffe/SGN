@@ -81,6 +81,14 @@ angular.module('SGN.requests', [])
         callback (resp);
       });
     },
+    getSteamGames: function(steamID, callback) {
+      return $http({
+        method: 'GET',
+        url: '/getSteamGames?steamID=' + steamID
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
 
     //our DB STEAM calls
     getSteamDBProfile: function(steamID, callback) {

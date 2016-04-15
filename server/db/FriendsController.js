@@ -3,7 +3,6 @@ var Users = require('./UsersController.js')
 
 module.exports = {
   newFriend: function (user1, user2, callback) {
-    console.log('USER IDS!!!! INSIDE OF FRIENDS CONTROLLER', user1, user2);
     if (user1.id === user2.id) {
       callback(new Error('cannot friend self'));
     } else {
