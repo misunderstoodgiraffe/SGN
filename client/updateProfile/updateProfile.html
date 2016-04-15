@@ -33,9 +33,16 @@
 			  <h3>{{steamUsername}}</h3>
 
 
+				<button ng-click="steamFetchFriends()" class="btn btn-default">Fetch Friends List!~</button>
+
+				<div class='profile-container' ng-repeat='friend in friendsProfiles'>
+					<div class='friend-profiles'>
+						<img ng-src='{{friend.avatar}}'> </img>
+						<h5>{{friend.personaname}}</h5>
+				  </div>
+				</div>
 				<!-- FOR TESTING PURPOSES ONLY -->
-				<button ng-click="steamFetchFriends(steamID)" class="btn btn-default">Fetch Friends List!~</button>
-				<pre> {{friendsList | json}} </pre>
+				<!-- <pre> {{friendsProfiles | json}} </pre> -->
 				
 				<button ng-click="steamFetchGames()" class="btn btn-default">Fetch Games List!</button>
 				<pre> {{gamesList | json}} </pre>
