@@ -21,7 +21,6 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   $scope.steamFetchProfile = function (steamID) {
     $scope.confirmation = "Is this you?";
     SGNRequests.getSteamProfile($scope.steamID, function (res) {
-      console.log(res);
       var steamData = res.data.response.players[0];
       $scope.steamUsername = steamData.personaname;
       $scope.steamAvatar = steamData.avatarmedium;
@@ -32,14 +31,19 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   $scope.steamFetchFriends = function (steamID) {
     SGNRequests.getSteamFriends($scope.steamID, function (res) {
       var steamFriends = res.data.friendslist.friends;
-      console.log(steamFriends.length);
       for (var i = 0; i < steamFriends.length; i++) {
         var targetAccount = steamFriends[i].steamid;
-        console.log(targetAccount);
         SGNRequests.getSteamDBProfile(targetAccount, function (res) {
           if (res.status === 200) {
             $scope.friendsList = [res.data] ||
             $scope.friendsList.push(res.data);
+            //fetch friend profile information from steam
+            SGNRequests.getSteamProfile(res.data.steamID, function (res) {
+              var profile = res.data.response.players[0];
+              $scope.friendsProfiles = [profile] ||
+              $scope.friendsProfiles.push(profile);
+              console.log(res);
+            });
           }
         });
       };

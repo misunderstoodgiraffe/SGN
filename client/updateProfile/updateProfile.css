@@ -6,6 +6,16 @@ body {
   border-radius: 5px;
 }
 
+.friend-profiles {
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.profile-container {
+  padding: 10px;
+}
+
 .profile {
   border-radius: 5px;
 }
