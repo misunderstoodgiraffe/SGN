@@ -1,27 +1,43 @@
 module.exports = {
-  dylan: {
-    fbID: '123456',
-    username: "Dylanoioioi",
-    givenName: "Dylan Tran",
-    lastlogin: 0
+  users: {
+    dylan: {
+      fbID: '123456',
+      username: "Dylanoioioi",
+      givenName: "Dylan Tran",
+      lastlogin: 0
+    },
+    sofia: {
+      fbID: '10154065918644289',
+      username: "SOSOSOSOOfiai",
+      givenName: "I should be number one!",
+      lastlogin: 0
+    },
+    wilson: {
+      fbID: '3456',
+      username: "anotherUser",
+      givenName: "Im not a number",
+      lastlogin: 0
+    },
+    josh: {
+      fbID: '126',
+      username: "JAAAAAAAAAAAAAAAASH",
+      givenName: "I built this shit",
+      lastlogin: 0
+    }
   },
-  sofia: {
-    fbID: '10154065918644289',
-    username: "SOSOSOSOOfiai",
-    givenName: "I should be number one!",
-    lastlogin: 0
-  },
-  wilson: {
-    fbID: '3456',
-    username: "anotherUser",
-    givenName: "Im not a number",
-    lastlogin: 0
-  },
-  josh: {
-    fbID: '126',
-    username: "JAAAAAAAAAAAAAAAASH",
-    givenName: "I built this shit",
-    lastlogin: 0
+  games: {
+    farCry: {
+      gameID: '12k33211',
+      name: 'Far Cry'
+    },
+    jumpyFrog: {
+      gameID: '12k32343',
+      name: 'Jump that Frog!'
+    },
+    jumpyDog: {
+      gameID: '1adsn000ac',
+      name: 'Jump that Dog!'
+    }
   }
 }
 
