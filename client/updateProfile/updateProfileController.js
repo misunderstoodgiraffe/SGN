@@ -28,7 +28,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     });
   };
 
-
+  //compiles a list of all steam friends that are on our network.
   $scope.steamFetchFriends = function (steamID) {
     SGNRequests.getSteamFriends($scope.steamID, function (res) {
       var steamFriends = res.data.friendslist.friends;
@@ -44,13 +44,12 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         });
       };
     });
-
-    //compile a list of all friends on the network based on steamID.
   };
 
 
   //UPDATE the database with newly entered information.
   $scope.updateProfile = function () {
+    //update 'user' table.
     var userInfo = {
       fbID: $scope.fbID,
       username: $scope.username,
@@ -59,8 +58,8 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     };
     SGNRequests.updateProfile(userInfo);
 
-    //bug: can only update steamaccount once atm,
-    //no put request functionality.
+    //bug: can only update steamaccount once atm, no put request functionality.
+    //update 'steam' table.
     var steamAccount = {
       userID: $scope.ourID,
       steamID: $scope.steamID,
@@ -68,7 +67,18 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       avatar: $scope.steamAvatar
     }
     SGNRequests.updateSteamProfile(steamAccount);
-    // SGNRequests
+
+    //update 'friends' table.
+    var friends = $scope.friendsList;
+    for (var i = 0; i < friends.length; i++) {
+      var userRelation = {
+        user1: { id: $scope.ourID },
+        user2: { id: friends[i].userID },
+      }
+      SGNRequests.addFriend(userRelation, function (res) {
+        console.log(res);
+      });
+    }
 
     //check and add relevant friends on the network to your friends list.
     $location.path('/home');
