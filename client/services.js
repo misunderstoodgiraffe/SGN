@@ -45,6 +45,15 @@ angular.module('SGN.requests', [])
         return resp;
       });
     },
+    addFriend: function (entry) {
+      return $http({
+        method: 'POST',
+        url: '/users/friends',
+        data: entry
+      }).then(function(resp) {
+        return resp;
+      });
+    },
     updateProfile: function (entry) {
       return $http({
         method: 'PUT',

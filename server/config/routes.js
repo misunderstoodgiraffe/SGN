@@ -24,6 +24,7 @@ module.exports = function (app, express) {
   app.put('/users/profile', userdb.updateProfile);
   app.post('/users/steam', userdb.updateSteamProfile);
   app.get('/users/steam', userdb.getSteamProfile);
+  app.post('/users/friends', userdb.addFriend);
 
 
   //STEAM API ENDPOINTS
