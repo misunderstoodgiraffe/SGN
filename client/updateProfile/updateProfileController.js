@@ -81,16 +81,19 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     SGNRequests.updateSteamProfile(steamAccount);
 
     //update 'friends' table.
-    var friends = $scope.friendsList;
-    for (var i = 0; i < friends.length; i++) {
-      var userRelation = {
-        user1: { id: $scope.ourID },
-        user2: { id: friends[i].userID },
+    if (friends) {
+      var friends = $scope.friendsList;
+      for (var i = 0; i < friends.length; i++) {
+        var userRelation = {
+          user1: { id: $scope.ourID },
+          user2: { id: friends[i].userID },
+        }
+        SGNRequests.addFriend(userRelation, function (res) {
+          console.log(res);
+        });
       }
-      SGNRequests.addFriend(userRelation, function (res) {
-        console.log(res);
-      });
     }
+
 
     //check and add relevant friends on the network to your friends list.
     $location.path('/home');
