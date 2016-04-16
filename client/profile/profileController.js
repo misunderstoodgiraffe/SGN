@@ -16,6 +16,14 @@ angular.module('SGN.profile', ['SGN.requests'])
     //bio
     //list of friends
     //list of games they own.
+  },
+  $scope.getUserFriends = function () {
+    console.log('calling getUserFriends');
+    SGNRequests.getFriends(function (res) {
+      $scope.friends = res.data;
+      console.log(res.data);
+    });
   }
-  //getUserProfile()  //get info when the controller is initialized.
+
+  $scope.getUserFriends();
 });
