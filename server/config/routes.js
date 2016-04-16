@@ -17,7 +17,9 @@ module.exports = function (app, express) {
   app.get('/oauth/redirect', OAuth.redirect(function(result, req, res) {
     return fbController.getFacebookData(result, req, res);
   }));
-  app.get('/signin', OAuth.auth('facebook', 'http://localhost:3000/oauth/redirect'));
+  // app.get('/signin', OAuth.auth('facebook', 'http://localhost:3000/oauth/redirect'));
+  app.get('/signin', OAuth.auth('facebook', 'http://52.33.10.174:3000/oauth/redirect'));
+
   app.get('/signout', userdb.signout);
   app.get('/users/profile', userdb.getProfile);
   app.get('/users/friends', userdb.getFriends);
