@@ -89,6 +89,14 @@ angular.module('SGN.requests', [])
         callback (resp);
       });
     },
+    getGameInfo: function(gameID, callback) {
+      return $http({
+        method: 'GET',
+        url: '/getGameInfo?gameID=' + gameID
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
 
     //OUR DB STEAM CALLS
     getSteamDBProfile: function(steamID, callback) {
