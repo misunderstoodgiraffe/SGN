@@ -36,13 +36,13 @@ angular.module('SGN.login', [])
 angular.module('SGN.requests', [])
 .factory('SGNRequests', function($http) {
   return {
-    getFriends: function (entry) {
+    //OUR MAIN DB CALLS.
+    getFriends: function (callback) {
       return $http({
         method: 'GET',
-        url: '/getFriends',
-        data: entry
+        url: '/users/friends'
       }).then(function(resp) {
-        return resp;
+        callback(resp);
       });
     },
     addFriend: function (entry) {
@@ -64,7 +64,7 @@ angular.module('SGN.requests', [])
       });
     },
 
-    //STEAM api calls
+    //STEAM API CALLS
     getSteamProfile: function (steamID, callback) {
       return $http({
         method: 'GET',
@@ -90,7 +90,7 @@ angular.module('SGN.requests', [])
       });
     },
 
-    //our DB STEAM calls
+    //OUR DB STEAM CALLS
     getSteamDBProfile: function(steamID, callback) {
       return $http({
         method: 'GET',

@@ -15,17 +15,25 @@ module.exports = function (app, express) {
       next();
     }
   });
+
+  //OAUTH handling
   app.get('/oauth/redirect', OAuth.redirect(function(result, req, res) {
     return fbController.getFacebookData(result, req, res);
   }));
   app.get('/signin', OAuth.auth('facebook', key.HOST + '/oauth/redirect'));
   app.get('/signout', userdb.signout);
+  
+  //USERS table
   app.get('/users/profile', userdb.getProfile);
-  app.get('/users/friends', userdb.getFriends);
   app.put('/users/profile', userdb.updateProfile);
-  app.post('/users/steam', userdb.updateSteamProfile);
-  app.get('/users/steam', userdb.getSteamProfile);
+  
+  //FRIENDS table
+  app.get('/users/friends', userdb.getFriends);
   app.post('/users/friends', userdb.addFriend);
+  
+  //STEAM table
+  app.get('/users/steam', userdb.getSteamProfile);
+  app.post('/users/steam', userdb.updateSteamProfile);
 
 
   //STEAM API ENDPOINTS
