@@ -27,18 +27,21 @@
 			  <button ng-click="steamFetchProfile(steamID)" class="btn btn-default">Fetch Profile</button>
 			  <br>
 			  <br>
-			  {{confirmation}}
-			  <br>
-			  <img class='steam-avatar' ng-src='{{steamAvatar}}'> </img>
-			  <h3>{{steamUsername}}</h3>
-
-
-				<button ng-click="steamFetchFriends()" class="btn btn-default">Fetch Friends List!~</button>
-
+			  <div>
+				  <img class='steam-avatar' ng-src='{{steamAvatar}}'> </img>
+				  <div class='steam-username'>
+					  <h3>{{steamUsername}}</h3>
+					  <h5>{{steamOnline}}</h5>
+				  </div>
+			  </div>
 				<div class='profile-container' ng-repeat='friend in friendsProfiles'>
+					<h4> Friends List </h4>
 					<div class='friend-profiles'>
-						<img ng-src='{{friend.avatar}}'> </img>
-						<h5>{{friend.personaname}}</h5>
+						<img class='friend-avatar' ng-src='{{friend.avatar}}'> </img>
+						<div class=''>
+							<h6>{{friend.personaname}}</h6>
+							<h6>{{stateConversion[friend.personastate]}}</h6>
+				    </div>
 				  </div>
 				</div>
 				<!-- FOR TESTING PURPOSES ONLY -->

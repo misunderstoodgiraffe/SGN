@@ -1,6 +1,15 @@
 angular.module('SGN.updateProfile', ['SGN.requests'])
 .controller('UpdateProfileController', function ($scope, $location, SGNRequests, $http) {
   $scope.friends = {};
+  $scope.stateConversion = [
+  'Offline',
+  'Online', 
+  'Busy', 
+  'Away', 
+  'Snooze', 
+  'looking to trade', 
+  'looking to play.'
+  ];
   //fetch profile information from the DATABASE
   $scope.getUserInfo = function () {
     $http({
@@ -22,9 +31,12 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     $scope.confirmation = "Is this you?";
     SGNRequests.getSteamProfile($scope.steamID, function (res) {
       var steamData = res.data.response.players[0];
+      $scope.steamState = steamData.personastate;
+      $scope.steamOnline = $scope.stateConversion[$scope.steamState];
       $scope.steamUsername = steamData.personaname;
       $scope.steamAvatar = steamData.avatarmedium;
     });
+    $scope.steamFetchFriends();
   };
 
   //compiles a list of all steam friends that are on our network.
@@ -59,7 +71,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   };
 
 
-  //UPDATE the database with newly entered information.
+  //Handels all UPDATES to the database with newly entered information.
   $scope.updateProfile = function () {
     //update 'user' table.
     var userInfo = {
