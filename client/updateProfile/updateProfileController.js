@@ -42,23 +42,26 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
 
   //compiles a list of all steam friends that are on our network.
   $scope.steamFetchFriends = function (steamID) {
+    $scope.friendsList = [];
+    $scope.friendsProfiles = [];
     SGNRequests.getSteamFriends($scope.steamID, function (res) {
       var steamFriends = res.data.friendslist.friends;
       for (var i = 0; i < steamFriends.length; i++) {
-        var targetAccount = steamFriends[i].steamid;
-        SGNRequests.getSteamDBProfile(targetAccount, function (res) {
-          if (res.status === 200) {
-            $scope.friendsList = [res.data] ||
-            $scope.friendsList.push(res.data);
-            //fetch friend profile information from steam
-            SGNRequests.getSteamProfile(res.data.steamID, function (res) {
-              var profile = res.data.response.players[0];
-              $scope.friendsProfiles = [profile] ||
-              $scope.friendsProfiles.push(profile);
-              console.log(res);
-            });
-          }
-        });
+        // (function() {
+          var targetAccount = steamFriends[i].steamid;
+          SGNRequests.getSteamDBProfile(targetAccount, function (res) {
+            if (res.status === 200) {
+              console.log('steamID = ', res.data.steamID);
+              $scope.friendsList.push(res.data);
+              //fetch friend profile information from steam
+              SGNRequests.getSteamProfile(res.data.steamID, function (res) {
+                var profile = res.data.response.players[0];
+                $scope.friendsProfiles.push(profile);
+                console.log(res);
+              });
+            }
+          });
+        // })();
       };
     });
   };
