@@ -15,6 +15,22 @@ body {
   margin: auto;
 }
 
+.friends-container {
+  display: flex;
+}
+
+.friend-profile {
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  margin: 5px;
+  float: left;
+}
+
+
 .tags {
   display: flex;
 }
