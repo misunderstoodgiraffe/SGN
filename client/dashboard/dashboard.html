@@ -5,9 +5,12 @@
 	  <h1> Welcome to your Dashboard! </h1>
 		<div class='dash-container'>
 			<h2> Online </h2>
-			<div ng-repeat='profile in friends'>
-			  <h5>{{profile.username}} </h5>
-			  <img ng-src='{{profile.avatar}}'> </img>
+			<div class='online-friends' ng-repeat='profile in friends'>
+				
+				<div class='friend-profile'>
+				  <h5>{{profile.username}} </h5>
+				  <img ng-src='{{profile.avatar}}'> </img>
+			  </div>
 			</div> 
 		</div>
 		<div class='dash-container'>

@@ -15,12 +15,14 @@
 				  <a href='#/gamesProfile'><h2> Games </h2></a>
 			  </div>
 			</div>
-				<div ng-repeat='profile in friends'>
-				  <h5>{{profile.username}} </h5>
-				  <img ng-src='{{profile.avatar}}'> </img>
+			<div class='friends-container'>
+				<div class='friends-list' ng-repeat='profile in friends'>
+					<div class='friend-profile'>
+					  <h5>{{profile.username}} </h5>
+					  <img ng-src='{{profile.avatar}}'> </img>
+				  </div>
 				</div>
 			</div>
-
-		</div>
+		 </div>
 	</div>
 </div>
