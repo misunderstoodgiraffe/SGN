@@ -1,5 +1,13 @@
 body {
-	background-color: #333;
+  background-color: #333;
+}
+
+.profile-container {
+  padding: 10px;
+}
+
+.profile {
+  border-radius: 5px;
 }
 
 .steam-avatar {
@@ -30,13 +38,20 @@ body {
   border-radius: 5px;
 }
 
-.profile-container {
-  padding: 10px;
+.game-div {
+  float: left;
+  width: 50%;
 }
 
-.profile {
-  border-radius: 5px;
+.game-name {
+  width: 90%;
 }
+
+.game-img {
+  height: 90%;
+  width: 90%;
+}
+
 .form-container  {
 	background-color: #ccc;
   display: table;

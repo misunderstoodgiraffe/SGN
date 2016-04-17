@@ -90,7 +90,7 @@ angular.module('SGN.requests', [])
       });
     },
     getGameInfo: function(gameID, callback) {
-      return $http({
+      $http({
         method: 'GET',
         url: '/getGameInfo?gameID=' + gameID
       }).then(function(resp) {

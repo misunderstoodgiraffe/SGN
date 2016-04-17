@@ -1,9 +1,14 @@
 angular.module('SGN.dashboard', [])
-.controller('DashboardController', function (facebookService, $scope, $location) {
+.controller('DashboardController', function (facebookService, $scope, $location, SGNRequests) {
   $scope.friends = {};
-  $scope.go = function () {
-    $location.path('/new');
-  };
+  $scope.getUserFriends = function () {
+    console.log('calling getUserFriends');
+    SGNRequests.getFriends(function (res) {
+      $scope.friends = res.data;
+      console.log(res.data);
+    });
+  }
+  $scope.getUserFriends();
 });
 
 
