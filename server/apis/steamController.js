@@ -29,7 +29,6 @@ var getPlayerData = function(req, res) {
 
 var getAllFriends = function(req, res) {
   var steamID = req.query.steamID;
-  var body = '';
   var getAllFriendsLink = 'http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
   request.get(getAllFriendsLink, function(err, response) {
     if(err){
@@ -42,28 +41,38 @@ var getAllFriends = function(req, res) {
 
 
 var getRecentGames = function (steamID) {
-  var body = '';
+  var steamID = req.query.steamID;
   var recentGamesLink = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
-  request.get(recentGamesLink)
-  .on('data', function(data) {
-    body += data;
-  })
-  .on('end', function (){
-    console.log(body);
+  request.get(recentGamesLink, function(err, response) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(response.body);
+    }
   });
 };
 
 var getAllGames = function(req, res) {
   var steamID = req.query.steamID;
-  var body = '';
   var allGameData = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
-  request.get(allGameData)
-  .on('data', function(data) {
-    body += data;
-  })
-  .on('end', function (){
-    console.log(body);
-    res.send(body);
+  request.get(playerData, function(err, response) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(response.body);
+    }
+  });
+};
+
+var getGameInfo = function(req, res) {
+  var gameID = req.query.gameID;
+  var gameInfo = 'http://store.steampowered.com/api/appdetails?appids=' + gameID;
+  request.get(gameInfo, function(err, response) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(response.body);
+    }
   });
 };
 
@@ -82,7 +91,8 @@ module.exports = {
   getPlayerData: getPlayerData,
   getAllFriends: getAllFriends,
   getRecentGames: getRecentGames,
-  getAllGames: getAllGames
+  getAllGames: getAllGames,
+  getGameInfo: getGameInfo
 };
 
 
