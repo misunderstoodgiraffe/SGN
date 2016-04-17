@@ -37,6 +37,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       $scope.steamAvatar = steamData.avatarmedium;
     });
     $scope.steamFetchFriends();
+    $scope.steamFetchGames();
   };
 
   //compiles a list of all steam friends that are on our network.
@@ -63,10 +64,29 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   };
   $scope.steamFetchGames = function () {
     var steamID = $scope.steamID;
+    $scope.gamesList = [];
+    var gameIDs;
     SGNRequests.getSteamGames(steamID, function (res) {
-      console.log(res);
-      $scope.gamesList = res.data.response.games ||
+      gameIDs = res.data.response.games ||
       null;
+    }).then(function () {
+      if (gameIDs) {
+        gameIDs.sort(function (a, b) {
+          return b.playtime_forever - a.playtime_forever;
+        })
+        console.log(gameIDs);
+        var numberOfGames = gameIDs.length > 10 ? 10: gameIDs.length;
+        for (var i = 0; i < numberOfGames; i++) {
+          //put into an IIFE to fix appid bug 
+          (function() {
+          var game = gameIDs[i];
+          SGNRequests.getGameInfo(game.appid, function(res) {
+            console.log(res.data[game.appid].data);
+            $scope.gamesList.push(res.data[game.appid].data);
+          });
+          })();
+        }
+      }
     });
   };
 

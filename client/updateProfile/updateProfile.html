@@ -38,18 +38,21 @@
 					<h4> Friends List </h4>
 					<div class='friend-profiles'>
 						<img class='friend-avatar' ng-src='{{friend.avatar}}'> </img>
-						<div class=''>
+						<div class='friend-state'>
 							<h6>{{friend.personaname}}</h6>
 							<h6>{{stateConversion[friend.personastate]}}</h6>
 				    </div>
 				  </div>
 				</div>
-				<!-- FOR TESTING PURPOSES ONLY -->
-				<!-- <pre> {{friendsProfiles | json}} </pre> -->
-				
-				<button ng-click="steamFetchGames()" class="btn btn-default">Fetch Games List!</button>
-				<pre> {{gamesList | json}} </pre>
-
+				<div class='games-list' ng-repeat='game in gamesList'>
+					<div class='game-div'>
+						<img class='game-img' ng-src='{{game.header_image}}'> </img>
+						<div class='game-info'>
+							<h6>{{game.name}}</h6>
+							<h6>{{}}</h6>
+				    </div>
+				  </div>
+				</div>
 
 				<!-- END TESTING STUFF -->
 

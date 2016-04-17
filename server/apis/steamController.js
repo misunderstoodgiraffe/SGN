@@ -54,8 +54,9 @@ var getRecentGames = function (steamID) {
 
 var getAllGames = function(req, res) {
   var steamID = req.query.steamID;
+  console.log(steamID);
   var allGameData = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=' + key.STEAM + '&steamid=' + steamID;
-  request.get(playerData, function(err, response) {
+  request.get(allGameData, function(err, response) {
     if(err){
       res.status(500).send(err);
     } else {
