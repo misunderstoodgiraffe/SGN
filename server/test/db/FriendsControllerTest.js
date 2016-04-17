@@ -69,7 +69,7 @@ describe('Users Controller', function() {
 
   });
 
-  it('Should retrive a user\'s friend from the friend table', function(done) {
+  it('Should retrive a user\'s friends from the friend table', function(done) {
     UsersController.getOneUser({fbID: '123456'}, function(error, firstUser) {
       UsersController.getOneUser({fbID: '126'}, function(error, secondUser) {
         UsersController.getOneUser({fbID: '3456'}, function(error, thirdUser) {
