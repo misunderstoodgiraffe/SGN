@@ -43,9 +43,13 @@ body {
   width: 50%;
 }
 
+.game-name {
+  width: 90%;
+}
+
 .game-img {
-  height: 80%;
-  width: 80%;
+  height: 90%;
+  width: 90%;
 }
 
 .form-container  {
