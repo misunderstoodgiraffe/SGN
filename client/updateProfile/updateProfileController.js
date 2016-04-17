@@ -81,7 +81,6 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
           (function() {
           var game = gameIDs[i];
           SGNRequests.getGameInfo(game.appid, function(res) {
-            console.log(res.data[game.appid].data);
             $scope.gamesList.push(res.data[game.appid].data);
           });
           })();
@@ -113,8 +112,8 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     SGNRequests.updateSteamProfile(steamAccount);
 
     //update 'friends' table.
+    var friends = $scope.friendsList;
     if (friends) {
-      var friends = $scope.friendsList;
       for (var i = 0; i < friends.length; i++) {
         var userRelation = {
           user1: { id: $scope.ourID },
