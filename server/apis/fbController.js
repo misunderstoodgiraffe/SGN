@@ -30,7 +30,6 @@ module.exports = {
 
             // New user
           } else {
-            console.log(req.session.oauth.facebook.access_token);
             var token = jwt.encode(user, 'secret');
             req.session.userJwtToken = token;
             // !! Redirect to create profile page not home !! //
