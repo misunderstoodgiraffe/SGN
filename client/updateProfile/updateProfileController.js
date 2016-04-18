@@ -117,11 +117,12 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         gameID: gamesList[i].steam_appid,
         name: gamesList[i].name
       };
+      console.log(game);
       SGNRequests.addDBSteamGame(game, function(res) {
         console.log(res);
       });
     }
-    $scope.saveUserGameRelation();
+    // $scope.saveUserGameRelation();
   };
 
   $scope.saveUserGameRelation = function () {

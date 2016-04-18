@@ -110,7 +110,7 @@ angular.module('SGN.requests', [])
     addDBSteamGame: function (game, callback) {
       return $http({
         method: 'POST',
-        url: '/users/games',
+        url: '/steam/games',
         data: game
       }).then(function(resp) {
         callback (resp);
