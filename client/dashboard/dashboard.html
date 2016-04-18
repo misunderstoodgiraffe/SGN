@@ -4,8 +4,8 @@
 
 	  <h1> Welcome to your Dashboard! </h1>
 		<div class='dash-container'>
-			<h2> Online </h2>
-			<div class='online-friends' ng-repeat='profile in friends'>
+			<h2> FRIENDS </h2>
+			<div class='friends' ng-repeat='profile in friends'>
 				
 				<div class='friend-profile'>
 				  <h5>{{profile.username}} </h5>
@@ -14,9 +14,10 @@
 			</div> 
 		</div>
 		<div class='dash-container'>
-			<h2> Offline </h1>
-			<div> 
-				users 
+			<h2> GAMES </h2>
+			<div class='games' ng-repeat='game in games'>
+				<h5>{{game.name}} </h5>
+				<img ng-src='{{game.image}}'></img>
 			</div>
 		</div>
 

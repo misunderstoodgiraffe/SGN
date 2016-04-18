@@ -1,6 +1,7 @@
 angular.module('SGN.dashboard', [])
 .controller('DashboardController', function (facebookService, $scope, $location, SGNRequests) {
   $scope.friends = {};
+  $scope.games = {};
   $scope.getUserFriends = function () {
     console.log('calling getUserFriends');
     SGNRequests.getFriends(function (res) {
@@ -9,6 +10,13 @@ angular.module('SGN.dashboard', [])
     });
   }
   $scope.getUserFriends();
+
+  $scope.getGames = function() {
+    SGNRequests.getSteamGames(null, function(games) {
+      $scope.games = games;
+    });
+  }
+  $scope.getGames();
 });
 
 
