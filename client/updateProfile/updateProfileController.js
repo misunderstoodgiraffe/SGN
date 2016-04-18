@@ -1,14 +1,21 @@
+var escapeHTML = function(str) {
+ var div = document.createElement('div');
+ div.appendChild(document.createTextNode(str));
+ return div.innerHTML;
+};
+
+
 angular.module('SGN.updateProfile', ['SGN.requests'])
 .controller('UpdateProfileController', function ($scope, $location, SGNRequests, $http) {
   $scope.friends = {};
   //Steam status number to string state conversion.
   $scope.stateConversion = [
   'Offline',
-  'Online', 
-  'Busy', 
-  'Away', 
-  'Snooze', 
-  'looking to trade', 
+  'Online',
+  'Busy',
+  'Away',
+  'Snooze',
+  'looking to trade',
   'looking to play.'
   ];
   //fetch profile information from the DATABASE
@@ -52,13 +59,11 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
           var targetAccount = steamFriends[i].steamid;
           SGNRequests.getSteamDBProfile(targetAccount, function (res) {
             if (res.status === 200) {
-              console.log('steamID = ', res.data.steamID);
               $scope.friendsList.push(res.data);
               //fetch friend profile information from steam
               SGNRequests.getSteamProfile(res.data.steamID, function (res) {
                 var profile = res.data.response.players[0];
                 $scope.friendsProfiles.push(profile);
-                console.log(res);
               });
             }
           });
@@ -78,7 +83,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       if (gameIDs) {
         gameIDs.sort(function (a, b) {
           return b.playtime_forever - a.playtime_forever;
-        })
+        });
         console.log(gameIDs);
         var numberOfGames = gameIDs.length > 20 ? 20: gameIDs.length;
         for (var i = 0; i < numberOfGames; i++) {
@@ -109,12 +114,10 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       //create game object
       var game = {
         image: gamesList[i].header_image,
-        gameID: gamesList[i].steam_appid, 
+        gameID: gamesList[i].steam_appid,
         name: gamesList[i].name
       };
-      console.log(game);
       SGNRequests.addDBSteamGame(game, function(res) {
-        console.log(res);
       });
     }
   };
@@ -126,9 +129,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         userID: $scope.ourID,
         gameID: gamesList[i].steam_appid,
       };
-      console.log(relation);
       SGNRequests.addUserGameRelation(relation, function(res) {
-        console.log(res);
       });
     }
   };
@@ -138,9 +139,9 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     //update 'user' table.
     var userInfo = {
       fbID: $scope.fbID,
-      username: $scope.username,
-      email: $scope.email,
-      givenName: $scope.givenName
+      username: escapeHTML($scope.username),
+      email: escapeHTML($scope.email),
+      givenName: escapeHTML($scope.givenName)
     };
     SGNRequests.updateProfile(userInfo);
 
@@ -148,10 +149,10 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     //update 'steam' table.
     var steamAccount = {
       userID: $scope.ourID,
-      steamID: $scope.steamID,
+      steamID: escapeHTML($scope.steamID),
       username: $scope.steamUsername,
       avatar: $scope.steamAvatar
-    }
+    };
     SGNRequests.updateSteamProfile(steamAccount);
 
     //update 'friends' table.
@@ -161,9 +162,8 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         var userRelation = {
           user1: { id: $scope.ourID },
           user2: { id: friends[i].userID },
-        }
+        };
         SGNRequests.addFriend(userRelation, function (res) {
-          console.log(res);
         });
       }
     }
