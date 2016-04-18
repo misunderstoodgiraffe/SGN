@@ -49,12 +49,32 @@ GET: ‘/success’ -> Home
 GET: ‘/fail’ -> Sign In
 
 # DB STRUCTURE:
--relational: mysql?
-Users
-  -FB profile info
-  -Steam profile info
-  -Friends
-  -Last login
+mySQL.
+
+Structure is in db/schema.sql
+
+#IMPORTANT THINGS THAT WILL HELP:
+----DATABASE----
+It won't run without starting mysql server:
+'mysql.server start'
+
+run the db:
+'mysql -u root -p < server/db/schema.sql'
+
+for testing: 
+if you need to reinput data, you can rerun 
+'mysql -u root -p < server/db/schema.sql' to automatically drop/reimplement database.
+
+----KEYS----
+You're going to need your own keys.js file. Rename it to keys.js and update the information in server/config/keys.js to make runs
+
+----WELCOME----
+Our welcome/landing page is a STATIC html page. After people log in using fb oauth, it will redirect to a angular page that looks basically exactly the same. Reason because can't save state on the client side, can only save on the server. By having a different welcome page, we give them 2 routes to go to, either log in or angular site.
+
+Throwing that out there just in case.
+
+tl;dr => welcome/landing page === static, logging into fb => access to angular
+
 
 #FILE SYSTEM:
 -client
@@ -83,12 +103,20 @@ User sign-up:
 -Navigates to Home.
 -Shows online/offline friends
 
-User Update:
--clicking on fb picture on top left corner brings to profile page
--"edit" edits your profile.
+Dashboard:
+-FRIENDS:
+  -display your friends that are online/offline
+-GAMES:
+  -display all the games you own on steam
 
-Nav: Find Friends | Gaming News
-Home: Friends Activity (based on last login) -> Profiles
+
+User Update:
+-Clicking on your fb profile picture on the left
+-edits your profile.
+-fetch profile button: retrieves avatar + gamer tag + list of 10 games
+-save game data: saves the game data that you retrieved into the DB
+-save: saves the inputted data into db (steamId, email, given name, username)
+
 
 User login:
 User Login button -> Sign in w/ FB -> Navigate to Home
