@@ -1,4 +1,6 @@
 var Users = require('../db/UsersController.js');
+var Games = require('../db/GamesController.js');
+var UsersGames = require('../db/UsersGamesController.js');
 var Friends = require('../db/FriendsController.js');
 var Steam = require('../db/SteamController.js')
 var jwt = require('jwt-simple');
@@ -71,17 +73,6 @@ module.exports = {
       }
     });
   },
-  addSteamGame: function(req, res, next) {
-    // var user = jwt.decode(req.session.userJwtToken, 'secret');
-    console.log('REQUEST BODY IS', req.query);
-    Steam.getSteam(req.query, function(err, response) {
-      if (err) {
-        res.status(204).send('user not found');
-      } else {
-        res.status(200).send(response);
-      }
-    });
-  },
   getSteamGame: function(req, res, next) {
     // var user = jwt.decode(req.session.userJwtToken, 'secret');
     console.log('REQUEST BODY IS', req.query);
@@ -93,6 +84,40 @@ module.exports = {
       }
     });
   },
+
+  //INTERACTS WITH OUR GAMES TABLE IN DB
+  addSteamGame: function(req, res, next) {
+    Games.addGame(req.body, function(err, response) {
+      if (err) {
+        res.status(204).send('user not found');
+      } else {
+        res.status(200).send(response);
+      }
+    });
+  },
+
+  //INTERACTS WITH OUR USERGAMES TABES IN DB
+  getUserGameRelation: function(req, res, next) {
+    console.log('-------NEW GAME RELATION TO BE ADDED---------', req.body);
+    // UsersGames.addUserGame(req.body, function(err, response) {
+    //   if (err) {
+    //     res.status(204).send('user not found');
+    //   } else {
+    //     res.status(200).send(response);
+    //   }
+    // });
+  },
+  addUserGameRelation: function(req, res, next) {
+    console.log('-------NEW GAME RELATION TO BE ADDED---------', req.body);
+    UsersGames.addUserGame(req.body, function(err, response) {
+      if (err) {
+        res.status(204).send('user not found');
+      } else {
+        res.status(200).send(response);
+      }
+    });
+  },
+
   signout: function(req, res, next) {
     req.session.destroy();
     res.redirect('/');

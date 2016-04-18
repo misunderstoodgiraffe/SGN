@@ -97,9 +97,41 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     });
   };
 
+  // id INT AUTO_INCREMENT PRIMARY KEY,
+  // gameID VARCHAR(255) NOT NULL UNIQUE,
+  // name VARCHAR(255),
+  // image VARCHAR(255)
+
   $scope.saveGames = function () {
     console.log($scope.gamesList);
-  }
+    var gamesList = $scope.gamesList;
+    for (var i = 0; i < gamesList.length; i++) {
+      //create game object
+      var game = {
+        image: gamesList[i].header_image,
+        gameID: gamesList[i].steam_appid, 
+        name: gamesList[i].name
+      };
+      console.log(game);
+      SGNRequests.addDBSteamGame(game, function(res) {
+        console.log(res);
+      });
+    }
+  };
+
+  $scope.saveUserGameRelation = function () {
+    var gamesList = $scope.gamesList;
+    for (var i = 0; i < gamesList.length; i++) {
+      var relation = {
+        userID: $scope.ourID,
+        gameID: gamesList[i].steam_appid,
+      };
+      console.log(relation);
+      SGNRequests.addUserGameRelation(relation, function(res) {
+        console.log(res);
+      });
+    }
+  };
 
   //Handels all UPDATES to the database with newly entered information.
   $scope.updateProfile = function () {

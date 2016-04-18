@@ -99,11 +99,30 @@ angular.module('SGN.requests', [])
     },
 
     //OUR DB STEAM GAMES CALLS
-    addSteamGame: function (game) {
+    getDBSteamGame: function (gameID) {
+      return $http({
+        method: 'GET',
+        url: '/steam/games?gameID=' + gameID
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
+    addDBSteamGame: function (game, callback) {
       return $http({
         method: 'POST',
-        url: '/steam/games',
-        data: entry
+        url: '/users/games',
+        data: game
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
+
+    //OU DB USERGAME RELATION CALLS
+    addUserGameRelation: function (game, callback) {
+      return $http({
+        method: 'POST',
+        url: '/users/games',
+        data: game
       }).then(function(resp) {
         callback (resp);
       });
