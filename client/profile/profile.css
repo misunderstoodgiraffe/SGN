@@ -36,6 +36,16 @@ body {
   float: left;
 }
 
+a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+
 .tags {
   display: flex;
   padding-bottom: -10px;
