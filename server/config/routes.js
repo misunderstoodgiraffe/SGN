@@ -30,6 +30,7 @@ module.exports = function (app, express) {
   //FRIENDS table
   app.get('/users/friends', userdb.getFriends);
   app.post('/users/friends', userdb.addFriend);
+  app.get('/users/addFriends', userdb.findFBFriends);
   
   //STEAM table
   app.get('/users/steam', userdb.getSteamProfile);
