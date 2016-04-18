@@ -101,9 +101,6 @@ module.exports = {
   addUserGameRelation: function(req, res, next) {
     var user = req.body.user;
     var game = req.body.game;
-    console.log('------------------USER INfO!!!!------------');
-    console.log(user.id);
-    console.log(game.steam_appid);
     UsersGames.addUserGame(user, game, function(err, response) {
       if (err) {
         res.status(204).send('user not found');
@@ -122,7 +119,6 @@ module.exports = {
     var user = jwt.decode(req.session.userJwtToken, 'secret');
     fb.getFacebookFriends(req.session, function(err, results) {
       if (err) {
-        console.log('findFBFriends error ---- ', err);
         res.status(500).send();
       } else {
         res.status(202).send();
