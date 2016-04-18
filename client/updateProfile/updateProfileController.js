@@ -24,7 +24,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       method: 'GET',
       url: '/users/profile'
     }).then(function mySucces(response) {
-      $scope.sgnID = response.data.id;  //ourID is the id system for OUR DB.
+      $scope.sgnID = response.data.id;  //sgnID is the id system for OUR DB.
       $scope.username = response.data.username;
       $scope.givenName = response.data.givenName;
       $scope.avatar = response.data.avatar;
