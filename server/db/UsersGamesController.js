@@ -41,7 +41,7 @@ module.exports = {
       if (exists) {
         callback(new Error('User already owns game'), exists.dataValues)
       } else {
-        var newGame = db.UsersGames.create({userID: user.id, gameID: steam_appid})
+        var newGame = db.UsersGames.create({userID: user.id, gameID: game.steam_appid})
         .then(function(newGameOwner) {
           callback(null, newGameOwner.dataValues);
         })

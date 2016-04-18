@@ -109,9 +109,11 @@ module.exports = {
     // });
   },
   addUserGameRelation: function(req, res, next) {
-    console.log('-------NEW GAME RELATION TO BE ADDED---------', req.body);
     var user = req.body.user;
     var game = req.body.game;
+    console.log('------------------USER INfO!!!!------------');
+    console.log(user.id);
+    console.log(game.steam_appid);
     UsersGames.addUserGame(user, game, function(err, response) {
       if (err) {
         res.status(204).send('user not found');
