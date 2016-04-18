@@ -144,7 +144,17 @@ angular.module('SGN.requests', [])
        data: accountInfo
      }).then(function(resp) {
        return resp;
-     }); 
+     });
+    },
+
+
+    getFBFriends: function () {
+      return $http({
+        method: 'GET',
+        url: '/users/addFriends'
+      }).then(function(resp) {
+        return resp;
+      });
     }
 
 
