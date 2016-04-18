@@ -8,7 +8,7 @@ var key = require('./keys.js');
 module.exports = function (app, express) {
   app.get('/', function(req, res, next) {
     if (!req.session.userJwtToken) {
-      res.redirect('/welcome/welcome.html');
+      res.redirect(key.HOST + '/welcome/welcome.html');
       res.end();
     } else {
       // redirect to next url e.g. /#/home
