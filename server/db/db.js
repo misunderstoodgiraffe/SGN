@@ -11,6 +11,7 @@ module.exports.dbConnection = mysql.createConnection({
 module.exports.Users = Users = sql.define('users', {
   fbID: {type: SQL.STRING,
     unique: true},
+  steamID: SQL.STRING,
   username: SQL.STRING,
   email: SQL.STRING,
   givenName: SQL.STRING,
@@ -23,6 +24,8 @@ module.exports.Steam = Steam = sql.define('steam', {
     unique: true},
   steamID: {type: SQL.STRING,
     unique: true},
+  location: SQL.STRING,
+  bio: SQL.STRING,
   username: SQL.STRING,
   avatar: SQL.STRING
 });
