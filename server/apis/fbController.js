@@ -20,12 +20,9 @@ module.exports = {
           if (error) { 
             if (error.message === 'user already exists') { 
               // user is already in database
-              userdb.searchUsers({fbID: me.id}, function(error, users) {
-                var user = users[0];
-                var token = jwt.encode(user, 'secret');
-                req.session.userJwtToken = token;
-                res.redirect(key.HOST + '/#/home');
-              });
+              var token = jwt.encode(user, 'secret');
+              req.session.userJwtToken = token;
+              res.redirect(key.HOST + '/#/home');
             } else {
               // unknown error
               res.send(500, error);
