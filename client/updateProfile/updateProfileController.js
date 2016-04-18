@@ -30,6 +30,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       $scope.avatar = response.data.avatar;
       $scope.email = response.data.email;
       $scope.fbID = response.data.fbID;
+      $scope.steamID = response.data.steamID;
     }, function myError(response) {
       console.log(response);
     });
@@ -145,7 +146,8 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       fbID: $scope.fbID,
       username: escapeHTML($scope.username),
       email: escapeHTML($scope.email),
-      givenName: escapeHTML($scope.givenName)
+      givenName: escapeHTML($scope.givenName),
+      steamID: escapeHTML($scope.steamID)
     };
     SGNRequests.updateProfile(userInfo);
 
