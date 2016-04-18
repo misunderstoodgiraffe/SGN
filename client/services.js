@@ -98,6 +98,17 @@ angular.module('SGN.requests', [])
       });
     },
 
+    //OUR DB STEAM GAMES CALLS
+    addSteamGame: function (game) {
+      return $http({
+        method: 'POST',
+        url: '/steam/games',
+        data: entry
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
+
     //OUR DB STEAM CALLS
     getSteamDBProfile: function(steamID, callback) {
       return $http({
