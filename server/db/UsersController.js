@@ -31,7 +31,10 @@ module.exports = {
     }).catch(function(error) {
       if (error.errors) {
         if (error.errors[0].message === 'fbID must be unique') {
-          callback(new Error('user already exists'), null);
+          db.Users.findOne({where: {fbID: user.fbID}})
+          .then(function(myUser) {
+          callback(new Error('user already exists'), myUser);
+            }).catch(function(err) {callback(err, null)})
         } else {callback(error, null)}
       } else {callback(error, null)}
     });

@@ -36,13 +36,12 @@ module.exports = {
       callback(error, null);
     });
   },
-  addUserGame: function(relation, callback) {
-    console.log(relation);
-    db.UsersGames.findOne({where: relation}).then(function(exists) {
+  addUserGame: function(user, game, callback) {
+    db.UsersGames.findOne({where: {userID: user.id, gameID: game.steam_appid}}).then(function(exists) {
       if (exists) {
         callback(new Error('User already owns game'), exists.dataValues)
       } else {
-        var newGame = db.UsersGames.create(relation)
+        var newGame = db.UsersGames.create({userID: user.id, gameID: steam_appid})
         .then(function(newGameOwner) {
           callback(null, newGameOwner.dataValues);
         })
