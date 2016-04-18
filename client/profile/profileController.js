@@ -10,6 +10,7 @@ angular.module('SGN.profile', ['SGN.requests'])
       $scope.bio      = res.body.bio;
       $scope.friends  = res.body.friends;
       $scope.games    = res.body.games;
+      $scope.steamID  = res.body.steamID;
     });
     //returns username
     //user profile pic
@@ -19,19 +20,18 @@ angular.module('SGN.profile', ['SGN.requests'])
     //list of games they own.
   };
   $scope.getUserFriends = function () {
-    console.log('calling getUserFriends');
     SGNRequests.getFriends(function (res) {
       $scope.friends = res.data;
       console.log(res.data);
     });
   };
   $scope.getUserGames = function () {
-    console.log('getting Users games');
+    console.log('getting Users games', $scope.id);
     SGNRequests.getUserGameRelation($scope.id, function (res){
-      $scope.userGames = res.data;
+      $scope.userGames = res;
       console.log($scope.userGames);
     });
+    console.log('finish getting games!');
   };
-  $scope.getUserGames();
   $scope.getUserFriends();
 });

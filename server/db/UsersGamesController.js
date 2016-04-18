@@ -3,17 +3,23 @@ var Users = require('./UsersController.js');
 var Games = require('./GamesController.js');
 module.exports = {
   getUsersGames: function(user, callback) {
-    db.UsersGames.findAll({where: {userID: user.id}})
+    console.log('fetching games for userID:', user);
+    db.UsersGames.findAll({where: {userID: user.sgnID}})
       .then(function(games) {
         var myGames = [];
-        for (var i in myGames) {
-          Games.getGame({id: myGames[i].gameID}, function(err, game) {
-            if (err) {console.log(err)}
-            users.push(game);
+        for (var i in games) {
+          console.log('GAMES[I] =', games[i].dataValues);
+          Games.getGame({gameID: games[i].dataValues.gameID}, function(err, game) {
+            if (err) {console.log('ERROR', err)}
+            myGames.push(game.dataValues);
+              console.log('adding game to mygamesList', myGames);
+              console.log('myGames.length', myGames.length);
+              console.log('games.length', games.length);
             if (myGames.length === games.length) {
               callback(null, myGames);
             }
-          }).catch(console.log);
+          })
+          //.catch(function () {console.log('this is broken!')});
         };
     }).catch(function(error) {
       callback(error, null);

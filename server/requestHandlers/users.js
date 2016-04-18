@@ -90,13 +90,13 @@ module.exports = {
   //INTERACTS WITH OUR USERGAMES TABES IN DB
   getUserGameRelation: function(req, res, next) {
     console.log('REQUEST QUERY', req.query);
-    // UsersGames.getUsersGames(req.query, function(err, response) {
-    //   if (err) {
-    //     res.status(204).send('user not found');
-    //   } else {
-    //     res.status(200).send(response);
-    //   }
-    // });
+    UsersGames.getUsersGames(req.query, function(err, response) {
+      if (err) {
+        res.status(204).send('user not found');
+      } else {
+        res.status(200).send(response);
+      }
+    });
   },
   addUserGameRelation: function(req, res, next) {
     var user = req.body.user;
