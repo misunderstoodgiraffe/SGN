@@ -118,8 +118,10 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         name: gamesList[i].name
       };
       SGNRequests.addDBSteamGame(game, function(res) {
+        console.log(res);
       });
     }
+    $scope.saveUserGameRelation();
   };
 
   $scope.saveUserGameRelation = function () {
