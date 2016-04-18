@@ -36,13 +36,13 @@ module.exports = {
       callback(error, null);
     });
   },
-  addUserGame: function(user, game, callback) {
-    var entry = {userID: user.id, gameID: game.id}
-    db.UsersGames.findOne({where: entry}).then(function(exists) {
+  addUserGame: function(relation, callback) {
+    console.log(relation);
+    db.UsersGames.findOne({where: relation}).then(function(exists) {
       if (exists) {
         callback(new Error('User already owns game'), exists.dataValues)
       } else {
-        var newGame = db.UsersGames.create(entry)
+        var newGame = db.UsersGames.create(relation)
         .then(function(newGameOwner) {
           callback(null, newGameOwner.dataValues);
         })
@@ -50,3 +50,5 @@ module.exports = {
     }).catch(console.log);
   }
 }
+
+

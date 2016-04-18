@@ -36,8 +36,12 @@ module.exports = function (app, express) {
   app.post('/users/steam', userdb.updateSteamProfile);
 
   //GAMES table
-  app.get('steam/games', userdb.getSteamGame);
-  app.post('steam/games', userdb.addSteamGame);
+  app.get('/steam/games', userdb.getSteamGame);
+  app.post('/steam/games', userdb.addSteamGame);
+
+  //USERSGAMES table
+  app.get('/users/games', userdb.getUserGameRelation);
+  app.post('/users/games', userdb.addUserGameRelation);
 
 
   //STEAM API ENDPOINTS
