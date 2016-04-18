@@ -3,20 +3,20 @@ var SQL = require('sequelize');
 var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
 var db = require('../../db/db.js');
 var UsersController = require('../../db/UsersController.js');
-var FriendsController = require('../../db/FriendsController.js');
+var GamesController = require('../../db/GamesController.js');
 
-describe('Users Controller', function() {
+describe('Users\'s Games Controller', function() {
   var dbConnection;
   db.dbConnection.connect();
 
   beforeEach(function(done) {
     
-    var tablename = 'friends'; // TODO: fill this out
+    var tablename = 'usersGames'; // TODO: fill this out
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
 
-    sql.query('truncate friends', { type: sql.QueryTypes.RAW})
+    sql.query('truncate games', { type: sql.QueryTypes.RAW})
     .then(function(result) {
       sql.query('truncate users', { type: sql.QueryTypes.RAW})
       .then(function(result) {
