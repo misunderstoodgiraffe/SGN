@@ -51,7 +51,11 @@ module.exports = {
   getOneUser: function (user, callback) {
     db.Users.findOne({where: user})
     .then(function(foundUser) {
-      callback(null, foundUser.dataValues);
+      var returnUser = null;
+      if (foundUser) {
+        returnUser = foundUser.dataValues;
+      }
+      callback(null, returnUser);
     }).catch(function(err) {
       callback(err, null);
     });

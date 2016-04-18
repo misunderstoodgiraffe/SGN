@@ -43,12 +43,17 @@ for (var i in fakeUsers.users) {
   myUsers.newUser(fakeUsers.users[i], function(data) {
     users++;
     if (users === 4) {
-      // friendsCheck();
-      // myUsers.updateUser({fbID: '3456', username: 'silonico'}, function(err, response) {
-      //   if (err) {console.log('update error ----', err)};
-      //   console.log('response', response);
-      // });
-      // myDB.searchUsers({id: 1}, console.log)
+      friendsCheck();
+      myUsers.updateProfile({fbID: '3456', username: 'silonico'}, function(err, response) {
+        if (err) {console.log('update error ----', err)};
+        console.log('response', response);
+      });
+      myUsers.searchUsers({id: 1}, function(err, response) {
+        console.log('searchUser ---- ', err, response);
+        myUsers.getOneUser({id: 999999}, function(err, response) {
+          console.log('get non-extising User ---- ', err, response);
+        });
+      });
       addGames();
     }
   });
