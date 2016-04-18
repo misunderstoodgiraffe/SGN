@@ -174,7 +174,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   };
 
   $scope.getFBFriends = function () {
-    SGN.getFBFriends();
+    SGNRequests.getFBFriends();
   }
 
 
