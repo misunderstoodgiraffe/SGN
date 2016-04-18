@@ -2,7 +2,8 @@ var Users = require('../db/UsersController.js');
 var Games = require('../db/GamesController.js');
 var UsersGames = require('../db/UsersGamesController.js');
 var Friends = require('../db/FriendsController.js');
-var Steam = require('../db/SteamController.js')
+var Steam = require('../db/SteamController.js');
+var fb = require('../apis/fbController.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -122,5 +123,27 @@ module.exports = {
     req.session.destroy();
     res.redirect('/');
     res.end();
+  },
+  findFBFriends: function(req, res, next) {
+    var user = jwt.decode(req.session.userJwtToken, 'secret');
+    fb.getFacebookFriends(user, function(err, results) {
+      if (err) {
+        console.log('findFBFriends error ---- ', err);
+        res.status(500).send();
+      } else {
+        res.status(202).send();
+        results.forEach(function(item, index, array) {
+          Users.getOneUser({fbID: item.id}, function(err, ifUser) {
+            if (err) {console.log(err)} else {
+              if (ifUser) {
+                Friends.newFriend(user, ifUser, function(err, added) {
+                  if (err) {console.log(err)} else {console.log(added)};
+                });
+              }
+            }
+          });
+        });
+      }
+    });
   }
 };
