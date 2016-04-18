@@ -128,8 +128,6 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   $scope.saveUserGameRelation = function () {
     var gamesList = $scope.gamesList;
     for (var i = 0; i < gamesList.length; i++) {
-      user.id
-      game.steam_appid
         var user = {id: $scope.sgnID};
         var game = gamesList[i];
       SGNRequests.addUserGameRelation(user, game, function(res) {
