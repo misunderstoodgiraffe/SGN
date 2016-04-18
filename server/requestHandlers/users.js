@@ -132,17 +132,19 @@ module.exports = {
         res.status(500).send();
       } else {
         res.status(202).send();
-        results.forEach(function(item, index, array) {
-          Users.getOneUser({fbID: item.id}, function(err, ifUser) {
-            if (err) {console.log(err)} else {
-              if (ifUser) {
-                Friends.newFriend(user, ifUser, function(err, added) {
-                  if (err) {console.log(err)} else {console.log(added)};
-                });
+        if (results) {
+          results.forEach(function(item, index, array) {
+            Users.getOneUser({fbID: item.id}, function(err, ifUser) {
+              if (err) {console.log(err)} else {
+                if (ifUser) {
+                  Friends.newFriend(user, ifUser, function(err, added) {
+                    if (err) {console.log(err)} else {console.log(added)};
+                  });
+                }
               }
-            }
+            });
           });
-        });
+        }
       }
     });
   }

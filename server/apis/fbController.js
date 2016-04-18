@@ -47,9 +47,9 @@ module.exports = {
 
   //Returns array of names and facebook IDs
   getFacebookFriends: function(session, callback) {
-    request('graph.facebook.com/v2.5/me/friends?access_token=' + session.oauth.facebook.access_token, function (error, response, body) {
+    request('https://graph.facebook.com/v2.5/me/friends?access_token=' + session.oauth.facebook.access_token, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        callback(null, body.data);
+        callback(null, JSON.parse(body).data);
       } else {
         callback(error, null);
       }
