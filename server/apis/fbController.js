@@ -50,8 +50,6 @@ module.exports = {
       } else {
         callback(error, null);
       }
-    })
-
-  },
-
+    });
+  }
 };

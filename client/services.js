@@ -163,7 +163,7 @@ angular.module('SGN.requests', [])
       }).then(function(resp) {
         return resp;
       });
-    }
+    },
 
 
   };
