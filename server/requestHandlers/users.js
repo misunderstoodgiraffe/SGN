@@ -99,8 +99,8 @@ module.exports = {
 
   //INTERACTS WITH OUR USERGAMES TABES IN DB
   getUserGameRelation: function(req, res, next) {
-    console.log('-------NEW GAME RELATION TO BE ADDED---------', req.body);
-    // UsersGames.addUserGame(req.body, function(err, response) {
+    console.log('REQUEST QUERY', req.query);
+    // UsersGames.getUsersGames(req.query, function(err, response) {
     //   if (err) {
     //     res.status(204).send('user not found');
     //   } else {

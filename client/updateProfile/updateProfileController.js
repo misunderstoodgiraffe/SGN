@@ -24,7 +24,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       method: 'GET',
       url: '/users/profile'
     }).then(function mySucces(response) {
-      $scope.ourID = response.data.id;  //ourID is the id system for OUR DB.
+      $scope.sgnID = response.data.id;  //sgnID is the id system for OUR DB.
       $scope.username = response.data.username;
       $scope.givenName = response.data.givenName;
       $scope.avatar = response.data.avatar;
@@ -117,19 +117,22 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         gameID: gamesList[i].steam_appid,
         name: gamesList[i].name
       };
+      console.log(game);
       SGNRequests.addDBSteamGame(game, function(res) {
+        console.log(res);
       });
     }
+    // $scope.saveUserGameRelation();
   };
 
   $scope.saveUserGameRelation = function () {
     var gamesList = $scope.gamesList;
     for (var i = 0; i < gamesList.length; i++) {
-      var relation = {
-        userID: $scope.ourID,
-        gameID: gamesList[i].steam_appid,
-      };
-      SGNRequests.addUserGameRelation(relation, function(res) {
+      user.id
+      game.steam_appid
+        var user = {id: $scope.sgnID}, 
+        var game = gamesList[i];
+      SGNRequests.addUserGameRelation(user, game, function(res) {
       });
     }
   };
@@ -148,7 +151,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     //bug: can only update steamaccount once atm, no put request functionality.
     //update 'steam' table.
     var steamAccount = {
-      userID: $scope.ourID,
+      userID: $scope.sgnID,
       steamID: escapeHTML($scope.steamID),
       username: $scope.steamUsername,
       avatar: $scope.steamAvatar
@@ -160,7 +163,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     if (friends) {
       for (var i = 0; i < friends.length; i++) {
         var userRelation = {
-          user1: { id: $scope.ourID },
+          user1: { id: $scope.sgnID },
           user2: { id: friends[i].userID },
         };
         SGNRequests.addFriend(userRelation, function (res) {
