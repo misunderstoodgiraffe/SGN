@@ -8,7 +8,6 @@ var jwt = require('jwt-simple');
 
 module.exports = {
   getProfile: function(req, res, next) {
-    // console.log(req.session.userJwtToken);
     var user = jwt.decode(req.session.userJwtToken, 'secret');
     Users.getOneUser(user, function(err, profile) {
       if (err) {
@@ -31,7 +30,6 @@ module.exports = {
   addFriend: function(req, res, next) {
     var user1 = req.body.user1;
     var user2 = req.body.user2;
-    console.log('REQUEST BODY!!!!!', req.body); 
     Friends.newFriend(user1, user2, function(err, friend) {
       if (err) {
         console.log(err);
@@ -42,8 +40,6 @@ module.exports = {
     });
   },
   updateProfile: function(req, res, next) {
-    // var user = jwt.decode(req.session.userJwtToken, 'secret');
-    console.log(req.body);
     Users.updateProfile(req.body, function(err, response) {
       if (err) {
         res.status(500).send(err);
@@ -53,8 +49,6 @@ module.exports = {
     });
   },
   updateSteamProfile: function(req, res, next) {
-    // var user = jwt.decode(req.session.userJwtToken, 'secret');
-    console.log(req.body);
     Steam.addSteam(req.body, function(err, response) {
       if (err) {
         res.status(500).send(err);
@@ -64,8 +58,6 @@ module.exports = {
     });
   },
   getSteamProfile: function(req, res, next) {
-    // var user = jwt.decode(req.session.userJwtToken, 'secret');
-    console.log('REQUEST BODY IS', req.query);
     Steam.getSteam(req.query, function(err, response) {
       if (err) {
         res.status(204).send('user not found');
@@ -75,8 +67,6 @@ module.exports = {
     });
   },
   getSteamGame: function(req, res, next) {
-    // var user = jwt.decode(req.session.userJwtToken, 'secret');
-    console.log('REQUEST BODY IS', req.query);
     Steam.getSteam(req.query, function(err, response) {
       if (err) {
         res.status(204).send('user not found');
@@ -111,9 +101,6 @@ module.exports = {
   addUserGameRelation: function(req, res, next) {
     var user = req.body.user;
     var game = req.body.game;
-    console.log('------------------USER INfO!!!!------------');
-    console.log(user.id);
-    console.log(game.steam_appid);
     UsersGames.addUserGame(user, game, function(err, response) {
       if (err) {
         res.status(204).send('user not found');
@@ -132,7 +119,6 @@ module.exports = {
     var user = jwt.decode(req.session.userJwtToken, 'secret');
     fb.getFacebookFriends(req.session, function(err, results) {
       if (err) {
-        console.log('findFBFriends error ---- ', err);
         res.status(500).send();
       } else {
         res.status(202).send();
