@@ -2,26 +2,32 @@ body {
 	background-color: #333;
 }
 
-.nest {
-  background-color: #ccc;
-  margin: 10px;
-  padding: 20px;
-  /*border: 2px solid;*/
-  border-radius: 5px;
+.selected-tag {
+  background-color: #eee;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .outer-container {
+  background-color: #ccc;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
   width: 60%;
   margin: auto;
 }
 
 .friends-container {
+  background-color: #eee;
   display: flex;
+  /*border: 1px solid;*/
+  border-radius: 5px;
+  border-top-left-radius: 0px;
 }
 
 .friend-profile {
   padding: 5px;
-  border: 1px solid;
+  /*border: 1px solid;*/
   border-radius: 5px;
   width: 100px;
   height: 100px;
@@ -30,11 +36,16 @@ body {
   float: left;
 }
 
-
 .tags {
   display: flex;
+  padding-bottom: -10px;
 }
 
 .nav-tag {
-  margin: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.nav-tag h2{
+  margin: 0px;
+  padding: 5px;
 }

@@ -1,6 +1,7 @@
 angular.module('SGN.updateProfile', ['SGN.requests'])
 .controller('UpdateProfileController', function ($scope, $location, SGNRequests, $http) {
   $scope.friends = {};
+  //Steam status number to string state conversion.
   $scope.stateConversion = [
   'Offline',
   'Online', 
@@ -68,6 +69,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   $scope.steamFetchGames = function () {
     var steamID = $scope.steamID;
     $scope.gamesList = [];
+    $scope.topTen = [];
     var gameIDs;
     SGNRequests.getSteamGames(steamID, function (res) {
       gameIDs = res.data.response.games ||
@@ -78,13 +80,16 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
           return b.playtime_forever - a.playtime_forever;
         })
         console.log(gameIDs);
-        var numberOfGames = gameIDs.length > 10 ? 10: gameIDs.length;
+        var numberOfGames = gameIDs.length > 20 ? 20: gameIDs.length;
         for (var i = 0; i < numberOfGames; i++) {
           //put into an IIFE to fix appid bug 
           (function() {
           var game = gameIDs[i];
           SGNRequests.getGameInfo(game.appid, function(res) {
             $scope.gamesList.push(res.data[game.appid].data);
+            if ($scope.topTen.length < 10) {
+              $scope.topTen.push(res.data[game.appid].data);
+            }
           });
           })();
         }
@@ -92,6 +97,9 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     });
   };
 
+  $scope.saveGames = function () {
+    console.log($scope.gamesList);
+  }
 
   //Handels all UPDATES to the database with newly entered information.
   $scope.updateProfile = function () {

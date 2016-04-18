@@ -1,7 +1,7 @@
 <link href="./profile/profile.css" rel="stylesheet">
 <div ng-controller='ProfileController'>
 	<div class='container'>
-		<div class='nest outer-container'>
+		<div class='outer-container'>
 			<img ng-src='{{avatar}}'> </img>
 		  <h2> {{username}} </h2>
 		  <h4> Location {{location}} </h4>
@@ -11,17 +11,18 @@
 				<div class='nav-tag'> 
 			 	  <a href='#/profile'><h2> Friends </h2></a>
 			  </div>
-			  <div class='nav-tag'>
+			  <div class='nav-tag selected-tag'>
 				  <h2> Games </h2>
 			  </div>
 			</div>
-				<div> 
-					Games
+			<div class='games-container'>
+				<div class='games-list' ng-repeat='game in gamesList'>
+					<div class='game-profile'>
+					  <h5>{{game.username}} </h5>
+					  <img ng-src='{{game.avatar}}'> </img>
+				  </div>
 				</div>
 			</div>
-
 		</div>
 	</div>
-</div>
-
 </div>
