@@ -56,7 +56,7 @@ body {
 .form-container  {
 	background-color: #ccc;
   display: table;
-  width: 50%;
+  width: 80%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
   margin: 0 auto;
