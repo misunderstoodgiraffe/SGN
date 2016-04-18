@@ -126,7 +126,7 @@ module.exports = {
   },
   findFBFriends: function(req, res, next) {
     var user = jwt.decode(req.session.userJwtToken, 'secret');
-    fb.getFacebookFriends(user, function(err, results) {
+    fb.getFacebookFriends(req.session, function(err, results) {
       if (err) {
         console.log('findFBFriends error ---- ', err);
         res.status(500).send();
