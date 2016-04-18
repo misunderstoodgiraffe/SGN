@@ -176,7 +176,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
 
 
     //check and add relevant friends on the network to your friends list.
-    $location.path('/home');
+    $location.path('/profile');
   };
 
   $scope.getFBFriends = function () {
