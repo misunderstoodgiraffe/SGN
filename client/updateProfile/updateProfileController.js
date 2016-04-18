@@ -148,7 +148,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     //bug: can only update steamaccount once atm, no put request functionality.
     //update 'steam' table.
     var steamAccount = {
-      userID: $scope.ourID,
+      userID: $scope.sgnID,
       steamID: escapeHTML($scope.steamID),
       username: $scope.steamUsername,
       avatar: $scope.steamAvatar
