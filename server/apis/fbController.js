@@ -1,6 +1,8 @@
 var userdb = require('../db/UsersController.js');
 var jwt = require('jwt-simple');
 var key = require('../config/keys.js');
+var request = require('request');
+
 
 module.exports = {
 
@@ -31,6 +33,7 @@ module.exports = {
 
             // New user
           } else {
+            console.log(req.session.oauth.facebook.access_token);
             var token = jwt.encode(user, 'secret');
             req.session.userJwtToken = token;
             // !! Redirect to create profile page not home !! //
@@ -40,6 +43,18 @@ module.exports = {
         });
       });
     }
+  },
+
+  //Returns array of names and facebook IDs
+  getFacebookFriends: function(session, callback) {
+    request('graph.facebook.com/v2.5/me/friends?access_token=' + session.oauth.facebook.access_token, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        callback(null, body.data);
+      } else {
+        callback(error, null);
+      }
+    })
+
   },
 
 };
