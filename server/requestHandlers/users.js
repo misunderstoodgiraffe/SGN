@@ -82,6 +82,17 @@ module.exports = {
       }
     });
   },
+  getSteamGame: function(req, res, next) {
+    // var user = jwt.decode(req.session.userJwtToken, 'secret');
+    console.log('REQUEST BODY IS', req.query);
+    Steam.getSteam(req.query, function(err, response) {
+      if (err) {
+        res.status(204).send('user not found');
+      } else {
+        res.status(200).send(response);
+      }
+    });
+  },
   signout: function(req, res, next) {
     req.session.destroy();
     res.redirect('/');
