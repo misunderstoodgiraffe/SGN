@@ -117,7 +117,7 @@ angular.module('SGN.requests', [])
       });
     },
 
-    //OU DB USERGAME RELATION CALLS
+    //OUR DB USERGAME RELATION CALLS
     addUserGameRelation: function (game, callback) {
       return $http({
         method: 'POST',

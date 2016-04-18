@@ -110,7 +110,9 @@ module.exports = {
   },
   addUserGameRelation: function(req, res, next) {
     console.log('-------NEW GAME RELATION TO BE ADDED---------', req.body);
-    UsersGames.addUserGame(req.body, function(err, response) {
+    var user = req.body.user;
+    var game = req.body.game;
+    UsersGames.addUserGame(user, game, function(err, response) {
       if (err) {
         res.status(204).send('user not found');
       } else {
