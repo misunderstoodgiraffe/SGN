@@ -24,7 +24,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       method: 'GET',
       url: '/users/profile'
     }).then(function mySucces(response) {
-      $scope.ourID = response.data.id;  //ourID is the id system for OUR DB.
+      $scope.sgnID = response.data.id;  //ourID is the id system for OUR DB.
       $scope.username = response.data.username;
       $scope.givenName = response.data.givenName;
       $scope.avatar = response.data.avatar;
@@ -126,7 +126,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     var gamesList = $scope.gamesList;
     for (var i = 0; i < gamesList.length; i++) {
       var relation = {
-        userID: $scope.ourID,
+        userID: $scope.sgnID,
         gameID: gamesList[i].steam_appid,
       };
       SGNRequests.addUserGameRelation(relation, function(res) {
@@ -160,7 +160,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     if (friends) {
       for (var i = 0; i < friends.length; i++) {
         var userRelation = {
-          user1: { id: $scope.ourID },
+          user1: { id: $scope.sgnID },
           user2: { id: friends[i].userID },
         };
         SGNRequests.addFriend(userRelation, function (res) {

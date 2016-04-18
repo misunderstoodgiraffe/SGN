@@ -127,6 +127,14 @@ angular.module('SGN.requests', [])
         callback (resp);
       });
     },
+    getUserGameRelation: function (sgnID, callback) {
+      return $http({
+        method: 'GET',
+        url: '/users/games?sgnID=' + sgnID,
+      }).then(function(resp) {
+        callback (resp);
+      });
+    },
 
     //OUR DB STEAM CALLS
     getSteamDBProfile: function(steamID, callback) {
