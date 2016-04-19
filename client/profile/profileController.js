@@ -34,4 +34,5 @@ angular.module('SGN.profile', ['SGN.requests'])
     });
   };
   $scope.getUserFriends();
+  $scope.getUserGames();
 });

@@ -60,13 +60,22 @@ a {
   padding: 5px;
 }
 
+.games-container {
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
 .games-list {
   display: flex;
+  background-color: #eee;
 }
 
 .game-profile {
+  background-color: #eee;
+  padding: 10px;
   float: left;
-  /*width: 32%;*/
+  width: 32%;
 }
 
 .game-name {
