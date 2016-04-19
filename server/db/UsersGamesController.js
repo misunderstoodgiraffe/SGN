@@ -8,13 +8,10 @@ module.exports = {
       .then(function(games) {
         var myGames = [];
         for (var i in games) {
-          console.log('GAMES[I] =', games[i].dataValues);
           Games.getGame({gameID: games[i].dataValues.gameID}, function(err, game) {
             if (err) {console.log('ERROR', err)}
             myGames.push(game.dataValues);
-              console.log('adding game to mygamesList', myGames);
-              console.log('myGames.length', myGames.length);
-              console.log('games.length', games.length);
+
             if (myGames.length === games.length) {
               callback(null, myGames);
             }
