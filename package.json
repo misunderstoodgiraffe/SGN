@@ -41,5 +41,13 @@
     "request": "^2.71.0",
     "sequelize": "^3.21.0",
     "supertest": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-plugin-angular": "^1.0.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^5.0.1"
   }
 }
