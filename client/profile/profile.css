@@ -59,3 +59,21 @@ a {
   margin: 0px;
   padding: 5px;
 }
+
+.games-list {
+  display: flex;
+}
+
+.game-profile {
+  float: left;
+  /*width: 32%;*/
+}
+
+.game-name {
+  height: 20px;
+}
+
+.game-img {
+  height: 90%;
+  width: 90%;
+}

@@ -26,12 +26,12 @@ angular.module('SGN.profile', ['SGN.requests'])
     });
   };
   $scope.getUserGames = function () {
-    console.log('getting Users games', $scope.id);
     SGNRequests.getUserGameRelation($scope.id, function (res){
-      $scope.userGames = res;
+      $scope.userGames = res.data;
+    }).then(function () {
       console.log($scope.userGames);
+      console.log('done!');
     });
-    console.log('finish getting games!');
   };
   $scope.getUserFriends();
 });

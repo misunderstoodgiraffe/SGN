@@ -15,13 +15,14 @@
 			  </div>
 			</div>
 			<div class='games-container'>
-				<div class='games-list' ng-repeat='game in gamesList'>
+				<div class='games-list' ng-repeat='game in userGames'>
 					<div class='game-profile'>
-					  <h5>{{game.username}} </h5>
-					  <img ng-src='{{game.avatar}}'> </img>
+					  <h5 class='game-name'>{{game.name}} </h5>
+					  <img class='game-img' ng-src='{{game.image}}'> </img>
 				  </div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<button ng-click='getUserGames()'> </button>
 </div>
