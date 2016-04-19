@@ -2,6 +2,7 @@ var userdb = require('../db/UsersController.js');
 var jwt = require('jwt-simple');
 var key = require('../config/keys.js');
 var request = require('request');
+var Friends = require('../db/FriendsController.js');
 
 //Returns array of names and facebook IDs
 var getFacebookFriends = function(session, callback) {
