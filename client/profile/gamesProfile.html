@@ -4,9 +4,6 @@
 		<div class='outer-container'>
 			<img ng-src='{{avatar}}'> </img>
 		  <h2> {{username}} </h2>
-		  <h4> Location {{location}} </h4>
-		  <h4> Brief Bio {{bio}} </h4>
-		  <a href='#/updateProfile'><button class='btn btn-sm'> Edit </button></a>
 			<div class='tags'>
 				<div class='nav-tag'> 
 			 	  <a href='#/profile'><h2> Friends </h2></a>
@@ -16,13 +13,14 @@
 			  </div>
 			</div>
 			<div class='games-container'>
-				<div class='games-list' ng-repeat='game in gamesList'>
+				<div class='games-list' ng-repeat='game in userGames'>
 					<div class='game-profile'>
-					  <h5>{{game.username}} </h5>
-					  <img ng-src='{{game.avatar}}'> </img>
+					  <h5 class='game-name'>{{game.name}} </h5>
+					  <img class='game-img' ng-src='{{game.image}}'> </img>
 				  </div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<button ng-click='getUserGames()'> </button>
 </div>

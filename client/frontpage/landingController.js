@@ -21,6 +21,7 @@ angular.module('SGN.landing', [])
       method: 'GET',
       url: '/users/profile'
     }).then(function mySucces(response) {
+      $scope.id = response.data.id;
       $scope.username = response.data.username;
       $scope.givenName = response.data.givenName;
       $scope.avatar = response.data.avatar;
