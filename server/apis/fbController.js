@@ -32,7 +32,7 @@ module.exports = {
               // user is already in database
               var token = jwt.encode(user, 'secret');
               req.session.userJwtToken = token;
-              res.redirect(key.HOST + '/#/home');
+              res.redirect(key.HOST + '/#/profile');
             } else {
               // unknown error
               res.status(500).send(error);
