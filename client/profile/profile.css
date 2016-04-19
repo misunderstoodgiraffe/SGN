@@ -64,15 +64,17 @@ a {
   padding: 10px;
   background-color: #eee;
   border-radius: 5px;
+  display: table;
+  width: 100%;
 }
 
 .games-list {
-  display: flex;
+  /*display: table;*/
   background-color: #eee;
 }
 
 .game-profile {
-  background-color: #eee;
+  /*background-color: #eee;*/
   padding: 10px;
   float: left;
   width: 32%;
@@ -86,3 +88,20 @@ a {
   height: 90%;
   width: 90%;
 }
+
+
+/*
+
+.game-div {
+  float: left;
+  width: 50%;
+}
+
+.game-name {
+  height: 20px;
+}
+
+.game-img {
+  height: 90%;
+  width: 90%;
+}*/
