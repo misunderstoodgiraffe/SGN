@@ -54,6 +54,13 @@ mySQL.
 Structure is in db/schema.sql
 
 #IMPORTANT THINGS THAT WILL HELP:
+----GETTING STARTED----
+bower install
+npm install
+get steam API key
+get oauth key 
+update keys.js
+
 ----DATABASE----
 It won't run without starting mysql server:
 'mysql.server start'
@@ -75,13 +82,26 @@ Throwing that out there just in case.
 
 tl;dr => welcome/landing page === static, logging into fb => access to angular
 
+----ROUTES----
+update profile page example route:
+1. type in your info
+2. -> server
+3. -> steam API
+4. -> server
+5. -> client
+6. hit the save games button
+7. -> server
+8. -> save game info in db
+9. hit the save button
+10. -> server
+11. -> save user info in db
 
 #FILE SYSTEM:
 -client
   -aboutus
-  -dashboard
+  -dashboard === profile in the file structure
   -frontpage
-  -profile/updateprofile page
+  -updateprofile
   app.js/index.html
   services
 -server
@@ -124,5 +144,9 @@ User Login button -> Sign in w/ FB -> Navigate to Home
 # Viable Features:
 Chatroom
 Messaging System
-News for most played games
+News for most played games (it's on the steam api)
+Blizzard API
+Riot Games API
+IGN news API
+
   
