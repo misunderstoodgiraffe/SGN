@@ -157,7 +157,8 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       userID: $scope.sgnID,
       steamID: escapeHTML($scope.steamID),
       username: $scope.steamUsername,
-      avatar: $scope.steamAvatar
+      avatar: $scope.steamAvatar,
+      bio: $scope.bio,
     };
     SGNRequests.updateSteamProfile(steamAccount);
 
