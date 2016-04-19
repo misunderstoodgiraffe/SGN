@@ -55,11 +55,14 @@ Structure is in db/schema.sql
 
 #IMPORTANT THINGS THAT WILL HELP:
 ----GETTING STARTED----
-bower install
-npm install
-get steam API key
-get oauth key 
-update keys.js
+-bower install
+-npm install
+-get steam API key
+-get oauth key 
+-update keys.js
+-start database
+-grunt file: grunt server-dev
+
 
 ----DATABASE----
 It won't run without starting mysql server:
@@ -142,11 +145,11 @@ User login:
 User Login button -> Sign in w/ FB -> Navigate to Home
 
 # Viable Features:
-Chatroom
-Messaging System
-News for most played games (it's on the steam api)
-Blizzard API
-Riot Games API
-IGN news API
+-Chatroom
+-Messaging System
+-News for most played games (it's on the steam api)
+-Blizzard API
+-Riot Games API
+-IGN news API
 
   
