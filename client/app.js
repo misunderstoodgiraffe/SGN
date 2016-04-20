@@ -1,7 +1,34 @@
-require('angular');
-require('angular-route');
+/* Import Dependencies*/
+import angular from 'angular';
+import 'angular-route';
+
+/* Import Global Styles */
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/styles.css';
+
+/* Import App Controllers */
+import './frontpage/LandingController';
+import './aboutus/aboutusController';
+import './auth/authController';
+import './dashboard/dashboardController';
+import './profile/profileController';
+import './updateProfile/updateProfileController';
+import './services';
+
+/* Import App Templates */
+import aboutUsTemplate from './aboutus/aboutus.html';
+import dashboardTemplate from './dashboard/dashboard.html';
+import landingTemplate from './frontpage/landing.html';
+import profileTemplate from './profile/profile.html';
+import gamesProfileTemplate from './profile/gamesProfile.html';
+import updateProfileTemplate from './updateProfile/updateProfile.html';
+
+/* Import App Template Styles */
+import './aboutus/aboutus.css';
+import './dashboard/dashboard.css';
+import './frontpage/landing.css';
+import './profile/profile.css';
+import './updateProfile/updateProfile.css';
 
 angular.module('SGN', [
   'SGN.landing',
@@ -13,31 +40,36 @@ angular.module('SGN', [
   'SGN.updateProfile',
   'ngRoute',
 ])
-.config(function ($routeProvider, $httpProvider) {
+.config(($routeProvider) => {
   $routeProvider
     .when('/', {
-      templateUrl: './frontpage/landing.html',
-      controller: 'LandingController'
+      template: landingTemplate,
+      controller: 'LandingController',
+      controllerAs: 'LandingController',
     })
     .when('/home', {
-      templateUrl: './dashboard/dashboard.html',
-      controller: 'DashboardController'
+      template: dashboardTemplate,
+      controller: 'DashboardController',
+      controllerAs: 'DashboardController',
     })
     .when('/updateProfile', {
-      templateUrl: './updateProfile/updateProfile.html',
-      controller: 'UpdateProfileController'
+      template: updateProfileTemplate,
+      controller: 'UpdateProfileController',
+      controllerAs: 'UpdateProfileController',
     })
     .when('/profile', {
-      templateUrl: './profile/profile.html',
-      controller: 'ProfileController'
+      template: profileTemplate,
+      controller: 'ProfileController',
+      controllerAs: 'ProfileController',
     })
     .when('/gamesProfile', {
-      templateUrl: './profile/gamesProfile.html',
-      controller: 'ProfileController'
+      template: gamesProfileTemplate,
+      controller: 'ProfileController',
+      controllerAs: 'ProfileController',
     })
-    .when('/aboutus',{
-      templateUrl: './aboutus/aboutus.html',
-      controller: 'AboutusController'
-    })
+    .when('/aboutus', {
+      template: aboutUsTemplate,
+      controller: 'AboutusController',
+      controllerAs: 'AboutUsController',
+    });
 });
-

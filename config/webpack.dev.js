@@ -21,7 +21,7 @@ module.exports = webpackMerge(commonConfig, {
   devtool: 'cheap-module-eval-source-map',
 
   output: {
-    path: './client/dist',
+    path: './dist',
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -44,7 +44,7 @@ module.exports = webpackMerge(commonConfig, {
       aggregateTimeout: 300,
       poll: 1000,
     },
-    contentBase: './client/dist',
+    contentBase: './dist',
   },
 
 });

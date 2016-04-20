@@ -38,6 +38,10 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss'),
       },
       {
+        test: /\.html$/,
+        loader: 'raw',
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
         loader: 'file',
       },
