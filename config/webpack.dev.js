@@ -1,6 +1,5 @@
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
-const path = require('path');
+const webpackMerge = require('webpack-merge');
+const commonConfig = require('./webpack.common.js');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 
@@ -11,6 +10,8 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   ENV,
 });
 
+console.log('made it to the dev config!!');
+
 module.exports = webpackMerge(commonConfig, {
 
   metadata: METADATA,
@@ -20,9 +21,9 @@ module.exports = webpackMerge(commonConfig, {
   devtool: 'cheap-module-eval-source-map',
 
   output: {
-    path: path.join(__dirname, '..', 'client', 'dist'),
+    path: './client/dist',
     filename: 'bundle.js',
-    publicPath: path.join(__dirname, '..', 'client', 'dist'),
+    publicPath: '/',
   },
 
   plugins: [
@@ -43,7 +44,7 @@ module.exports = webpackMerge(commonConfig, {
       aggregateTimeout: 300,
       poll: 1000,
     },
-    contentBase: './client',
+    contentBase: './client/dist',
   },
 
 });

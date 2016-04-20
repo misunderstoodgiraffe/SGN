@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -7,15 +9,19 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.css'],
     root: path.resolve('../client'),
     modulesDirectories: ['node_modules'],
   },
 
   module: {
 
-
     preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
     ],
 
     loaders: [
@@ -27,18 +33,23 @@ module.exports = {
           presets: ['es2015'],
         },
       },
-
       {
-        test: /\.js$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/,
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss'),
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        loader: 'file',
       },
     ],
-
   },
 
   plugins: [
-
+    new HtmlWebpackPlugin({
+      template: './client/index.html',
+      inject: 'head',
+    }),
+    new ExtractTextPlugin('[name].css'),
   ],
 
 };

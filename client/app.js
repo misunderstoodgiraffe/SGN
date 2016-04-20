@@ -1,3 +1,8 @@
+require('angular');
+require('angular-route');
+import 'bootstrap/dist/css/bootstrap.css';
+import './styles/styles.css';
+
 angular.module('SGN', [
   'SGN.landing',
   'SGN.auth',
@@ -6,7 +11,7 @@ angular.module('SGN', [
   'SGN.dashboard',
   'SGN.profile',
   'SGN.updateProfile',
-  'ngRoute'
+  'ngRoute',
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
