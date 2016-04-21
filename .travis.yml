@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- '5.8'
+
+apt addons:
+
+before_install:
+
+before_script:
+- npm install -g webpack
+
+script:
+
+after_success:
+
+after_failure:
+
+before_deploy:
+
+deploy:
+
+after_deploy:
+
+after_script:

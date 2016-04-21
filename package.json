@@ -4,7 +4,7 @@
   "description": "hackreactor greenfield project",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "webpack",
     "build": "webpack",
     "start": "webpack-dev-server --hot"
   },
