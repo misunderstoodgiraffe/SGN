@@ -39,12 +39,6 @@
     "express-session": "^1.13.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-test": "^0.12.7",
-    "grunt-nodemon": "^0.4.1",
-    "grunt-shell": "^1.2.1",
     "html-webpack-plugin": "^2.16.0",
     "jwt-simple": "^0.5.0",
     "mocha": "^2.4.5",
@@ -66,6 +60,6 @@
     "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^1.0.0",
     "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^5.0.1"
+    "eslint-plugin-react": "^4.3.0"
   }
 }
