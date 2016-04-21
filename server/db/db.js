@@ -3,9 +3,10 @@ var SQL = require('sequelize');
 var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
 
 module.exports.dbConnection = mysql.createConnection({
-  user: 'root',
-  password: '1234',
-  database: 'SGN'
+  host: 'us-cdbr-iron-east-03.cleardb.net',
+  user: 'b51e9b2736db2d',
+  password: '67169e1d',
+  database: 'heroku_cbec748b3ccbf99',
 });
 
 module.exports.Users = Users = sql.define('users', {

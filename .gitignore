@@ -3,3 +3,4 @@ gitSpy
 server/config/keys.js
 .DS_Store
 dist/
+client/lib/

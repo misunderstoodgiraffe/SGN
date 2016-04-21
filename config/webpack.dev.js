@@ -20,7 +20,7 @@ module.exports = webpackMerge(commonConfig, {
 
   output: {
     path: './dist',
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/',
   },
 
