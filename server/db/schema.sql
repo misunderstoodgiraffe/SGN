@@ -45,7 +45,7 @@ CREATE TABLE usersEvents (
   userId INT,
   eventId INT,
   FOREIGN KEY (userID) REFERENCES users(id),
-  FOREIGN KEY (eventID) REFERENCES event(id)
+  FOREIGN KEY (eventID) REFERENCES events(id)
 );
 
 CREATE TABLE gameplays (
