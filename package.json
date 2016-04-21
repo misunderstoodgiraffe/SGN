@@ -6,7 +6,7 @@
   "scripts": {
     "test": "webpack",
     "build": "webpack",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot --inline & json-server sandbox/db.json --routes sandbox/routes.json --watch --port 9090"
   },
   "repository": {
     "type": "git",

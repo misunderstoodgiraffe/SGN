@@ -10,8 +10,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   ENV,
 });
 
-console.log('made it to the dev config!!');
-
 module.exports = webpackMerge(commonConfig, {
 
   metadata: METADATA,
@@ -45,6 +43,12 @@ module.exports = webpackMerge(commonConfig, {
       poll: 1000,
     },
     contentBase: './dist',
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:9090',
+        secure: false,
+      },
+    },
   },
 
 });
