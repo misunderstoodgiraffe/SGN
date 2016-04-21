@@ -18,9 +18,9 @@ CREATE TABLE users (
 CREATE TABLE friends (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userIdlink1 INT,
-  userIdlink2 INT
-  -- CONSTRAINT friends_ibfk_1 FOREIGN KEY (userIdlink1) REFERENCES users (id),
-  -- CONSTRAINT friends_ibfk_1 FOREIGN KEY (userIdlink2) REFERENCES users (id)
+  userIdlink2 INT,
+  FOREIGN KEY (userIdlink1) REFERENCES users(id),
+  FOREIGN KEY (userIdlink1) REFERENCES users(id)
 );
 
 CREATE TABLE games (
@@ -30,24 +30,53 @@ CREATE TABLE games (
   image VARCHAR(255)
 );
 
-CREATE TABLE usersGames (
+CREATE TABLE events (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  userID INT,
-  gameID INT
-  -- FOREIGN KEY (userID) REFERENCES users (id),
-  -- FOREIGN KEY (gameID) REFERENCES games (id)
+  gameID INT NOT NULL UNIQUE,
+  dateAndTime TIMESTAMP,
+  buyIn INT,
+  description VARCHAR(1000),
+  FOREIGN KEY (gameID) REFERENCES games(id)
 );
 
-CREATE TABLE steam (
+
+CREATE TABLE usersEvents (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  userID INT NOT NULL UNIQUE,
-  steamID VARCHAR(255) NOT NULL UNIQUE,
-  location VARCHAR(255),
-  bio VARCHAR(255),
-  username VARCHAR(255),
-  avatar VARCHAR(255)
-  -- FOREIGN KEY (userID) REFERENCES users (id)
+  userId INT,
+  eventId INT,
+  FOREIGN KEY (userID) REFERENCES users(id),
+  FOREIGN KEY (eventID) REFERENCES event(id)
 );
+
+CREATE TABLE gameplays (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  gameID INT NOT NULL UNIQUE,
+  userID INT NOT NULL UNIQUE,
+  dateAndTime TIMESTAMP,
+  result BOOLEAN,
+  kills INT,
+  FOREIGN KEY (userID) REFERENCES users(id),
+  FOREIGN KEY (gameID) REFERENCES games(id)
+);
+
+-- CREATE TABLE usersGames (
+--   id INT AUTO_INCREMENT PRIMARY KEY,
+--   userID INT,
+--   gameID INT,
+--   FOREIGN KEY (userID) REFERENCES users (id),
+--   FOREIGN KEY (gameID) REFERENCES games (id)
+-- );
+
+-- CREATE TABLE steam (
+--   id INT AUTO_INCREMENT PRIMARY KEY,
+--   userID INT NOT NULL UNIQUE,
+--   steamID VARCHAR(255) NOT NULL UNIQUE,
+--   location VARCHAR(255),
+--   bio VARCHAR(255),
+--   username VARCHAR(255),
+--   avatar VARCHAR(255),
+--   FOREIGN KEY (userID) REFERENCES users (id)
+-- );
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/db/schema.sql
