@@ -1,3 +1,4 @@
 {
-  "/api/me/profile": "/profile"
+  "/api/me/profile": "/profile",
+  "/api/me/friends": "/friends"
 }

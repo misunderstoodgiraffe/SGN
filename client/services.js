@@ -34,16 +34,14 @@ angular.module('SGN.login', [])
 });
 
 angular.module('SGN.requests', [])
-.factory('SGNRequests', function($http) {
+.factory('CGNRequests', ($http) => {
   return {
-    //OUR MAIN DB CALLS.
-    getFriends: function (callback) {
+    // OUR MAIN DB CALLS.
+    getFriends() {
       return $http({
         method: 'GET',
-        url: '/users/friends'
-      }).then(function(resp) {
-        callback(resp);
-      });
+        url: '/api/me/friends',
+      }).then((response) => response.data);
     },
     addFriend: function (entry) {
       return $http({
@@ -53,6 +51,13 @@ angular.module('SGN.requests', [])
       }).then(function(resp) {
         return resp;
       });
+    },
+    getProfile() {
+      return $http({
+        method: 'GET',
+        url: '/api/me/profile',
+      })
+      .then((response) => response.data);
     },
     updateProfile: function (entry) {
       return $http({

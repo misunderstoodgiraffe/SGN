@@ -1,6 +1,7 @@
 /* Import Dependencies*/
 import angular from 'angular';
-import 'angular-route';
+import uiRouter from 'angular-ui-router';
+
 
 /* Import Global Styles */
 import 'bootstrap/dist/css/bootstrap.css';
@@ -13,6 +14,7 @@ import './auth/authController';
 import './dashboard/dashboardController';
 import './profile/profileController';
 import './updateProfile/updateProfileController';
+import './profilepanel/profilePanelController';
 import './services';
 
 /* Import App Templates */
@@ -22,6 +24,7 @@ import landingTemplate from './frontpage/landing.html';
 import profileTemplate from './profile/profile.html';
 import gamesProfileTemplate from './profile/gamesProfile.html';
 import updateProfileTemplate from './updateProfile/updateProfile.html';
+import profilePanelTemplate from './profilepanel/profilePanel.html';
 
 /* Import App Template Styles */
 import './aboutus/aboutus.css';
@@ -29,6 +32,8 @@ import './dashboard/dashboard.css';
 import './frontpage/landing.css';
 import './profile/profile.css';
 import './updateProfile/updateProfile.css';
+import './profilepanel/profilePanel.css';
+
 
 angular.module('SGN', [
   'SGN.landing',
@@ -38,38 +43,47 @@ angular.module('SGN', [
   'SGN.dashboard',
   'SGN.profile',
   'SGN.updateProfile',
-  'ngRoute',
+  'SGN.profilePanel',
+  uiRouter,
 ])
-.config(($routeProvider) => {
-  $routeProvider
-    .when('/', {
+.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
+  $urlRouterProvider.otherwise('/');
+
+  $stateProvider
+    .state('landing', {
+      url: '/',
       template: landingTemplate,
       controller: 'LandingController',
       controllerAs: 'LandingController',
     })
-    .when('/home', {
-      template: dashboardTemplate,
-      controller: 'DashboardController',
-      controllerAs: 'DashboardController',
+    .state('home', {
+      url: '/home',
+      template: profilePanelTemplate,
+      controller: 'ProfilePanelController',
+      controllerAs: 'ProfilePanelController',
     })
-    .when('/updateProfile', {
+    .state('updateProfile', {
+      url: '/friend.lastActivity',
       template: updateProfileTemplate,
       controller: 'UpdateProfileController',
       controllerAs: 'UpdateProfileController',
     })
-    .when('/profile', {
+    .state('profile', {
+      url: '/profile',
       template: profileTemplate,
       controller: 'ProfileController',
       controllerAs: 'ProfileController',
     })
-    .when('/gamesProfile', {
+    .state('gamesProfile', {
+      url: '/gamesProfile',
       template: gamesProfileTemplate,
       controller: 'ProfileController',
       controllerAs: 'ProfileController',
     })
-    .when('/aboutus', {
+    .state('aboutus', {
+      url: '/about',
       template: aboutUsTemplate,
       controller: 'AboutusController',
       controllerAs: 'AboutUsController',
     });
-});
+}]);
