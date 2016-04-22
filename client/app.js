@@ -13,6 +13,7 @@ import './auth/authController';
 import './dashboard/dashboardController';
 import './profile/profileController';
 import './updateProfile/updateProfileController';
+import './profilepanel/profilePanelController';
 import './services';
 
 /* Import App Templates */
@@ -22,6 +23,7 @@ import landingTemplate from './frontpage/landing.html';
 import profileTemplate from './profile/profile.html';
 import gamesProfileTemplate from './profile/gamesProfile.html';
 import updateProfileTemplate from './updateProfile/updateProfile.html';
+import profilePanelTemplate from './profilepanel/profilePanel.html';
 
 /* Import App Template Styles */
 import './aboutus/aboutus.css';
@@ -29,6 +31,8 @@ import './dashboard/dashboard.css';
 import './frontpage/landing.css';
 import './profile/profile.css';
 import './updateProfile/updateProfile.css';
+import './profilepanel/profilePanel.css';
+
 
 angular.module('SGN', [
   'SGN.landing',
@@ -38,6 +42,7 @@ angular.module('SGN', [
   'SGN.dashboard',
   'SGN.profile',
   'SGN.updateProfile',
+  'SGN.profilePanel',
   'ngRoute',
 ])
 .config(($routeProvider) => {
@@ -48,9 +53,9 @@ angular.module('SGN', [
       controllerAs: 'LandingController',
     })
     .when('/home', {
-      template: dashboardTemplate,
-      controller: 'DashboardController',
-      controllerAs: 'DashboardController',
+      template: profilePanelTemplate,
+      controller: 'ProfilePanelController',
+      controllerAs: 'ProfilePanelController',
     })
     .when('/updateProfile', {
       template: updateProfileTemplate,

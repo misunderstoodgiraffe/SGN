@@ -1,8 +1,11 @@
 body {
-  /*text-align: center;*/
+  height: 100vh;
+  padding-top: 0px !important;
 }
 .body {
-	padding-top: 100px;
+  display: flex;
+  height: 100vh;
+  padding-top: 0px;
 }
 .navbar {
 	min-height: 0;
