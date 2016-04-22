@@ -1,6 +1,7 @@
 /* Import Dependencies*/
 import angular from 'angular';
-import 'angular-route';
+import uiRouter from 'angular-ui-router';
+
 
 /* Import Global Styles */
 import 'bootstrap/dist/css/bootstrap.css';
@@ -43,38 +44,46 @@ angular.module('SGN', [
   'SGN.profile',
   'SGN.updateProfile',
   'SGN.profilePanel',
-  'ngRoute',
+  uiRouter,
 ])
-.config(($routeProvider) => {
-  $routeProvider
-    .when('/', {
+.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
+  $urlRouterProvider.otherwise('/');
+
+  $stateProvider
+    .state('landing', {
+      url: '/',
       template: landingTemplate,
       controller: 'LandingController',
       controllerAs: 'LandingController',
     })
-    .when('/home', {
+    .state('home', {
+      url: '/home',
       template: profilePanelTemplate,
       controller: 'ProfilePanelController',
       controllerAs: 'ProfilePanelController',
     })
-    .when('/updateProfile', {
+    .state('updateProfile', {
+      url: '/friend.lastActivity',
       template: updateProfileTemplate,
       controller: 'UpdateProfileController',
       controllerAs: 'UpdateProfileController',
     })
-    .when('/profile', {
+    .state('profile', {
+      url: '/profile',
       template: profileTemplate,
       controller: 'ProfileController',
       controllerAs: 'ProfileController',
     })
-    .when('/gamesProfile', {
+    .state('gamesProfile', {
+      url: '/gamesProfile',
       template: gamesProfileTemplate,
       controller: 'ProfileController',
       controllerAs: 'ProfileController',
     })
-    .when('/aboutus', {
+    .state('aboutus', {
+      url: '/about',
       template: aboutUsTemplate,
       controller: 'AboutusController',
       controllerAs: 'AboutUsController',
     });
-});
+}]);
