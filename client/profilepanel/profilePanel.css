@@ -1,0 +1,30 @@
+.profile-panel {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  min-height: 600px;
+  height: 100vh;
+  background-color: #666666;
+  color: white;
+}
+
+.profile-tile {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.profile-tile > img {
+  width: 250px;
+  height: 250px;
+}
+
+.friends-tile {
+  overflow: auto;
+  border: none;
+}
+
+.friends-tile img {
+  width: 60px;
+  height: 60px;
+}

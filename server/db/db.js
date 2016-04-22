@@ -3,10 +3,12 @@ var SQL = require('sequelize');
 var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
 
 module.exports.dbConnection = mysql.createConnection({
-  user: 'root',
-  password: '1234',
-  database: 'SGN'
+  host: 'us-cdbr-iron-east-03.cleardb.net',
+  user: 'b54912934cf718',
+  password: '30141162',
+  database: 'heroku_6e5b139fb11cc8b',
 });
+
 
 module.exports.Users = Users = sql.define('users', {
   fbID: {type: SQL.STRING,
@@ -47,6 +49,7 @@ module.exports.UsersGames = UsersGames = sql.define('usersGames', {
   gameID: SQL.INTEGER
 });
 
+
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink1', foreignKeyConstraint: true});
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink2', foreignKeyConstraint: true});
 // Users.hasMany(UsersGames);
@@ -58,3 +61,4 @@ Games.sync();
 Steam.sync(/*{force: true}*/);
 Friends.sync(/*{force: true}*/);
 UsersGames.sync(/*{force: true}*/);
+

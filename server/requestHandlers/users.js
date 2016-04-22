@@ -18,6 +18,7 @@ module.exports = {
     });
   },
   getFriends: function(req, res, next) {
+    console.log('Get All Friends', req)
     var user = jwt.decode(req.session.userJwtToken, 'secret');
     Friends.getAllFriends(user, function(err, friends) {
       if (err) {

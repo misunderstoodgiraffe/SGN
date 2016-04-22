@@ -1,155 +1,104 @@
-# SGN
-Social gaming network
+[![Build Status](https://travis-ci.org/ImmaculateHangover/CGN.svg?branch=master)](https://travis-ci.org/ImmaculateHangover/CGN)
+# Crunchy Gaming Network
 
-# STACK
-Angular
-Node
-  -express
-  -passport
-  -oauth.io
-mySQL
-  -sequelize
-AWS
+Discover and connect with your Facebook friends across multiple gaming platforms.
+Read the full synopsis in our [press release](docs/PRESS-RELEASE.md)
 
-# NETWORKS/APIs:
-Facebook: https://developers.facebook.com/
-Steam: http://steamcommunity.com/dev
+##Usage
+TBD
 
-# STANDARDS
-REQUESTS:
-  GET: ‘/’ : if logged in -> home, else -> sign in
-  GET: ‘/home’ : friends/newsfeed
-  GET: ‘/signin’ : redirect to FB OAuth
-		If user exists -> Home, else -> signup
-  GET: ‘/signup’ : sign-up forms
-  POST: ‘/signup’ : post signup info to server
+## Getting Started (Developer)
+### Prerequisites
+* Node 5.8
+* Git
 
-# REQUESTS:
-DB CALLS:
--Profiles
+### Fork & Clone Repo
+1. Fork the repo through Github
+1. `git clone https://github.com/YOUR_USER_NAME/CGN.git`
+
+### Install Dependencies
+From the root directory of the cloned repo in your terminal:
+```
+npm install -g webpack // sudo may be required for global installs
+npm install -g webpack-dev-server
+npm install -g json-server
+npm install
+npm install --only=dev
+```
+### Start Development Server
+Run `npm build` to do an initial compilation and bundling of static assets.
+
+Run `npm start`.
+
+This will start the webpack-dev-server which will serve the bundled angular app as well as static assets. The webpack-dev-server will watch the client side javascript files for changes and hot load them into the page when a change occurs. Any requests to the CGN API will be proxied to a json-server running on a separate port, which will respond with mock data.
+
+To test against live data in the staging or production environment, you can edit the proxy location in webpack.dev.js to point to a different endpoint, such as the production or staging URL.
+
+## STACK
+* Front-end
+  * Angular 1.5x
+  * Webpack + Babel
+* Web tier
+  * Heroku
+  * Node 5.x
+  * express
+  * passport
+  * oauth.io
+  * sequelize ORM
+* Data tier
+  * MySQL
+    * ClearDB (Heroku addon)
+
+## 3rd Party APIs
+* Facebook: https://developers.facebook.com/
+* Steam: http://steamcommunity.com/dev
+
+## API
+(Final API TBD)
+
+#### Profiles
 GET: '/users/friends/' --- getFriends
 POST: '/users/friends/' --- addFriends
 PUT: '/users/friends/' ---- updateProfile
--Steam related
+
+#### Steam related
 POST: '/steam/games' --- saves the list of games the user has into db
 GET: '/users/steam' --- gets steam information saved from db
 POST: '/users/streams' --- saves the account information into db
 
-STEAM API CALLS:
+#### STEAM API CALLS:
 note: all steam API calls require a query ('?steamID=') or gameID
 GET: '/updateSteam' --- getSteamProfile, retrieves gamer tag/profile picture
 GET: '/updateSteamFriends' --- getSteamFriends, retrives full list of steam friends
 GET: '/getSteamGames' --- getSteamGames, get a list of all steam games a particular steam ID owns
 GET: '/getGameInfo' --- getGameInfo, retrieves information on a particular game using gameID as it's parameter/query
 
-OAUTH: 
+#### OAUTH
 GET: ‘/auth/FB’
 GET: ‘/auth/FB/confirm’
 GET: ‘/success’ -> Home
 GET: ‘/fail’ -> Sign In
 
-# DB STRUCTURE:
-mySQL.
 
-Structure is in db/schema.sql
+## Project Structure:
+TBD
 
-#IMPORTANT THINGS THAT WILL HELP:
-----GETTING STARTED----
--bower install
--npm install
--get steam API key
--get oauth key 
--update keys.js
--start database
--grunt file: grunt server-dev
+## Feature Roadmap
 
+## Progress
+[![Throughput Graph](https://graphs.waffle.io/ImmaculateHangover/CGN/throughput.svg)](https://waffle.io/ImmaculateHangover/CGN/metrics)
 
-----DATABASE----
-It won't run without starting mysql server:
-'mysql.server start'
+## Build History
+[![Build Status](https://travis-ci.org/ImmaculateHangover/CGN.svg?branch=master)](https://travis-ci.org/ImmaculateHangover/CGN)
 
-run the db:
-'mysql -u root -p < server/db/schema.sql'
-
-for testing: 
-if you need to reinput data, you can rerun 
-'mysql -u root -p < server/db/schema.sql' to automatically drop/reimplement database.
-
-----KEYS----
-You're going to need your own keys.js file. Rename it to keys.js and update the information in server/config/keys.js to make runs
-
-----WELCOME----
-Our welcome/landing page is a STATIC html page. After people log in using fb oauth, it will redirect to a angular page that looks basically exactly the same. Reason because can't save state on the client side, can only save on the server. By having a different welcome page, we give them 2 routes to go to, either log in or angular site.
-
-Throwing that out there just in case.
-
-tl;dr => welcome/landing page === static, logging into fb => access to angular
-
-----ROUTES----
-update profile page example route:
-1. type in your info
-2. -> server
-3. -> steam API
-4. -> server
-5. -> client
-6. hit the save games button
-7. -> server
-8. -> save game info in db
-9. hit the save button
-10. -> server
-11. -> save user info in db
-
-#FILE SYSTEM:
--client
-  -aboutus
-  -dashboard === profile in the file structure
-  -frontpage
-  -updateprofile
-  app.js/index.html
-  services
--server
-  -apis
-    -steam
-    -fb
-  -config
-  -db
-  -request handlers
-  server.js
-README
+See past builds [here](https://travis-ci.org/ImmaculateHangover/CGN).
 
 
-# UI FLOW:
-User sign-up:
--Sign in w/ FB
--Update User Profile
--Pressing Fetch Profile after inputting steam ID 64
--Navigates to Home.
--Shows online/offline friends
+## Contributing
+1. Make sure you have [eslint](https://github.com/eslint/eslint) setup in your editor of choice.
+1. Follow the [Angular Style Guide](https://github.com/johnpapa/angular-styleguide/tree/master/a1).
+1. All new contributions should be written in ES6 and follow the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript). (Following the first step will help you with this).
+1. Follow the instructions in our [Contribution Guidelines](docs/CONTRIBUTING.md).
 
-Dashboard:
--FRIENDS:
-  -display your friends that are online/offline
--GAMES:
-  -display all the games you own on steam
-
-
-User Update:
--Clicking on your fb profile picture on the left
--edits your profile.
--fetch profile button: retrieves avatar + gamer tag + list of 10 games
--save game data: saves the game data that you retrieved into the DB
--save: saves the inputted data into db (steamId, email, given name, username)
-
-
-User login:
-User Login button -> Sign in w/ FB -> Navigate to Home
-
-# Viable Features:
--Chatroom
--Messaging System
--News for most played games (it's on the steam api)
--Blizzard API
--Riot Games API
--IGN news API
 
   
