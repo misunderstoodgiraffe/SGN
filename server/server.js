@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
-// const db = require('./db/db.js');
+const db = require('./db/db.js');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// db.dbConnection.connect();
+db.dbConnection.connect();
 
 app.use(cors());
 app.use(session({

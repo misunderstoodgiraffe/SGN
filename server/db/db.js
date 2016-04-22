@@ -9,6 +9,7 @@ module.exports.dbConnection = mysql.createConnection({
   database: 'heroku_6e5b139fb11cc8b',
 });
 
+
 module.exports.Users = Users = sql.define('users', {
   fbID: {type: SQL.STRING,
     unique: true},
@@ -48,6 +49,7 @@ module.exports.UsersGames = UsersGames = sql.define('usersGames', {
   gameID: SQL.INTEGER
 });
 
+
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink1', foreignKeyConstraint: true});
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink2', foreignKeyConstraint: true});
 // Users.hasMany(UsersGames);
@@ -59,3 +61,4 @@ Games.sync();
 Steam.sync(/*{force: true}*/);
 Friends.sync(/*{force: true}*/);
 UsersGames.sync(/*{force: true}*/);
+
