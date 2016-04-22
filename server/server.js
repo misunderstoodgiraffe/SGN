@@ -15,8 +15,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
-// require('./config/routes.js') (app, express);
-app.use(express.static(__dirname + '/../client'));
+require('./config/routes.js') (app, express);
+app.use(express.static(__dirname + '/../dist'));
 
 app.listen(process.env.PORT || 3000);
 console.log("CGN Server is now listening");

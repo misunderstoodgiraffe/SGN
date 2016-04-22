@@ -24,7 +24,6 @@ module.exports = {
       res.status(500).send('error: ' + result.message);
     } else {
       result.me().done(function(me) {
-
         //Add new user to database
         userdb.newUser({fbID: me.id, givenName: me.name, avatar: me.avatar}, function(error, user) {
 
