@@ -53,6 +53,11 @@ module.exports = {
       template: './client/index.html',
       inject: 'head',
     }),
+    new HtmlWebpackPlugin({
+      template: './client/welcome/welcome.html',
+      inject: 'false',
+      filename: 'welcome.html'
+    }),
     new ExtractTextPlugin('[name].css'),
   ],
 
