@@ -4,9 +4,9 @@ var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
 
 module.exports.dbConnection = mysql.createConnection({
   host: 'us-cdbr-iron-east-03.cleardb.net',
-  user: 'b51e9b2736db2d',
-  password: '67169e1d',
-  database: 'heroku_cbec748b3ccbf99',
+  user: 'b54912934cf718',
+  password: '30141162',
+  database: 'heroku_6e5b139fb11cc8b',
 });
 
 module.exports.Users = Users = sql.define('users', {
