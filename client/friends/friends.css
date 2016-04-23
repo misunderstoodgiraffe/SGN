@@ -1,20 +1,28 @@
 .friends-panel {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: calc(100% - 320px);
   min-height: 600px;
   height: 100vh;
   background-image: url('bg-small.jpg');
-  color: white;
+  /*color: white;*/
   position: fixed;
+  right: 0;
 }
 
-.friends-tile {
+/*.friends-container {
   overflow: auto;
-  border: none;
+  border: 50px;
+  padding: 50px;
+}*/
+
+.friends-container {
+  display: flex;
+}
+.friends-container img {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  padding-right: 50px;
 }
 
-.friends-tile img {
-  width: 60px;
-  height: 60px;
-}

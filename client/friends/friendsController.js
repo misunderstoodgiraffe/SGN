@@ -10,4 +10,11 @@ angular.module('CGN.friends', ['CGN.requests'])
       });
       $log.log(data);
     });
+
+	$scope.predicate = 'lastActivity';
+  $scope.reverse = true;
+  $scope.order = function(predicate) {
+    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+    $scope.predicate = predicate;
+  };
 });
