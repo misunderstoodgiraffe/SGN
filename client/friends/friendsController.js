@@ -1,5 +1,13 @@
+import moment from 'moment';
+
 angular.module('CGN.friends', ['CGN.requests'])
-.controller('FriendsController', ($scope, CGNRequests) => {
-  $scope.friends = CGNRequests.getFriends();
-  console.log($scope.friends);
+.controller('FriendsController', ($scope, $log, CGNRequests) => {
+  CGNRequests.getFriends()
+    .then((data) => {
+      $scope.friends = data.map((friend) => {
+        friend.lastActivity = moment(+friend.lastActivity);
+        return friend;
+      });
+      $log.log(data);
+    });
 });
