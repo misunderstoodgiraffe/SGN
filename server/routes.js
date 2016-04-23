@@ -9,7 +9,8 @@ const authCheck = require('./utils/authMiddleware.js');
 module.exports = function (app, express) {
   app.get('/', function(req, res, next) {
     if (!req.session.userJwtToken) {
-      res.redirect(key.HOST + '/welcome.html');
+      // res.redirect(key.HOST + '/welcome.html');
+      res.redirect(key.HOST + '/index.html');
       res.end();
     } else {
       // redirect to next url e.g. /#/home

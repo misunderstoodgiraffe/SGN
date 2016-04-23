@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var SQL = require('sequelize');
-var sql = new SQL('CGN', 'root', '', {
+var sql = new SQL('CGN', 'root', '1234', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
