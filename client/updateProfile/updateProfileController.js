@@ -22,7 +22,7 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
   $scope.getUserInfo = function () {
     $http({
       method: 'GET',
-      url: '/users/profile'
+      url: '/api/me/profile'
     }).then(function mySucces(response) {
       $scope.cgnID = response.data.id;  //cgnID is the id system for OUR DB.
       $scope.username = response.data.username;

@@ -51,6 +51,7 @@ angular.module('CGN', [
   'CGN.friends',
   'CGN.recentGames',
   'CGN.updateProfile',
+  'CGN.updateProfile',
   uiRouter,
 ])
 .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
