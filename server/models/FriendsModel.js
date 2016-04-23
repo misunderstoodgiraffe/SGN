@@ -1,5 +1,5 @@
-var db = require('./db.js');
-var Users = require('./UsersController.js')
+const db = require('../db/db.js');
+const Users = require('./UsersModel.js');
 
 module.exports = {
   newFriend: function (user1, user2, callback) {

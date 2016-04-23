@@ -1,10 +1,10 @@
-var Users = require('../db/UsersController.js');
-var Games = require('../db/GamesController.js');
-var UsersGames = require('../db/UsersGamesController.js');
-var Friends = require('../db/FriendsController.js');
-var Steam = require('../db/SteamController.js');
-var fb = require('../apis/fbController.js');
-var jwt = require('jwt-simple');
+const Users = require('../models/UsersModel.js');
+const Games = require('../models/GamesModel.js');
+const UsersGames = require('../models/UsersGamesModel.js');
+const Friends = require('../models/FriendsModel.js');
+const Steam = require('../models/SteamModel.js');
+const fb = require('../utils/fbController.js');
+const jwt = require('jwt-simple');
 
 module.exports = {
   getProfile: function(req, res, next) {

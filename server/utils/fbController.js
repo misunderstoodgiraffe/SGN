@@ -1,8 +1,8 @@
-var userdb = require('../db/UsersController.js');
-var jwt = require('jwt-simple');
-var key = require('../config/keys.js');
-var request = require('request');
-var Friends = require('../db/FriendsController.js');
+const userdb = require('../models/UsersModel.js');
+const jwt = require('jwt-simple');
+const key = require('../config/keys.js');
+const request = require('request');
+const Friends = require('../models/FriendsModel.js');
 
 //Returns array of names and facebook IDs
 var getFacebookFriends = function(session, callback) {
@@ -27,12 +27,12 @@ module.exports = {
         //Add new user to database
         userdb.newUser({fbID: me.id, givenName: me.name, avatar: me.avatar}, function(error, user) {
 
-          if (error) { 
-            if (error.message === 'user already exists') { 
+          if (error) {
+            if (error.message === 'user already exists') {
               // user is already in database
               var token = jwt.encode(user, 'secret');
               req.session.userJwtToken = token;
-              res.redirect(key.HOST + '/#/profile');
+              res.redirect(key.HOST + '/#/dashboard');
             } else {
               // unknown error
               res.status(500).send(error);
@@ -58,7 +58,7 @@ module.exports = {
               }
             });
             // !! Redirect to create profile page not home !! //
-            res.redirect(key.HOST + '/#/updateProfile');
+            res.redirect(key.HOST + '/#/dashboard');
           }
 
         });

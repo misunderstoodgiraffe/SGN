@@ -1,8 +1,7 @@
-module.exports = function(req, res, next) {
-	console.log(req);
+module.exports = function checkAuth(req, res, next) {
   if (!req.session.userJwtToken) {
     res.status(500).send('Your session has expired. Please log in');
   } else {
-    return next();
+    next();
   }
 };

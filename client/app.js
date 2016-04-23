@@ -42,6 +42,8 @@ angular.module('CGN', [
   'CGN.dashboard',
   'CGN.profilePanel',
   'CGN.navigation',
+  'CGN.events',
+  'CGN.friends',
   uiRouter,
 ])
 .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {

@@ -1,6 +1,7 @@
-var db = require('./db.js');
-var Users = require('./UsersController.js');
-var Games = require('./GamesController.js');
+const db = require('../db/db.js');
+const Users = require('./UsersModel.js');
+const Games = require('./GamesModel.js');
+
 module.exports = {
   getUsersGames: function(user, callback) {
     console.log('fetching games for userID:', user);
@@ -52,5 +53,3 @@ module.exports = {
     }).catch(console.log);
   }
 }
-
-

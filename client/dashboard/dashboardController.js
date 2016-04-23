@@ -1,5 +1,5 @@
 angular.module('CGN.dashboard', [])
-.controller('DashboardController', function (facebookService, $scope, $location, CGNRequests) {
+.controller('DashboardController', function ($scope, $location, CGNRequests) {
   $scope.friends = {};
   $scope.games = {};
   $scope.getUserFriends = function () {
@@ -18,5 +18,3 @@ angular.module('CGN.dashboard', [])
   }
   $scope.getGames();
 });
-
-

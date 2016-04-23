@@ -1,5 +1,4 @@
-var db = require('./db.js');
-var fb = require('../apis/fbController.js');
+const db = require('../db/db.js');
 
 module.exports = {
   getAllUsers: function (callback) {
