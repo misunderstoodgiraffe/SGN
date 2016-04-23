@@ -42,7 +42,7 @@ angular.module('CGN.requests', [])
     getSteamGames: function(steamID, callback) {
       return $http({
         method: 'GET',
-        url: '/getSteamGames?steamID=' + steamID
+        url: '/getSteamGames?steamID=' + steamID,
       }).then(function(resp) {
         callback (resp);
       });
@@ -57,13 +57,12 @@ angular.module('CGN.requests', [])
     },
 
     //OUR DB STEAM GAMES CALLS
-    getDBSteamGame: function (gameID) {
+    getDBSteamGame: function () {
       return $http({
         method: 'GET',
-        url: '/steam/games?gameID=' + gameID
-      }).then(function(resp) {
-        callback (resp);
-      });
+        url: `/api/me/games`,
+      })
+      .then((response) => response.data);
     },
     addDBSteamGame: function (game, callback) {
       return $http({

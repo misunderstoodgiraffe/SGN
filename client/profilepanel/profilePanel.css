@@ -6,6 +6,7 @@
   height: 100vh;
   background-color: #666666;
   color: white;
+  position: fixed;
 }
 
 .profile-tile {

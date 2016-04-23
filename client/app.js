@@ -15,6 +15,7 @@ import './profilepanel/profilePanelController';
 import './navigation/navigationController';
 import './friends/friendsController';
 import './events/eventsController';
+import './recentGames/recentGamesController';
 
 /* Import Shared Factories and Services */
 import './services';
@@ -26,6 +27,7 @@ import profilePanelTemplate from './profilepanel/profilePanel.html';
 import navigationTemplate from './navigation/navigation.html';
 import friendsTemplate from './friends/friends.html';
 import eventsTemplate from './events/events.html';
+import recentGamesTemplate from './recentGames/recentGames.html';
 
 /* Import App Template Styles */
 import './dashboard/dashboard.css';
@@ -34,7 +36,7 @@ import './profilepanel/profilePanel.css';
 import './navigation/navigation.css';
 import './friends/friends.css';
 import './events/events.css';
-
+import './recentGames/recentGames.css';
 
 angular.module('CGN', [
   'CGN.landing',
@@ -44,6 +46,7 @@ angular.module('CGN', [
   'CGN.navigation',
   'CGN.events',
   'CGN.friends',
+  'CGN.recentGames',
   uiRouter,
 ])
 .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
@@ -128,6 +131,13 @@ angular.module('CGN', [
           controller: 'ProfilePanelController',
           controllerAs: 'ProfilePanelController',
         },
+        'recentGames@dashboard': {
+          template: recentGamesTemplate,
+          controller: 'RecentGamesController',
+          controllerAs: 'RecentGamesController',
+
+        },
+
       },
     });
 }]);
