@@ -1,4 +1,4 @@
-<link href="./dashboard/dashboard.css" rel="stylesheet">
+<div ui-view="recentGames"> </div>
 <div ng-controller='DashboardController'>
 	<div class='top dash-container'>
 
@@ -6,12 +6,12 @@
 		<div class='dash-container'>
 			<h2> FRIENDS </h2>
 			<div class='friends' ng-repeat='profile in friends'>
-				
+
 				<div class='friend-profile'>
 				  <h5>{{profile.username}} </h5>
 				  <img ng-src='{{profile.avatar}}'> </img>
 			  </div>
-			</div> 
+			</div>
 		</div>
 		<div class='dash-container'>
 			<h2> GAMES </h2>

@@ -1,12 +1,15 @@
 var mysql = require('mysql');
 var SQL = require('sequelize');
-var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
-
-module.exports.dbConnection = mysql.createConnection({
-  user: 'root',
-  password: '1234',
-  database: 'SGN'
+var sql = new SQL('CGN', 'root', '1234', {
+  host: 'localhost',
+  dialect: 'mysql',
+  pool: {
+    max: 10,
+    min: 0,
+    idle: 10000,
+  },
 });
+
 
 module.exports.Users = Users = sql.define('users', {
   fbID: {type: SQL.STRING,
@@ -46,6 +49,7 @@ module.exports.UsersGames = UsersGames = sql.define('usersGames', {
   userID: SQL.INTEGER,
   gameID: SQL.INTEGER
 });
+
 
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink1', foreignKeyConstraint: true});
 // Friends.belongsTo(Users, {foreignKey: 'userIdlink2', foreignKeyConstraint: true});

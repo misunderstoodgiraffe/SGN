@@ -1,10 +1,10 @@
-angular.module('SGN.dashboard', [])
-.controller('DashboardController', function (facebookService, $scope, $location, SGNRequests) {
+angular.module('CGN.dashboard', [])
+.controller('DashboardController', function ($scope, $location, CGNRequests) {
   $scope.friends = {};
   $scope.games = {};
   $scope.getUserFriends = function () {
     console.log('calling getUserFriends');
-    SGNRequests.getFriends(function (res) {
+    CGNRequests.getFriends(function (res) {
       $scope.friends = res.data;
       console.log(res.data);
     });
@@ -12,11 +12,9 @@ angular.module('SGN.dashboard', [])
   $scope.getUserFriends();
 
   $scope.getGames = function() {
-    SGNRequests.getSteamGames(null, function(games) {
+    CGNRequests.getSteamGames(null, function(games) {
       $scope.games = games;
     });
   }
   $scope.getGames();
 });
-
-

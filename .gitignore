@@ -1,5 +1,6 @@
 node_modules/
-gitSpy/*
+gitSpy
 server/config/keys.js
 .DS_Store
-client/lib/*
+dist/
+client/lib/

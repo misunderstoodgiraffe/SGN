@@ -1,0 +1,6 @@
+{
+  "/api/me/profile": "/profile",
+  "/api/me/friends": "/friends",
+  "/api/me/games": "/games",
+  "/api/me/events": "/events"
+}

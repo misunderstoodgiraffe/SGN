@@ -1,0 +1,63 @@
+{
+  "profile": {
+    "id": "1",
+    "username": "Zerim",
+    "givenName": "Brandon Ramirez",
+    "avatar": "https://avatars1.githubusercontent.com/u/1834575?v=3&s=250",
+    "email": "brandon at something dot com",
+    "fbID": "1234abcd"
+  },
+  "friends": [
+    {
+      "id": "2",
+      "username": "Kevin",
+      "givenName": "Kevin Meraz",
+      "avatar": "https://avatars0.githubusercontent.com/u/16483341?v=3&s=60",
+      "email": "kevin at something dot com",
+      "fbID": "234425235",
+      "lastActivity": "1461308877734"
+    },
+    {
+      "id": "3",
+      "username": "Nemo",
+      "givenName": "Nemo Baker",
+      "avatar": "https://avatars1.githubusercontent.com/u/15252108?v=3&s=60",
+      "email": "nemo at something dot com",
+      "fbID": "asdfasgg",
+      "lastActivity": "1461308877734"
+    },
+    {
+      "id": "3",
+      "username": "Ashwin",
+      "givenName": "Ashwin Ravi",
+      "avatar": "https://avatars3.githubusercontent.com/u/9832584?v=3&s=60",
+      "email": "Ashwin at something dot com",
+      "fbID": "232567s",
+      "lastActivity": "1461308877734"
+    }
+  ],
+  "games": [
+    {
+      "id": "1",
+      "title": "Dota 2",
+      "art": "http://1.bp.blogspot.com/-B7iJ9mTY9U0/UcAhwKoiKVI/AAAAAAAAAK4/4cWmYfFZYdU/s1600/dota-2-beta-key.jpg"
+    },
+    {
+      "id": "2",
+      "title": "League of Legends",
+      "art": "http://071bc3d04e2671665c74-5a267f839fbe60d0845a37698418bb02.r26.cf5.rackcdn.com/wp-content/uploads/2012/01/league-of-legends-logo-artwork-640x325.jpg"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Dota Tournament",
+      "location": "Oakland"
+    },
+    {
+      "id": "2",
+      "title": "LoL Battle",
+      "location": "Hack Reactor"
+    }
+  ]
+}
