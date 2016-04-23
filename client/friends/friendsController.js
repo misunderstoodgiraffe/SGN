@@ -1,4 +1,5 @@
-angular.module('CGN.friends', [])
-.controller('FriendsController', ($scope, $location, $http, $log) => {
-  $log.log('Were in the friends controller!');
+angular.module('CGN.friends', ['CGN.requests'])
+.controller('FriendsController', ($scope, CGNRequests) => {
+  $scope.friends = CGNRequests.getFriends();
+  console.log($scope.friends);
 });
