@@ -39,7 +39,6 @@ import './events/events.css';
 angular.module('CGN', [
   'CGN.landing',
   'CGN.auth',
-  'CGN.login',
   'CGN.dashboard',
   'CGN.profilePanel',
   'CGN.navigation',

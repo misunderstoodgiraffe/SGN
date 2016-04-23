@@ -1,38 +1,3 @@
-// Include OAuth.js in the <head> of your HTML,
-
-// <script src="/path/to/oauth.js"></script>
-
-// In your JavaScript, add this line to initialize OAuth.js
-
-// OAuth.initialize('your_app_public_key');
-angular.module('CGN.login', [])
-.factory('facebookService', function($q, $http) {
-
-  //Authentication result returned by facebook. Inclues an auth token
-  var authorizationResult = false;
-  var authtoken = false;
-
-  return {
-    initialize: function() {
-      // do we still need this?
-    },
-    // connectFacebook: function() {
-    //   var deferred = $q.defer();
-    //   $http.get('http://localhost:3000/signin')
-    //   .then(function(response) {
-    //     //todo
-    //     deferred.resolve(response);
-    //   });
-    //   return deferred.promise;
-    // },
-    getFriends: function () {
-      // api call to GET /friends
-      // return promise
-    }
-  };
-    
-});
-
 angular.module('CGN.requests', [])
 .factory('CGNRequests', ($http) => {
   return {
@@ -43,15 +8,6 @@ angular.module('CGN.requests', [])
         url: '/api/me/friends',
       }).then((response) => response.data);
     },
-    addFriend: function (entry) {
-      return $http({
-        method: 'POST',
-        url: '/users/friends',
-        data: entry
-      }).then(function(resp) {
-        return resp;
-      });
-    },
     getProfile() {
       return $http({
         method: 'GET',
@@ -59,21 +15,18 @@ angular.module('CGN.requests', [])
       })
       .then((response) => response.data);
     },
-    updateProfile: function (entry) {
+    updateProfile(entry) {
       return $http({
         method: 'PUT',
-        url: '/users/profile',
-        data: entry
-      }).then(function(resp) {
-        return resp;
+        url: '/api/me/profile',
+        data: entry,
       });
     },
 
-    //STEAM API CALLS
-    getSteamProfile: function (steamID, callback) {
+    getSteamProfile(steamID, callback) {
       return $http({
         method: 'GET',
-        url: '/updateSteam?steamID=' + steamID
+        url: '/updateSteam?steamID=' + steamID,
       }).then(function(resp) {
         callback (resp);
       });
