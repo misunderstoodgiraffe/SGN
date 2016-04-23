@@ -26,7 +26,7 @@ angular.module('CGN.requests', [])
     getSteamProfile(steamID, callback) {
       return $http({
         method: 'GET',
-        url: '/updateSteam?steamID=' + steamID,
+        url: '/api/updateSteam?steamID=' + steamID,
       }).then(function(resp) {
         callback (resp);
       });
@@ -34,7 +34,7 @@ angular.module('CGN.requests', [])
     getSteamFriends: function(steamID, callback) {
       return $http({
         method: 'GET',
-        url: '/updateSteamFriends?steamID=' + steamID
+        url: '/api/updateSteamFriends?steamID=' + steamID
       }).then(function(resp) {
         callback (resp);
       });
@@ -42,7 +42,7 @@ angular.module('CGN.requests', [])
     getSteamGames: function(steamID, callback) {
       return $http({
         method: 'GET',
-        url: '/getSteamGames?steamID=' + steamID,
+        url: '/api/getSteamGames?steamID=' + steamID,
       }).then(function(resp) {
         callback (resp);
       });
@@ -50,7 +50,7 @@ angular.module('CGN.requests', [])
     getGameInfo: function(gameID, callback) {
       $http({
         method: 'GET',
-        url: '/getGameInfo?gameID=' + gameID
+        url: '/api/getGameInfo?gameID=' + gameID
       }).then(function(resp) {
         callback (resp);
       });
@@ -67,7 +67,7 @@ angular.module('CGN.requests', [])
     addDBSteamGame: function (game, callback) {
       return $http({
         method: 'POST',
-        url: '/steam/games',
+        url: '/api/steam/games',
         data: game
       }).then(function(resp) {
         callback (resp);
@@ -78,7 +78,7 @@ angular.module('CGN.requests', [])
     addUserGameRelation: function (game, callback) {
       return $http({
         method: 'POST',
-        url: '/users/games',
+        url: '/api/me/games',
         data: game
       }).then(function(resp) {
         callback (resp);
@@ -87,7 +87,7 @@ angular.module('CGN.requests', [])
     getUserGameRelation: function (sgnID, callback) {
       return $http({
         method: 'GET',
-        url: '/users/games?sgnID=' + sgnID,
+        url: '/api/me/games?sgnID=' + sgnID,
       }).then(function(resp) {
         callback (resp);
       });
@@ -97,7 +97,7 @@ angular.module('CGN.requests', [])
     getSteamDBProfile: function(steamID, callback) {
       return $http({
         method: 'GET',
-        url: '/users/steam?steamID=' + steamID,
+        url: '/me/steam?steamID=' + steamID,
       }).then(function(resp) {
         callback (resp);
       });
@@ -105,7 +105,7 @@ angular.module('CGN.requests', [])
     updateSteamProfile: function (accountInfo) {
      return $http({
        method: 'POST',
-       url: '/users/steam',
+       url: '/me/steam',
        data: accountInfo
      }).then(function(resp) {
        return resp;
@@ -116,7 +116,7 @@ angular.module('CGN.requests', [])
     getFBFriends: function () {
       return $http({
         method: 'GET',
-        url: '/users/addFriends'
+        url: '/me/addFriends'
       }).then(function(resp) {
         return resp;
       });
