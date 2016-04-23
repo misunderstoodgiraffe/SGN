@@ -1,4 +1,4 @@
-angular.module('SGN.landing', [])
+angular.module('CGN.landing', [])
 .controller('LandingController', (facebookService, $scope, $location, $http) => {
   $scope.threads = {};
   $scope.friends = {};

@@ -3,26 +3,14 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>CGN</title>
   </head>
 
 <body>
-  <div class='app' ng-app='SGN'>
-  <div  ng-controller='LandingController'>
-      <title>CGN</title>
-      <nav class='navbar navbar-inverse navbar-fixed-top'>
-        <div class='container navbar-header'>
-          <ul class='nav masthead-nav'>
-            <a href='#/updateProfile'><img class='profile-pic' ng-src='{{avatar}}'> </img></a>
-            <li> <a ui-sref='home'> Dashboard </a> </li>
-            <li> <a ui-sref='aboutus'> About Us </a> </li>
-            <li> <a ui-sref='signout'> Sign Out </a> </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  <!-- Load Templates -->
-    <div class='body' ui-view> 
-    </div>
+  <div class='app' ng-app='CGN'>
+    <div ng-controller='NavigationController' ui-view='navigation'></div>
+    <div ng-controller='ProfilePanelController' ui-view='profilePanel'></div>
+    <div class='main' ui-view></div>
   </div>
 </body>
 </html>

@@ -5,8 +5,8 @@ var escapeHTML = function(str) {
 };
 
 
-angular.module('SGN.updateProfile', ['SGN.requests'])
-.controller('UpdateProfileController', function ($scope, $location, SGNRequests, $http) {
+angular.module('CGN.updateProfile', ['CGN.requests'])
+.controller('UpdateProfileController', function ($scope, $location, CGNRequests, $http) {
   $scope.friends = {};
   //Steam status number to string state conversion.
   $scope.stateConversion = [
@@ -41,7 +41,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   };
   //fetch profile information from STEAMAPI
   $scope.steamFetchProfile = function (steamID) {
-    SGNRequests.getSteamProfile($scope.steamID, function (res) {
+    CGNRequests.getSteamProfile($scope.steamID, function (res) {
       var steamData = res.data.response.players[0];
       $scope.steamState = steamData.personastate;
       $scope.steamOnline = $scope.stateConversion[$scope.steamState];
@@ -57,16 +57,16 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
   $scope.steamFetchFriends = function (steamID) {
     $scope.friendsList = [];
     $scope.friendsProfiles = [];
-    SGNRequests.getSteamFriends($scope.steamID, function (res) {
+    CGNRequests.getSteamFriends($scope.steamID, function (res) {
       var steamFriends = res.data.friendslist.friends;
       for (var i = 0; i < steamFriends.length; i++) {
         // (function() {
           var targetAccount = steamFriends[i].steamid;
-          SGNRequests.getSteamDBProfile(targetAccount, function (res) {
+          CGNRequests.getSteamDBProfile(targetAccount, function (res) {
             if (res.status === 200) {
               $scope.friendsList.push(res.data);
               //fetch friend profile information from steam
-              SGNRequests.getSteamProfile(res.data.steamID, function (res) {
+              CGNRequests.getSteamProfile(res.data.steamID, function (res) {
                 var profile = res.data.response.players[0];
                 $scope.friendsProfiles.push(profile);
               });
@@ -81,7 +81,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
     $scope.gamesList = [];
     $scope.topTen = [];
     var gameIDs;
-    SGNRequests.getSteamGames(steamID, function (res) {
+    CGNRequests.getSteamGames(steamID, function (res) {
       gameIDs = res.data.response.games ||
       null;
     }).then(function () {
@@ -94,7 +94,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
           //put into an IIFE to fix appid bug 
           (function() {
           var game = gameIDs[i];
-          SGNRequests.getGameInfo(game.appid, function(res) {
+          CGNRequests.getGameInfo(game.appid, function(res) {
             $scope.gamesList.push(res.data[game.appid].data);
             if ($scope.topTen.length < 10) {
               $scope.topTen.push(res.data[game.appid].data);
@@ -120,7 +120,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         gameID: gamesList[i].steam_appid,
         name: gamesList[i].name
       };
-      SGNRequests.addDBSteamGame(game, function(res) {
+      CGNRequests.addDBSteamGame(game, function(res) {
         console.log(res);
       });
     }
@@ -133,7 +133,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
         user: {id: $scope.sgnID},
         game: gamesList[i],
       }
-      SGNRequests.addUserGameRelation(gameAndUser, function(res) {
+      CGNRequests.addUserGameRelation(gameAndUser, function(res) {
       });
     }
   };
@@ -149,7 +149,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       steamID: escapeHTML($scope.steamID)
     };
 
-    SGNRequests.updateProfile(userInfo);
+    CGNRequests.updateProfile(userInfo);
 
     //bug: can only update steamaccount once atm, no put request functionality.
     //update 'steam' table.
@@ -160,7 +160,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
       avatar: $scope.steamAvatar,
       bio: $scope.bio,
     };
-    SGNRequests.updateSteamProfile(steamAccount);
+    CGNRequests.updateSteamProfile(steamAccount);
 
     //update 'friends' table.
     var friends = $scope.friendsList;
@@ -170,7 +170,7 @@ angular.module('SGN.updateProfile', ['SGN.requests'])
           user1: { id: $scope.sgnID },
           user2: { id: friends[i].userID },
         };
-        SGNRequests.addFriend(userRelation, function (res) {
+        CGNRequests.addFriend(userRelation, function (res) {
         });
       }
     }

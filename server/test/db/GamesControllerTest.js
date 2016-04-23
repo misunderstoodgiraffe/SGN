@@ -3,7 +3,7 @@
 
 var expect = require('chai').expect;
 var SQL = require('sequelize');
-var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
+var sql = new SQL('CGN', 'root', '1234', {define: {timestamps: false}});
 var db = require('../../db/db.js');
 var GamesController = require('../../db/GamesController.js');
 

@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var SQL = require('sequelize');
-var sql = new SQL('SGN', 'root', '1234', {define: {timestamps: false}});
+var sql = new SQL('CGN', 'root', '1234', {define: {timestamps: false}});
 
 module.exports.dbConnection = mysql.createConnection({
   host: 'us-cdbr-iron-east-03.cleardb.net',

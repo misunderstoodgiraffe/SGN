@@ -5,7 +5,7 @@
 // In your JavaScript, add this line to initialize OAuth.js
 
 // OAuth.initialize('your_app_public_key');
-angular.module('SGN.login', [])
+angular.module('CGN.login', [])
 .factory('facebookService', function($q, $http) {
 
   //Authentication result returned by facebook. Inclues an auth token
@@ -33,7 +33,7 @@ angular.module('SGN.login', [])
     
 });
 
-angular.module('SGN.requests', [])
+angular.module('CGN.requests', [])
 .factory('CGNRequests', ($http) => {
   return {
     // OUR MAIN DB CALLS.

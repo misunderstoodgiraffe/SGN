@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-angular.module('SGN.profilePanel', ['SGN.requests'])
+angular.module('CGN.profilePanel', ['CGN.requests'])
 .controller('ProfilePanelController', ($scope, $log, CGNRequests) => {
   CGNRequests.getProfile()
     .then((data) => {
