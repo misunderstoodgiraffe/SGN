@@ -1,12 +1,13 @@
 var mysql = require('mysql');
 var SQL = require('sequelize');
-var sql = new SQL('CGN', 'root', '', {define: {timestamps: false}});
-
-module.exports.dbConnection = mysql.createConnection({
-  host: 'us-cdbr-iron-east-03.cleardb.net',
-  user: 'b54912934cf718',
-  password: '30141162',
-  database: 'heroku_6e5b139fb11cc8b',
+var sql = new SQL('CGN', 'root', '', {
+  host: 'localhost',
+  dialect: 'mysql',
+  pool: {
+    max: 10,
+    min: 0,
+    idle: 10000,
+  },
 });
 
 

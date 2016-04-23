@@ -24,7 +24,7 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
       method: 'GET',
       url: '/users/profile'
     }).then(function mySucces(response) {
-      $scope.sgnID = response.data.id;  //sgnID is the id system for OUR DB.
+      $scope.cgnID = response.data.id;  //cgnID is the id system for OUR DB.
       $scope.username = response.data.username;
       $scope.givenName = response.data.givenName;
       $scope.avatar = response.data.avatar;
@@ -91,7 +91,7 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
         });
         var numberOfGames = gameIDs.length > 20 ? 20: gameIDs.length;
         for (var i = 0; i < numberOfGames; i++) {
-          //put into an IIFE to fix appid bug 
+          //put into an IIFE to fix appid bug
           (function() {
           var game = gameIDs[i];
           CGNRequests.getGameInfo(game.appid, function(res) {
@@ -130,7 +130,7 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
     var gamesList = $scope.gamesList;
     for (var i = 0; i < gamesList.length; i++) {
       var gameAndUser = {
-        user: {id: $scope.sgnID},
+        user: {id: $scope.cgnID},
         game: gamesList[i],
       }
       CGNRequests.addUserGameRelation(gameAndUser, function(res) {
@@ -154,7 +154,7 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
     //bug: can only update steamaccount once atm, no put request functionality.
     //update 'steam' table.
     var steamAccount = {
-      userID: $scope.sgnID,
+      userID: $scope.cgnID,
       steamID: escapeHTML($scope.steamID),
       username: $scope.steamUsername,
       avatar: $scope.steamAvatar,
@@ -167,7 +167,7 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
     if (friends) {
       for (var i = 0; i < friends.length; i++) {
         var userRelation = {
-          user1: { id: $scope.sgnID },
+          user1: { id: $scope.cgnID },
           user2: { id: friends[i].userID },
         };
         CGNRequests.addFriend(userRelation, function (res) {
@@ -193,5 +193,3 @@ angular.module('CGN.updateProfile', ['CGN.requests'])
   //auto populate fields when controller loads.
   $scope.getUserInfo();
 });
-
-

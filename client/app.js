@@ -16,6 +16,7 @@ import './navigation/navigationController';
 import './friends/friendsController';
 import './events/eventsController';
 import './recentGames/recentGamesController';
+import './updateProfile/updateProfileController.js';
 
 /* Import Shared Factories and Services */
 import './services';
@@ -28,6 +29,7 @@ import navigationTemplate from './navigation/navigation.html';
 import friendsTemplate from './friends/friends.html';
 import eventsTemplate from './events/events.html';
 import recentGamesTemplate from './recentGames/recentGames.html';
+import updateProfileTemplate from './updateProfile/updateProfile.html';
 
 /* Import App Template Styles */
 import './dashboard/dashboard.css';
@@ -37,6 +39,7 @@ import './navigation/navigation.css';
 import './friends/friends.css';
 import './events/events.css';
 import './recentGames/recentGames.css';
+import './updateProfile/updateProfile.css';
 
 angular.module('CGN', [
   'CGN.landing',
@@ -47,6 +50,7 @@ angular.module('CGN', [
   'CGN.events',
   'CGN.friends',
   'CGN.recentGames',
+  'CGN.updateProfile',
   uiRouter,
 ])
 .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
@@ -100,6 +104,26 @@ angular.module('CGN', [
           template: eventsTemplate,
           controller: 'EventsController',
           controllerAs: 'EventsController',
+        },
+        'navigation@': {
+          template: navigationTemplate,
+          controller: 'NavigationController',
+          controllerAs: 'NavigationController',
+        },
+        'profilePanel@': {
+          template: profilePanelTemplate,
+          controller: 'ProfilePanelController',
+          controllerAs: 'ProfilePanelController',
+        },
+      },
+    })
+    .state('updateProfile', {
+      url: '/updateprofile',
+      views: {
+        '': {
+          template: updateProfileTemplate,
+          controller: 'UpdateProfileController',
+          controllerAs: 'UpdateProfileController',
         },
         'navigation@': {
           template: navigationTemplate,

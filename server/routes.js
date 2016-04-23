@@ -1,9 +1,9 @@
 const fbController = require('./utils/fbController.js');
+const key = require('./config/keys.js');
 const OAuth = require('oauthio');
-OAuth.initialize('BqQzmRHEA0gxZSaUVbqEaPmDyM8', 'hnjFc9WbVJuKigl8NmnVbjmD3jA');
+OAuth.initialize(key.FACEBOOK_API_KEY, key.FACEBOOK_API_SECRET);
 const controllers = require('./controllers/users.js');
 const steam = require('./utils/steamController.js');
-const key = require('./config/keys.js');
 const authCheck = require('./utils/authMiddleware.js');
 
 module.exports = function (app, express) {
@@ -30,8 +30,6 @@ module.exports = function (app, express) {
 
   //FRIENDS table
   app.get('/api/me/friends', authCheck, controllers.getFriends);
-  app.post('/api/me/friends', authCheck, controllers.addFriend);
-  app.get('/api/me/addFriends', authCheck, controllers.findFBFriends);
 
   //STEAM table
   app.get('/api/me/steam', authCheck, controllers.getSteamProfile);
@@ -51,5 +49,4 @@ module.exports = function (app, express) {
   app.get('/api/updateSteamFriends', authCheck, steam.getAllFriends);
   app.get('/api/getSteamGames', authCheck, steam.getAllGames);
   app.get('/api/getGameInfo', authCheck, steam.getGameInfo);
-
 };

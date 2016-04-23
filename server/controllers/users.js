@@ -28,18 +28,6 @@ module.exports = {
       }
     });
   },
-  addFriend: function(req, res, next) {
-    var user1 = req.body.user1;
-    var user2 = req.body.user2;
-    Friends.newFriend(user1, user2, function(err, friend) {
-      if (err) {
-        console.log(err);
-        res.status(500).send(err);
-      } else {
-        res.status(201).send(friend);
-      }
-    });
-  },
   updateProfile: function(req, res, next) {
     Users.updateProfile(req.body, function(err, response) {
       if (err) {
@@ -58,6 +46,7 @@ module.exports = {
       }
     });
   },
+
   getSteamProfile: function(req, res, next) {
     Steam.getSteam(req.query, function(err, response) {
       if (err) {
@@ -67,6 +56,7 @@ module.exports = {
       }
     });
   },
+
   getSteamGame: function(req, res, next) {
     Steam.getSteam(req.query, function(err, response) {
       if (err) {
@@ -110,7 +100,6 @@ module.exports = {
       }
     });
   },
-
   signout: function(req, res, next) {
     req.session.destroy();
     res.redirect('/');

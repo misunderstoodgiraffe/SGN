@@ -1,13 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
-const db = require('./db/db.js');
+require('./db/db.js');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-db.dbConnection.connect();
 
 app.use(cors());
 app.use(session({
@@ -15,7 +13,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
-require('./routes.js') (app, express);
+require('./routes.js')(app, express);
 app.use(express.static(__dirname + '/../dist'));
 
 app.listen(process.env.PORT || 3000);
